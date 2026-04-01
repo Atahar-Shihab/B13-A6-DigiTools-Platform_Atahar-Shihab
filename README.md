@@ -1,16 +1,32 @@
-# React + Vite
+# 🚀 DigiTools Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **DigiTools**, a modern, highly responsive landing page and product purchasing platform designed for digital professionals. This project showcases premium digital tools, calculates shopping cart totals dynamically, and provides a seamless checkout simulation. 
 
-Currently, two official plugins are available:
+It was built from scratch to perfectly match a professional Figma design!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 📖 A Little Description
+DigiTools is a frontend web application that allows users to browse a curated list of premium digital products. Users can seamlessly switch between browsing products and viewing their cart, add or remove items, see real-time price totals, and receive instant, colorful toast notifications for every action they take.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ 3 Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **🛍️ Interactive Cart System:** Seamlessly toggle between the product catalog and the shopping cart. Features a dynamic navbar counter, real-time total price calculation, and the ability to instantly remove items or proceed to checkout.
+2. **🔔 Dynamic UI Feedback:** Utilizes React-Toastify to give users instant visual pop-up alerts when items are successfully added to the cart, removed, or during checkout. Buttons also dynamically change their text and color (e.g., to "Added to Cart") once an item is selected.
+3. **🎨 Pixel-Perfect Responsive Design:** Built to exactly match a professional Figma mockup. It features a fully custom hero banner, pricing cards, a 3-step onboarding section, and custom Google Fonts ('Outfit'), all scaling flawlessly across mobile and desktop screens.
+
+---
+
+## 🛠️ Technology Used
+
+This project was built using modern web development tools:
+
+* **React.js** - Frontend UI and state management
+* **Vite** - Lightning-fast build tool and development server
+* **Tailwind CSS (v4)** - Utility-first CSS framework for rapid styling
+* **DaisyUI** - Tailwind CSS component library
+* **JavaScript (ES6+)** - Core logic and array manipulation
+* **React-Toastify** - Elegant popup notifications
+* **JSON** - Local data storage mimicking a backend API for the products
