@@ -67,4 +67,16 @@ function App() {
           <img src="/assets/banner.png" alt="Hero Banner" className="w-[90%] h-auto rounded-3xl object-cover" />
         </div>
       </section>
+      {/* ================= STATS SECTION ================= */}
+      <section className="bg-[#8B5CF6] py-14">
+        <div className="container mx-auto px-8">
+          <div className="flex flex-col md:flex-row justify-center items-center text-white text-center">
+            <div className="flex-1"><h2 className="text-5xl font-extrabold mb-2">50K+</h2><p className="text-purple-200 text-[15px] font-medium">Active Users</p></div>
+            <div className="hidden md:block w-px h-16 bg-purple-400 opacity-50"></div>
+            <div className="flex-1 mt-8 md:mt-0"><h2 className="text-5xl font-extrabold mb-2">200+</h2><p className="text-purple-200 text-[15px] font-medium">Premium Tools</p></div>
+            <div className="hidden md:block w-px h-16 bg-purple-400 opacity-50"></div>
+            <div className="flex-1 mt-8 md:mt-0"><h2 className="text-5xl font-extrabold mb-2">4.9</h2><p className="text-purple-200 text-[15px] font-medium">Rating</p></div>
+          </div>
+        </div>
+      </section>
 export default App;
