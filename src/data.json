@@ -76,4 +76,28 @@
     "features": ["Responsive", "SEO Optimized", "Fast Loading"],
     "icon": "/assets/products/portfolio.png"
   }
+  ,
+    {
+    "id": 7,
+    "name": "Portfolio maker",
+    "description": "Showcase your work with stunning, responsive portfolio templates.",
+    "price": 19,
+    "period": "One-Time",
+    "tag": "New",
+    "tagType": "bg-green-100 text-green-700",
+    "features": ["Responsive", "SEO Optimized", "Fast Loading"],
+    "icon": "/assets/products/portfolio.png"
+  }
+  ,
+    {
+    "id": 7,
+    "name": "Portfolio maker",
+    "description": "Showcase your work with stunning, responsive portfolio templates.",
+    "price": 19,
+    "period": "One-Time",
+    "tag": "New",
+    "tagType": "bg-green-100 text-green-700",
+    "features": ["Responsive", "SEO Optimized", "Fast Loading"],
+    "icon": "/assets/products/portfolio.png"
+  }
 ]
