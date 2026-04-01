@@ -45,4 +45,26 @@ function App() {
     </div>
   );
 }
+{/* ================= HERO BANNER ================= */}
+      <section className="container mx-auto px-8 py-16 flex flex-col md:flex-row items-center gap-12">
+        <div className="md:w-1/2">
+          <div className="bg-[#F3E8FF] text-[#8B5CF6] px-4 py-1.5 rounded-full text-[13px] font-semibold mb-6 inline-flex items-center gap-2">
+            <div className="w-1.5 h-1.5 bg-[#8B5CF6] rounded-full"></div>
+            New: AI-Powered Tools Available
+          </div>
+          <h1 className="text-5xl md:text-[56px] font-extrabold mb-6 leading-[1.15] text-gray-900 tracking-tight">
+            Supercharge Your <br/> Digital Workflow
+          </h1>
+          <p className="text-gray-500 mb-8 text-[17px] leading-relaxed max-w-lg">
+            Access premium AI tools, design assets, templates, and productivity software—all in one place. Start creating faster today.
+          </p>
+          <div className="flex gap-4">
+            <button className="bg-[#8B5CF6] text-white hover:bg-purple-700 px-7 py-3 rounded-full font-semibold text-[15px]">Explore Products</button>
+            <button className="border border-[#8B5CF6] text-[#8B5CF6] hover:bg-purple-50 px-7 py-3 rounded-full font-semibold text-[15px] flex items-center gap-2">Watch Demo</button>
+          </div>
+        </div>
+        <div className="md:w-1/2 flex justify-end">
+          <img src="/assets/banner.png" alt="Hero Banner" className="w-[90%] h-auto rounded-3xl object-cover" />
+        </div>
+      </section>
 export default App;
