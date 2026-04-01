@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "name": "Social Media Content Kit",
+    "description": "Complete toolkit for creating engaging social media content.",
+    "price": 39,
+    "period": "Mo",
+    "tag": "Best Seller",
+    "tagType": "bg-orange-100 text-orange-700",
+    "features": ["5000+ assets", "Scheduler", "Analytics"],
+    "icon": "/assets/products/social-media.png"
+  },
+  {
+    "id": 2,
+    "name": "UI/UX Design Tool",
+    "description": "Create beautiful interfaces with our premium design system.",
+    "price": 49,
+    "period": "One-Time",
+    "tag": "Popular",
+    "tagType": "bg-purple-100 text-purple-700",
+    "features": ["100+ Components", "Figma Files", "Auto-layout"],
+    "icon": "/assets/products/design-tool.png"
+  },
+  {
+    "id": 3,
+    "name": "Writing Assistant Pro",
+    "description": "AI-powered grammar and style assistant for flawless writing.",
+    "price": 15,
+    "period": "Mo",
+    "tag": "New",
+    "tagType": "bg-green-100 text-green-700",
+    "features": ["Grammar check", "Plagiarism detector", "Tone adjustments"],
+    "icon": "/assets/products/writing_2327400 1.png"
+  },
+  {
+    "id": 4,
+    "name": "Business Operations Kit",
+    "description": "Streamline your business with pre-made operation templates.",
+    "price": 99,
+    "period": "One-Time",
+    "tag": "Best Seller",
+    "tagType": "bg-orange-100 text-orange-700",
+    "features": ["Invoices", "Contracts", "Schedules"],
+    "icon": "/assets/products/operation.png"
+  },
+  {
+    "id": 5,
+    "name": "E-Commerce Shopping Cart",
+    "description": "Easily integrate a secure shopping cart into any website.",
+    "price": 29,
+    "period": "Mo",
+    "tag": "Popular",
+    "tagType": "bg-purple-100 text-purple-700",
+    "features": ["Stripe Integration", "Customizable", "Secure"],
+    "icon": "/assets/products/shopping-cart.png"
+  },
+  {
+    "id": 6,
+    "name": "Portfolio Builder",
+    "description": "Showcase your work with stunning, responsive portfolio templates.",
+    "price": 19,
+    "period": "One-Time",
+    "tag": "New",
+    "tagType": "bg-green-100 text-green-700",
+    "features": ["Responsive", "SEO Optimized", "Fast Loading"],
+    "icon": "/assets/products/portfolio.png"
+  }
+    {
+    "id": 7,
+    "name": "Portfolio maker",
+    "description": "Showcase your work with stunning, responsive portfolio templates.",
+    "price": 19,
+    "period": "One-Time",
+    "tag": "New",
+    "tagType": "bg-green-100 text-green-700",
+    "features": ["Responsive", "SEO Optimized", "Fast Loading"],
+    "icon": "/assets/products/portfolio.png"
+  }
+]
