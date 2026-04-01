@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { FiShoppingCart, FiCheck } from 'react-icons/fi';
 import productsData from './data.json';
 
@@ -9,24 +11,25 @@ function App() {
   const addToCart = (product) => {
     const isAlreadyInCart = cart.find((item) => item.id === product.id);
     if (isAlreadyInCart) {
-      alert('This product is already in your cart!');
+      toast.info('This product is already in your cart!');
     } else {
       setCart([...cart, product]);
-      // The button text will change to "Added to Cart", so we don't even need a popup here unless you want one!
+      toast.success('Successfully added to cart!');
     }
   };
 
   const removeFromCart = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
+    toast.error('Product removed from cart.');
   };
 
   const proceedToCheckout = () => {
     if (cart.length === 0) {
-      alert('Your cart is empty!');
+      toast.warn('Your cart is empty!');
       return;
     }
-    alert('Proceeding to checkout! All items cleared.');
+    toast.success('Proceeding to checkout! All items cleared.');
     setCart([]);
     setActiveTab('products');
   };
@@ -38,8 +41,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
-      
-      {/* ================= NAVBAR ================= */}
+      <ToastContainer position="bottom-right" autoClose={3000} />
+
       <nav className="flex justify-between items-center px-8 py-5 shadow-sm bg-white sticky top-0 z-50">
         <h1 className="text-3xl font-bold text-[#8B5CF6] tracking-tight">DigiTools</h1>
         
@@ -60,13 +63,11 @@ function App() {
               </span>
             )}
           </button>
-
           <button className="text-[15px] text-gray-600 font-medium hover:text-[#8B5CF6] transition-colors">Login</button>
           <button className="bg-[#8B5CF6] text-white hover:bg-purple-700 px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">Get Started</button>
         </div>
       </nav>
 
-      {/* ================= HERO BANNER ================= */}
       <section className="container mx-auto px-8 py-16 flex flex-col md:flex-row items-center gap-12">
         <div className="md:w-1/2">
           <div className="bg-[#F3E8FF] text-[#8B5CF6] px-4 py-1.5 rounded-full text-[13px] font-semibold mb-6 inline-flex items-center gap-2">
@@ -97,7 +98,6 @@ function App() {
         </div>
       </section>
 
-      {/* ================= STATS SECTION ================= */}
       <section className="bg-[#8B5CF6] py-14">
         <div className="container mx-auto px-8">
           <div className="flex flex-col md:flex-row justify-center items-center text-white text-center">
@@ -125,7 +125,6 @@ function App() {
         </div>
       </section>
 
-      {/* ================= TOGGLE & MAIN CONTENT AREA ================= */}
       <section className="container mx-auto px-8 py-20">
         
         <div className="text-center mb-12">
@@ -148,7 +147,6 @@ function App() {
           </div>
         </div>
 
-        {/* PRODUCTS VIEW */}
         {activeTab === 'products' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {productsData.map((product) => {
@@ -193,7 +191,6 @@ function App() {
           </div>
         )}
 
-        {/* CART VIEW */}
         {activeTab === 'cart' && (
           <div className="max-w-3xl mx-auto bg-white border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.05)] rounded-2xl p-8">
             <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">Your Cart</h2>
@@ -240,7 +237,6 @@ function App() {
         )}
       </section>
 
-      {/* ================= STEPS SECTION ================= */}
       <section className="bg-[#F8F9FA] py-24 text-center">
         <h2 className="text-3xl font-bold mb-4 text-gray-900">Get Started In 3 Steps</h2>
         <p className="text-gray-500 text-[15px] mb-14">Start using premium digital tools in minutes, not hours.</p>
@@ -273,7 +269,6 @@ function App() {
         </div>
       </section>
 
-      {/* ================= PRICING SECTION ================= */}
       <section id="pricing" className="py-24 bg-white">
         <div className="container mx-auto px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
@@ -333,7 +328,6 @@ function App() {
         </div>
       </section>
 
-      {/* ================= CTA SECTION ================= */}
       <section className="bg-[#8B5CF6] py-20 text-center text-white">
         <h2 className="text-[32px] font-bold mb-4 tracking-tight">Ready To Transform Your Workflow?</h2>
         <p className="text-purple-200 mb-10 text-[15px] max-w-xl mx-auto font-medium leading-relaxed">Join thousands of professionals who are already using DigiTools to work smarter. Start your free trial today.</p>
@@ -344,7 +338,6 @@ function App() {
         <p className="text-[13px] text-purple-200">14-day free trial • No credit card required • Cancel anytime</p>
       </section>
 
-      {/* ================= FOOTER ================= */}
       <footer className="bg-[#111827] text-white pt-20 pb-8">
         <div className="container mx-auto px-8 grid grid-cols-1 md:grid-cols-6 gap-10 mb-16">
           <div className="md:col-span-2 pr-8">
