@@ -1,32 +1,133 @@
-# 🚀 DigiTools Platform
+# 🚀 DigiTools Platform — Masterclass Frontend Showcase
 
-Welcome to **DigiTools**, a modern, highly responsive landing page and product purchasing platform designed for digital professionals. This project showcases premium digital tools, calculates shopping cart totals dynamically, and provides a seamless checkout simulation. 
+Welcome to **DigiTools**, an enterprise-grade, high-performance digital asset marketplace and interactive SaaS platform engineered with **React 19**, **Tailwind CSS v4**, **Framer Motion**, and modern frontend design systems.
 
-It was built from scratch to perfectly match a professional Figma design!
-
----
-
-## 📖 A Little Description
-DigiTools is a frontend web application that allows users to browse a curated list of premium digital products. Users can seamlessly switch between browsing products and viewing their cart, add or remove items, see real-time price totals, and receive instant, colorful toast notifications for every action they take.
+🌐 **Live Deployment:** [digi-tools-platform-shihab.vercel.app](https://digi-tools-platform-shihab.vercel.app)
 
 ---
 
-## ✨ 3 Key Features
+## 🌟 Masterclass Highlights & Key Features
 
-1. **🛍️ Interactive Cart System:** Seamlessly toggle between the product catalog and the shopping cart. Features a dynamic navbar counter, real-time total price calculation, and the ability to instantly remove items or proceed to checkout.
-2. **🔔 Dynamic UI Feedback:** Utilizes React-Toastify to give users instant visual pop-up alerts when items are successfully added to the cart, removed, or during checkout. Buttons also dynamically change their text and color (e.g., to "Added to Cart") once an item is selected.
-3. **🎨 Pixel-Perfect Responsive Design:** Built to exactly match a professional Figma mockup. It features a fully custom hero banner, pricing cards, a 3-step onboarding section, and custom Google Fonts ('Outfit'), all scaling flawlessly across mobile and desktop screens.
+### 1. 🛍️ Dual-Mode E-Commerce Architecture
+* **Slide-Over Cart Drawer:** Instant off-canvas cart sheet accessible anywhere on the page with quantity controllers (`+`/`-`), trash actions, and live financial breakdown.
+* **Inline Catalog Cart:** Full dual-tab product/cart switching matching the original design requirements.
+* **Tiered Free Bonus Progress Bar:** Interactive unlock meter (*"Add $X more to unlock the VIP Creator Bundle!"*).
+* **Promo Engine:** Dynamic coupon validation (`DIGI20` for 20% off, `CREATOR15`, `WELCOME10`) with live discount recalculation and confetti celebrations.
+
+### 2. ⚡ Command Palette (`⌘K` / `Ctrl+K`) & Keyboard Navigation
+* Deep instant fuzzy search across digital products, categories, and technical descriptions.
+* Quick section shortcuts (`#products`, `#demo-showcase`, `#pricing`, `#reviews`, `#faq`).
+* Hotkey actions: toggle theme, trigger sound FX, open drawers, switch currencies.
+
+### 3. 💱 Multi-Currency & 🌗 Theme Engine
+* Real-time currency conversion across **USD ($)**, **EUR (€)**, and **GBP (£)** with persistent `localStorage` synchronization.
+* Complete **Dark & Light Mode** support respecting OS preference and user toggle with zero layout shift.
+
+### 4. 🎛️ Interactive Developer & Designer Sandbox
+* **AI Prompt Studio:** Test and generate simulated high-converting copy and prompt pipelines in real time.
+* **Design System Token Inspector:** Live theme accent color switcher, border-radius token tweaker, and style variant previewer.
+* **Real-Time Edge Metrics:** Live dashboard ticker displaying edge response latency (12ms) and 99.99% system uptime.
+
+### 5. 💳 3-Step Checkout Simulation & License Generator
+* Realistic credit card interactive preview that updates cardholder name and number as you type.
+* Multi-payment simulation (Credit Card, Apple Pay, PayPal).
+* **Automated Order Receipt:** Produces a unique order ID (`DIGI-XXXXXX`), itemized breakdown, lifetime license keys (`PRO-XXXX-XXXX-LIFETIME`), and one-click receipt printing (`window.print()`).
+
+### 6. 🔍 Deep Filtering, Sorting & View Modes
+* Category selector pills (*All, AI & Automation, UI/UX Design, Development, Business & Marketing*).
+* Instant search query filter with instant clear.
+* Billing period filters (*All, Monthly, One-Time*).
+* Sort by: Featured, Price (Low to High), Price (High to Low), Highest Rated, Most Popular.
+* Dual View Modes: **Grid View** (responsive 3-column cards) vs **List View** (horizontal cards).
+
+### 7. 🔊 Web Audio API Sound Effects (Haptic Micro-interactions)
+* Synthesized subtle audio feedback for button clicks, cart pops, removals, and checkout fanfares.
+* Easily toggled on/off from the navigation bar.
 
 ---
 
-## 🛠️ Technology Used
+## 🛠️ Technology Stack & Libraries
 
-This project was built using modern web development tools:
+| Technology | Purpose |
+| :--- | :--- |
+| **React 19** | Modern reactive state management & component lifecycle |
+| **Vite** | Blazing-fast build tool and module bundler |
+| **Tailwind CSS v4** | Next-gen CSS engine with custom `@theme` variables and utility styling |
+| **DaisyUI v5** | Tailored UI components and accessible primitives |
+| **Lucide Icons & React Icons** | Modern, retina-ready vector iconography |
+| **Canvas Confetti** | Celebratory particle physics engine for checkout and promo unlocks |
+| **React-Toastify** | High-polish notification alerts and toast toasts |
+| **Web Audio API** | Real-time procedural audio synthesis for micro-interactions |
 
-* **React.js** - Frontend UI and state management
-* **Vite** - Lightning-fast build tool and development server
-* **Tailwind CSS (v4)** - Utility-first CSS framework for rapid styling
-* **DaisyUI** - Tailwind CSS component library
-* **JavaScript (ES6+)** - Core logic and array manipulation
-* **React-Toastify** - Elegant popup notifications
-* **JSON** - Local data storage mimicking a backend API for the products
+---
+
+## 📁 Modular Project Structure
+
+```
+src/
+├── assets/                  # Hero and vector graphics
+├── components/
+│   ├── CartDrawer.jsx       # Slide-over cart sheet & coupon validation
+│   ├── CheckoutModal.jsx    # 3-step checkout simulation & license generator
+│   ├── CommandPalette.jsx   # ⌘K instant search & shortcut palette
+│   ├── CTASection.jsx       # Newsletter subscription & coupon unlock
+│   ├── FAQSection.jsx       # Searchable accordion FAQ
+│   ├── FeatureShowcase.jsx  # 3-step onboarding & live interactive sandbox
+│   ├── FilterBar.jsx        # Category tabs, live search, sorting, view toggle
+│   ├── Footer.jsx           # System status, links, and creator credits
+│   ├── Hero.jsx             # Ambient glow, live ticker, and trust badges
+│   ├── InteractiveTourModal.jsx # Multi-step platform walkthrough tour
+│   ├── Navbar.jsx           # Glassmorphic header with currency/theme/cart controls
+│   ├── PricingSection.jsx   # Monthly/Annual billing switcher & comparison matrix
+│   ├── ProductCard.jsx      # Responsive card with Grid/List support & quick view
+│   ├── ProductQuickViewModal.jsx # Multi-tab detailed modal with sandbox & reviews
+│   ├── StatsCounter.jsx     # High-impact creator statistics
+│   ├── TestimonialsSection.jsx # Verified social proof & review submission
+│   └── WishlistDrawer.jsx   # Saved items & 1-click move to cart
+├── context/
+│   └── ShopContext.jsx      # Unified global state (Cart, Wishlist, Theme, Currency)
+├── utils/
+│   └── sound.js             # Web Audio API sound synthesis engine
+├── App.jsx                  # Main application orchestrator
+├── data.json                # Curated digital tools dataset with specs and ratings
+└── index.css                # Tailwind CSS v4 styling & dark mode variants
+```
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action |
+| :--- | :--- |
+| `⌘K` or `Ctrl + K` | Open Command Palette & Quick Search |
+| `Escape` | Close any active modal, drawer, or search palette |
+
+---
+
+## 🚀 Getting Started Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/Atahar-Shihab/B13-A6-DigiTools-Platform_Atahar-Shihab.git
+
+# Navigate to project folder
+cd B13-A6-DigiTools-Platform_Atahar-Shihab
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run lint checks
+npm run lint
+```
+
+---
+
+## 👤 Author & Credits
+Designed and engineered with ❤️ by **Atahar Shihab**.
+Portfolio Masterclass Showcase Project.

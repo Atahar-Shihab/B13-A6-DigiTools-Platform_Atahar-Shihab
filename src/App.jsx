@@ -1,235 +1,397 @@
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useState, useMemo } from 'react';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FiShoppingCart, FiCheck } from 'react-icons/fi';
+import { FiShoppingBag, FiArrowRight, FiTrash2, FiPlus, FiMinus, FiRotateCcw, FiTag, FiGift } from 'react-icons/fi';
+
 import productsData from './data.json';
+import { ShopProvider, useShop } from './context/ShopContext';
+import { sound } from './utils/sound';
 
-function App() {
-  const [cart, setCart] = useState([]);
-  const [activeTab, setActiveTab] = useState('products');
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { StatsCounter } from './components/StatsCounter';
+import { FilterBar } from './components/FilterBar';
+import { ProductCard } from './components/ProductCard';
+import { ProductQuickViewModal } from './components/ProductQuickViewModal';
+import { CartDrawer } from './components/CartDrawer';
+import { WishlistDrawer } from './components/WishlistDrawer';
+import { CheckoutModal } from './components/CheckoutModal';
+import { InteractiveTourModal } from './components/InteractiveTourModal';
+import { CommandPalette } from './components/CommandPalette';
+import { FeatureShowcase } from './components/FeatureShowcase';
+import { PricingSection } from './components/PricingSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
+import { FAQSection } from './components/FAQSection';
+import { CTASection } from './components/CTASection';
+import { Footer } from './components/Footer';
 
-  const addToCart = (product) => {
-    const isAlreadyInCart = cart.find((item) => item.id === product.id);
-    if (isAlreadyInCart) {
-      toast.info('This product is already in your cart!');
-    } else {
-      setCart([...cart, product]);
-      toast.success('Successfully added to cart!');
+function MainShopContent() {
+  const {
+    cart,
+    theme,
+    searchQuery,
+    selectedCategory,
+    sortBy,
+    viewMode,
+    billingPeriod,
+    rawSubtotal,
+    discountAmount,
+    taxAmount,
+    totalAmount,
+    totalItemCount,
+    appliedPromo,
+    applyPromo,
+    removePromo,
+    formatPrice,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    setIsCheckoutOpen,
+    setSearchQuery,
+    setSelectedCategory,
+    setSortBy,
+    setBillingPeriod
+  } = useShop();
+
+  const [activeCatalogTab, setActiveCatalogTab] = useState('products');
+  const [cartCouponInput, setCartCouponInput] = useState('');
+
+  // Extract unique categories
+  const categories = useMemo(() => {
+    const cats = ['All'];
+    productsData.forEach((p) => {
+      if (p.category && !cats.includes(p.category)) {
+        cats.push(p.category);
+      }
+    });
+    return cats;
+  }, []);
+
+  // Filter & Sort Products
+  const filteredProducts = useMemo(() => {
+    return productsData
+      .filter((product) => {
+        // Category filter
+        if (selectedCategory !== 'All' && product.category !== selectedCategory) {
+          return false;
+        }
+        // Billing period filter
+        if (billingPeriod === 'monthly' && product.period.toLowerCase() !== 'mo') {
+          return false;
+        }
+        if (billingPeriod === 'onetime' && product.period.toLowerCase() !== 'one-time') {
+          return false;
+        }
+        // Search query filter
+        if (searchQuery.trim() !== '') {
+          const q = searchQuery.toLowerCase();
+          const matchName = product.name.toLowerCase().includes(q);
+          const matchDesc = product.description.toLowerCase().includes(q);
+          const matchCategory = product.category?.toLowerCase().includes(q);
+          const matchFeatures = product.features?.some((f) => f.toLowerCase().includes(q));
+          if (!matchName && !matchDesc && !matchCategory && !matchFeatures) {
+            return false;
+          }
+        }
+        return true;
+      })
+      .sort((a, b) => {
+        if (sortBy === 'price-asc') return a.price - b.price;
+        if (sortBy === 'price-desc') return b.price - a.price;
+        if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0);
+        if (sortBy === 'popular') return (b.reviewsCount || 0) - (a.reviewsCount || 0);
+        return a.id - b.id; // default featured
+      });
+  }, [searchQuery, selectedCategory, sortBy, billingPeriod]);
+
+  const handleApplyCoupon = (e) => {
+    e.preventDefault();
+    if (!cartCouponInput.trim()) return;
+    if (applyPromo(cartCouponInput)) {
+      setCartCouponInput('');
     }
   };
-
-  const removeFromCart = (id) => {
-    const updatedCart = cart.filter((item) => item.id !== id);
-    setCart(updatedCart);
-    toast.error('Product removed from cart.');
-  };
-
-  const proceedToCheckout = () => {
-    if (cart.length === 0) {
-      toast.warn('Your cart is empty!');
-      return;
-    }
-    toast.success('Proceeding to checkout! All items cleared.');
-    setCart([]);
-    setActiveTab('products');
-  };
-
-  let totalPrice = 0;
-  for (let i = 0; i < cart.length; i++) {
-    totalPrice = totalPrice + cart[i].price;
-  }
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans">
-      <ToastContainer position="bottom-right" autoClose={3000} />
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        theme={theme === 'dark' ? 'dark' : 'light'}
+      />
 
-      <nav className="flex justify-between items-center px-8 py-5 shadow-sm bg-white sticky top-0 z-50">
-        <h1 className="text-3xl font-bold text-[#8B5CF6] tracking-tight">DigiTools</h1>
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Animated Metrics / Stats Counter */}
+      <StatsCounter />
+
+      {/* Main Digital Tools Catalog Section */}
+      <section id="products" className="container mx-auto px-4 sm:px-8 py-20">
         
-        <div className="hidden md:flex space-x-8 text-[15px] font-medium text-gray-600">
-          <a href="#" className="hover:text-[#8B5CF6] transition-colors">Products</a>
-          <a href="#" className="hover:text-[#8B5CF6] transition-colors">Features</a>
-          <a href="#pricing" className="hover:text-[#8B5CF6] transition-colors">Pricing</a>
-          <a href="#" className="hover:text-[#8B5CF6] transition-colors">Testimonials</a>
-          <a href="#" className="hover:text-[#8B5CF6] transition-colors">FAQ</a>
-        </div>
-
-        <div className="flex space-x-6 items-center">
-          <button onClick={() => setActiveTab('cart')} className="relative text-gray-700 hover:text-[#8B5CF6] transition-colors flex items-center">
-            <FiShoppingCart size={22} />
-            {cart.length > 0 && (
-              <span className="bg-[#8B5CF6] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full absolute -top-1.5 -right-2 border-2 border-white">
-                {cart.length}
-              </span>
-            )}
-          </button>
-          <button className="text-[15px] text-gray-600 font-medium hover:text-[#8B5CF6] transition-colors">Login</button>
-          <button className="bg-[#8B5CF6] text-white hover:bg-purple-700 px-6 py-2.5 rounded-full text-[15px] font-semibold transition-colors">Get Started</button>
-        </div>
-      </nav>
-
-      <section className="container mx-auto px-8 py-16 flex flex-col md:flex-row items-center gap-12">
-        <div className="md:w-1/2">
-          <div className="bg-[#F3E8FF] text-[#8B5CF6] px-4 py-1.5 rounded-full text-[13px] font-semibold mb-6 inline-flex items-center gap-2">
-            <div className="w-1.5 h-1.5 bg-[#8B5CF6] rounded-full"></div>
-            New: AI-Powered Tools Available
-          </div>
-          
-          <h1 className="text-5xl md:text-[56px] font-extrabold mb-6 leading-[1.15] text-gray-900 tracking-tight">
-            Supercharge Your <br/> Digital Workflow
-          </h1>
-          
-          <p className="text-gray-500 mb-8 text-[17px] leading-relaxed max-w-lg">
-            Access premium AI tools, design assets, templates, and productivity software—all in one place. Start creating faster today.
-          </p>
-          
-          <div className="flex gap-4">
-            <button className="bg-[#8B5CF6] text-white hover:bg-purple-700 px-7 py-3 rounded-full font-semibold text-[15px] transition-colors">
-              Explore Products
-            </button>
-            <button className="border border-[#8B5CF6] text-[#8B5CF6] hover:bg-purple-50 px-7 py-3 rounded-full font-semibold text-[15px] flex items-center gap-2 transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-              Watch Demo
-            </button>
-          </div>
-        </div>
-        <div className="md:w-1/2 flex justify-end">
-          <img src="/assets/banner.png" alt="Hero Banner" className="w-[90%] h-auto rounded-3xl object-cover" />
-        </div>
-      </section>
-
-      <section className="bg-[#8B5CF6] py-14">
-        <div className="container mx-auto px-8">
-          <div className="flex flex-col md:flex-row justify-center items-center text-white text-center">
-            
-            <div className="flex-1">
-              <h2 className="text-5xl font-extrabold mb-2">50K+</h2>
-              <p className="text-purple-200 text-[15px] font-medium">Active Users</p>
-            </div>
-
-            <div className="hidden md:block w-px h-16 bg-purple-400 opacity-50"></div>
-
-            <div className="flex-1 mt-8 md:mt-0">
-              <h2 className="text-5xl font-extrabold mb-2">200+</h2>
-              <p className="text-purple-200 text-[15px] font-medium">Premium Tools</p>
-            </div>
-
-            <div className="hidden md:block w-px h-16 bg-purple-400 opacity-50"></div>
-
-            <div className="flex-1 mt-8 md:mt-0">
-              <h2 className="text-5xl font-extrabold mb-2">4.9</h2>
-              <p className="text-purple-200 text-[15px] font-medium">Rating</p>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section className="container mx-auto px-8 py-20">
-        
+        {/* Section Heading & Products / Cart Tab Switcher */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Premium Digital Tools</h2>
-          <p className="text-gray-500 text-[15px] mb-8 max-w-xl mx-auto">Choose from our curated collection of premium digital products designed to boost your productivity and creativity.</p>
-          
-          <div className="bg-gray-50 p-1.5 rounded-full inline-flex border border-gray-100">
-            <button 
-              onClick={() => setActiveTab('products')}
-              className={`px-8 py-2.5 rounded-full font-bold text-[14px] transition-all ${activeTab === 'products' ? 'bg-[#8B5CF6] text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}
+          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+            Digital Asset Store
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
+            Premium Digital Tools & Frameworks
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+            Choose from our curated collection of production-ready digital products designed to boost your productivity, code quality, and creative output.
+          </p>
+
+          {/* Classic Dual Tab Switcher */}
+          <div className="bg-gray-100 dark:bg-gray-850 p-1.5 rounded-full inline-flex border border-gray-200 dark:border-gray-800 shadow-xs">
+            <button
+              onClick={() => {
+                sound.click();
+                setActiveCatalogTab('products');
+              }}
+              className={`px-8 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+                activeCatalogTab === 'products'
+                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/20'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+              }`}
             >
-              Products
+              Browse Products
             </button>
-            <button 
-              onClick={() => setActiveTab('cart')}
-              className={`px-8 py-2.5 rounded-full font-bold text-[14px] transition-all ${activeTab === 'cart' ? 'bg-[#8B5CF6] text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'}`}
+            <button
+              onClick={() => {
+                sound.click();
+                setActiveCatalogTab('cart');
+              }}
+              className={`px-8 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all cursor-pointer flex items-center gap-1.5 ${
+                activeCatalogTab === 'cart'
+                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/20'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+              }`}
             >
-              Cart ({cart.length})
+              <span>View Cart</span>
+              <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                activeCatalogTab === 'cart' ? 'bg-white/25 text-white' : 'bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6] dark:text-purple-300'
+              }`}>
+                {totalItemCount}
+              </span>
             </button>
           </div>
         </div>
 
-        {activeTab === 'products' && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {productsData.map((product) => {
-              const inCart = cart.find(item => item.id === product.id);
+        {/* TAB 1: PRODUCTS BROWSER */}
+        {activeCatalogTab === 'products' && (
+          <div>
+            {/* Filter, Search, and Sort Bar */}
+            <FilterBar
+              categories={categories}
+              totalResults={filteredProducts.length}
+            />
 
-              return (
-                <div key={product.id} className="card bg-white border border-gray-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] p-8 rounded-2xl hover:shadow-xl transition-shadow flex flex-col">
-                  <div className="flex justify-between items-start mb-5">
-                    <img src={product.icon} alt={product.name} className="w-11 h-11" />
-                    {product.tag && (
-                      <span className={`px-3 py-1 rounded-full text-[11px] font-bold ${product.tagType}`}>
-                        {product.tag}
-                      </span>
-                    )}
-                  </div>
-                  
-                  <h3 className="text-lg font-bold mb-2 text-gray-900">{product.name}</h3>
-                  <p className="text-gray-500 text-[14px] leading-relaxed mb-6 flex-grow">{product.description}</p>
-                  
-                  <p className="mb-6 flex items-baseline">
-                    <span className="text-[28px] font-extrabold text-gray-900">${product.price}</span>
-                    <span className="text-gray-400 text-[14px] font-medium ml-1">/{product.period}</span>
-                  </p>
-
-                  <ul className="mb-8 space-y-3">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-[14px] text-gray-600">
-                        <FiCheck className="text-green-500 mr-2.5 text-[16px]" /> {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button 
-                    onClick={() => addToCart(product)}
-                    className={`w-full py-3 rounded-xl text-white font-bold text-[15px] transition-colors mt-auto ${inCart ? 'bg-green-500 hover:bg-green-600' : 'bg-[#8B5CF6] hover:bg-purple-700'}`}
-                  >
-                    {inCart ? 'Added to Cart' : 'Buy Now'}
-                  </button>
+            {/* Product Cards Grid or List */}
+            {filteredProducts.length === 0 ? (
+              <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl p-12 text-center max-w-lg mx-auto">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-950/60 text-[#8B5CF6] flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                  🔍
                 </div>
-              );
-            })}
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                  No matching digital tools found
+                </h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
+                  We couldn't find any tools matching your search criteria or category filter.
+                </p>
+                <button
+                  onClick={() => {
+                    sound.click();
+                    setSearchQuery('');
+                    setSelectedCategory('All');
+                    setSortBy('featured');
+                    setBillingPeriod('all');
+                  }}
+                  className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
+                >
+                  <FiRotateCcw /> Reset All Filters
+                </button>
+              </div>
+            ) : viewMode === 'grid' ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} viewMode="grid" />
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-4 max-w-5xl mx-auto">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} viewMode="list" />
+                ))}
+              </div>
+            )}
           </div>
         )}
 
-        {activeTab === 'cart' && (
-          <div className="max-w-3xl mx-auto bg-white border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.05)] rounded-2xl p-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 text-center">Your Cart</h2>
-            
+        {/* TAB 2: INLINE CART VIEW */}
+        {activeCatalogTab === 'cart' && (
+          <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl rounded-3xl p-6 sm:p-8">
+            <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-5 mb-6">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <FiShoppingBag className="text-[#8B5CF6]" />
+                <span>Your Selected Products</span>
+              </h3>
+              {cart.length > 0 && (
+                <button
+                  onClick={() => {
+                    sound.remove();
+                    clearCart();
+                  }}
+                  className="text-xs font-bold text-rose-500 hover:underline cursor-pointer"
+                >
+                  Clear Cart
+                </button>
+              )}
+            </div>
+
             {cart.length === 0 ? (
-              <p className="text-gray-500 text-center py-12 text-[15px] font-medium">Your cart is completely empty.</p>
+              <div className="text-center py-16 space-y-4">
+                <div className="w-16 h-16 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-400 flex items-center justify-center mx-auto text-2xl">
+                  🛒
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white">Your cart is completely empty</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 max-w-sm mx-auto">
+                  Browse through our 8+ production toolkits and click "Add to Cart" to start building your checkout order.
+                </p>
+                <button
+                  onClick={() => {
+                    sound.click();
+                    setActiveCatalogTab('products');
+                  }}
+                  className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
+                >
+                  Explore Products Catalog
+                </button>
+              </div>
             ) : (
-              <div>
-                {cart.map((item) => (
-                  <div key={item.id} className="flex justify-between items-center bg-[#F8F9FA] p-4 rounded-xl mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="bg-white p-2.5 rounded-full shadow-sm">
-                        <img src={item.icon} alt={item.name} className="w-6 h-6 object-contain" />
+              <div className="space-y-6">
+                {/* Cart Items */}
+                <div className="space-y-3">
+                  {cart.map((item) => (
+                    <div
+                      key={item.id}
+                      className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 gap-4"
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center shrink-0">
+                          <img src={item.icon} alt={item.name} className="w-8 h-8 object-contain" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-sm text-gray-900 dark:text-white leading-tight">
+                            {item.name}
+                          </h4>
+                          <p className="text-xs text-[#8B5CF6] dark:text-purple-400 font-semibold mt-0.5">
+                            {formatPrice(item.price)} <span className="text-[11px] text-gray-400">/{item.period}</span>
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-bold text-[15px] text-gray-900">{item.name}</h4>
-                        <p className="text-[13px] text-gray-500 font-medium">${item.price}</p>
+
+                      <div className="flex items-center justify-between sm:justify-end gap-4 border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-200 dark:border-gray-700">
+                        {/* Quantity Stepper */}
+                        <div className="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 p-0.5">
+                          <button
+                            onClick={() => updateQuantity(item.id, -1)}
+                            className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold"
+                          >
+                            <FiMinus size={12} />
+                          </button>
+                          <span className="w-7 text-center text-xs font-bold text-gray-900 dark:text-white">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() => updateQuantity(item.id, 1)}
+                            className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold"
+                          >
+                            <FiPlus size={12} />
+                          </button>
+                        </div>
+
+                        {/* Item Total */}
+                        <span className="text-sm font-black text-gray-900 dark:text-white min-w-[70px] text-right">
+                          {formatPrice(item.price * item.quantity)}
+                        </span>
+
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="p-2 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors"
+                          title="Remove from Cart"
+                        >
+                          <FiTrash2 size={16} />
+                        </button>
                       </div>
                     </div>
-                    
-                    <button 
-                      onClick={() => removeFromCart(item.id)} 
-                      className="text-[#FF477E] hover:text-pink-700 text-[13px] font-medium px-4 transition-colors"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                ))}
-
-                <div className="flex justify-between items-center mt-10 mb-6 px-1">
-                  <span className="text-gray-500 font-medium text-[15px]">Total:</span>
-                  <span className="text-2xl font-extrabold text-gray-900">${totalPrice}</span>
+                  ))}
                 </div>
 
-                <button 
-                  onClick={proceedToCheckout}
-                  className="w-full bg-[#8B5CF6] hover:bg-purple-700 text-white py-3.5 rounded-xl font-bold text-[15px] transition-colors"
+                {/* Promo Code Input */}
+                <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800 space-y-2">
+                  <form onSubmit={handleApplyCoupon} className="flex gap-2">
+                    <div className="relative flex-1">
+                      <FiTag className="absolute inset-y-0 left-3 my-auto text-gray-400 text-xs" />
+                      <input
+                        type="text"
+                        value={cartCouponInput}
+                        onChange={(e) => setCartCouponInput(e.target.value)}
+                        placeholder="Discount code (e.g. DIGI20, WELCOME10)"
+                        className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white uppercase font-mono"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="px-4 py-2 rounded-xl bg-gray-900 dark:bg-gray-700 hover:bg-black text-white text-xs font-bold transition-colors cursor-pointer"
+                    >
+                      Apply
+                    </button>
+                  </form>
+
+                  {appliedPromo && (
+                    <div className="flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-bold">
+                      <span>✓ {appliedPromo.label} ({appliedPromo.code})</span>
+                      <button onClick={removePromo} className="underline text-[11px] text-emerald-700">Remove</button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Total Price & Checkout */}
+                <div className="border-t border-gray-100 dark:border-gray-800 pt-5 space-y-2">
+                  <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                    <span>Subtotal:</span>
+                    <span className="font-semibold text-gray-800 dark:text-gray-200">{formatPrice(rawSubtotal)}</span>
+                  </div>
+                  {appliedPromo && (
+                    <div className="flex justify-between text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                      <span>Discount ({Math.round(appliedPromo.discount * 100)}%):</span>
+                      <span>-{formatPrice(discountAmount)}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between text-xs text-gray-400">
+                    <span>Platform Tax (5%):</span>
+                    <span>{formatPrice(taxAmount)}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-lg sm:text-xl font-black text-gray-900 dark:text-white pt-2 border-t border-gray-100 dark:border-gray-800">
+                    <span>Grand Total:</span>
+                    <span className="text-2xl text-[#8B5CF6] dark:text-purple-400">
+                      {formatPrice(totalAmount)}
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    sound.click();
+                    setIsCheckoutOpen(true);
+                  }}
+                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
-                  Proceed To Checkout
+                  <span>Proceed To Checkout Simulation</span>
+                  <FiArrowRight />
                 </button>
               </div>
             )}
@@ -237,160 +399,40 @@ function App() {
         )}
       </section>
 
-      <section className="bg-[#F8F9FA] py-24 text-center">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">Get Started In 3 Steps</h2>
-        <p className="text-gray-500 text-[15px] mb-14">Start using premium digital tools in minutes, not hours.</p>
-        
-        <div className="container mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
-          <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center relative">
-             <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold">01</div>
-             <div className="w-16 h-16 bg-[#F3E8FF] rounded-full flex items-center justify-center mb-5">
-               <img src="/assets/user.png" alt="User" className="w-7 h-7" />
-             </div>
-             <h3 className="font-bold text-lg text-gray-900 mb-2">Create Account</h3>
-             <p className="text-gray-500 text-[14px] leading-relaxed">Sign up for free in seconds. No credit card required to get started.</p>
-          </div>
-          <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center relative">
-             <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold">02</div>
-             <div className="w-16 h-16 bg-[#F3E8FF] rounded-full flex items-center justify-center mb-5">
-               <img src="/assets/package.png" alt="Package" className="w-7 h-7" />
-             </div>
-             <h3 className="font-bold text-lg text-gray-900 mb-2">Choose Products</h3>
-             <p className="text-gray-500 text-[14px] leading-relaxed">Browse our catalog and select the tools that fit your needs.</p>
-          </div>
-          <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center relative">
-             <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold">03</div>
-             <div className="w-16 h-16 bg-[#F3E8FF] rounded-full flex items-center justify-center mb-5">
-               <img src="/assets/rocket.png" alt="Rocket" className="w-7 h-7" />
-             </div>
-             <h3 className="font-bold text-lg text-gray-900 mb-2">Start Creating</h3>
-             <p className="text-gray-500 text-[14px] leading-relaxed">Download and start using your premium tools immediately.</p>
-          </div>
-        </div>
-      </section>
+      {/* 3 Steps Onboarding & Live Interactive Developer Sandbox */}
+      <FeatureShowcase />
 
-      <section id="pricing" className="py-24 bg-white">
-        <div className="container mx-auto px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
-          <p className="text-gray-500 text-[15px] mb-16">Choose the plan that fits your needs. Upgrade or downgrade anytime.</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center text-left">
-            
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-              <h3 className="text-[22px] font-bold mb-1 text-gray-900">Starter</h3>
-              <p className="text-gray-500 mb-6 text-[14px]">Perfect for getting started</p>
-              <div className="mb-8 flex items-baseline">
-                <span className="text-5xl font-extrabold text-gray-900">$0</span>
-                <span className="text-gray-500 font-medium text-[15px] ml-1">/Month</span>
-              </div>
-              <ul className="space-y-4 mb-8">
-                {['Access to 10 free tools', 'Basic templates', 'Community support', '1 project per month'].map((f, i) => (
-                  <li key={i} className="flex items-center text-gray-600 text-[14px] font-medium"><FiCheck className="text-green-500 mr-3 text-lg" /> {f}</li>
-                ))}
-              </ul>
-              <button className="w-full py-3.5 rounded-xl bg-[#8B5CF6] text-white font-bold text-[15px] hover:bg-purple-700 transition-colors">Get Started Free</button>
-            </div>
+      {/* Pricing Plans & Comparison Matrix */}
+      <PricingSection />
 
-            <div className="bg-[#8B5CF6] text-white p-10 md:p-12 rounded-3xl shadow-xl relative transform md:-translate-y-4">
-              <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-[#FEF08A] text-yellow-800 text-[11px] font-bold px-4 py-1 rounded-full shadow-sm">
-                Most Popular
-              </div>
-              <h3 className="text-[22px] font-bold mb-1">Pro</h3>
-              <p className="text-purple-200 mb-6 text-[14px]">Best for professionals</p>
-              <div className="mb-8 flex items-baseline">
-                <span className="text-5xl font-extrabold">$29</span>
-                <span className="text-purple-200 font-medium text-[15px] ml-1">/Month</span>
-              </div>
-              <ul className="space-y-4 mb-8">
-                {['Access to all premium tools', 'Unlimited templates', 'Priority support', 'Unlimited projects', 'Cloud sync', 'Advanced analytics'].map((f, i) => (
-                  <li key={i} className="flex items-center text-white text-[14px] font-medium"><FiCheck className="text-white mr-3 text-lg" /> {f}</li>
-                ))}
-              </ul>
-              <button className="w-full py-3.5 rounded-xl bg-white text-[#8B5CF6] font-bold text-[15px] hover:bg-gray-50 transition-colors">Start Pro Trial</button>
-            </div>
+      {/* Verified Reviews & Testimonials Slider */}
+      <TestimonialsSection />
 
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-              <h3 className="text-[22px] font-bold mb-1 text-gray-900">Enterprise</h3>
-              <p className="text-gray-500 mb-6 text-[14px]">For teams and businesses</p>
-              <div className="mb-8 flex items-baseline">
-                <span className="text-5xl font-extrabold text-gray-900">$99</span>
-                <span className="text-gray-500 font-medium text-[15px] ml-1">/Month</span>
-              </div>
-              <ul className="space-y-4 mb-8">
-                {['Everything in Pro', 'Team collaboration', 'Custom integrations', 'Dedicated support', 'SLA guarantee', 'Custom branding'].map((f, i) => (
-                  <li key={i} className="flex items-center text-gray-600 text-[14px] font-medium"><FiCheck className="text-green-500 mr-3 text-lg" /> {f}</li>
-                ))}
-              </ul>
-              <button className="w-full py-3.5 rounded-xl bg-[#8B5CF6] text-white font-bold text-[15px] hover:bg-purple-700 transition-colors">Contact Sales</button>
-            </div>
-            
-          </div>
-        </div>
-      </section>
+      {/* Interactive FAQ Section */}
+      <FAQSection />
 
-      <section className="bg-[#8B5CF6] py-20 text-center text-white">
-        <h2 className="text-[32px] font-bold mb-4 tracking-tight">Ready To Transform Your Workflow?</h2>
-        <p className="text-purple-200 mb-10 text-[15px] max-w-xl mx-auto font-medium leading-relaxed">Join thousands of professionals who are already using DigiTools to work smarter. Start your free trial today.</p>
-        <div className="flex justify-center gap-4 mb-6">
-          <button className="bg-white text-[#8B5CF6] hover:bg-gray-100 font-bold text-[15px] rounded-full px-8 py-3 transition-colors shadow-sm">Explore Products</button>
-          <button className="border border-white text-white hover:bg-white hover:text-[#8B5CF6] font-bold text-[15px] rounded-full px-8 py-3 transition-colors">View Pricing</button>
-        </div>
-        <p className="text-[13px] text-purple-200">14-day free trial • No credit card required • Cancel anytime</p>
-      </section>
+      {/* Newsletter & Launch CTA */}
+      <CTASection />
 
-      <footer className="bg-[#111827] text-white pt-20 pb-8">
-        <div className="container mx-auto px-8 grid grid-cols-1 md:grid-cols-6 gap-10 mb-16">
-          <div className="md:col-span-2 pr-8">
-            <span className="text-2xl font-bold text-white tracking-tight mb-4 block">DigiTools</span>
-            <p className="text-gray-400 text-[13px] leading-relaxed">Premium digital tools for creators, professionals, and businesses. Work smarter with our suite of powerful tools.</p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-white text-[15px]">Product</h4>
-            <ul className="space-y-3 text-gray-400 text-[14px] font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Templates</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-white text-[15px]">Company</h4>
-            <ul className="space-y-3 text-gray-400 text-[14px] font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Press</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-white text-[15px]">Resources</h4>
-            <ul className="space-y-3 text-gray-400 text-[14px] font-medium">
-              <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Community</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-white text-[15px]">Social Links</h4>
-            <div className="flex gap-3">
-              <a href="#" className="w-8 h-8 bg-white text-[#111827] rounded-full flex items-center justify-center font-bold text-[12px] hover:bg-gray-200 transition-colors">in</a>
-              <a href="#" className="w-8 h-8 bg-white text-[#111827] rounded-full flex items-center justify-center font-bold text-[12px] hover:bg-gray-200 transition-colors">f</a>
-              <a href="#" className="w-8 h-8 bg-white text-[#111827] rounded-full flex items-center justify-center font-bold text-[12px] hover:bg-gray-200 transition-colors">X</a>
-            </div>
-          </div>
-        </div>
-        <div className="container mx-auto px-8 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-[12px] text-gray-500 font-medium">
-          <p>© 2026 DigiTools. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
 
+      {/* Global Modals & Drawers */}
+      <CartDrawer />
+      <WishlistDrawer />
+      <ProductQuickViewModal />
+      <CheckoutModal />
+      <InteractiveTourModal />
+      <CommandPalette />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ShopProvider>
+      <MainShopContent />
+    </ShopProvider>
   );
 }
 
