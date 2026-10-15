@@ -24,6 +24,8 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { FAQSection } from './components/FAQSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
+import { LiveSalesTicker } from './components/LiveSalesTicker';
 
 function MainShopContent() {
   const {
@@ -113,7 +115,8 @@ function MainShopContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 font-sans transition-colors duration-300 relative">
+      <ScrollProgressBar />
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
@@ -424,6 +427,7 @@ function MainShopContent() {
       <CheckoutModal />
       <InteractiveTourModal />
       <CommandPalette />
+      <LiveSalesTicker />
     </div>
   );
 }

@@ -121,54 +121,58 @@ export const PricingSection = () => {
             </button>
           </div>
 
-          {/* Card 2: Pro (Highlighted) */}
-          <div className="bg-gradient-to-b from-purple-500 via-[#8B5CF6] to-indigo-600 text-white rounded-3xl p-8 lg:p-10 flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-3">
-            <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-amber-300 text-amber-950 text-[10px] sm:text-xs font-black uppercase tracking-wider px-4 py-1 rounded-full shadow-md">
-              Most Popular • Best Value
-            </div>
-
-            <div>
-              <div className="flex justify-between items-center mb-4 mt-2">
-                <h3 className="text-2xl font-black">Pro Creator</h3>
-                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/20 text-white">
-                  Unlimited
-                </span>
-              </div>
-              <p className="text-xs text-purple-100 mb-6">
-                Best for freelancers and frontend developers shipping client apps.
-              </p>
-
-              <div className="mb-6 flex items-baseline">
-                <span className="text-5xl font-black">
-                  {formatPrice(proPrice)}
-                </span>
-                <span className="text-xs text-purple-200 font-bold ml-1.5">/month {isAnnual ? '(billed annually)' : ''}</span>
+          {/* Card 2: Pro (Highlighted with Glow & Ambient Halo) */}
+          <div className="relative group transform lg:-translate-y-4">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 rounded-[32px] blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x" />
+            <div className="relative bg-gradient-to-b from-[#8B5CF6] via-purple-700 to-indigo-800 text-white rounded-3xl p-8 lg:p-10 flex flex-col justify-between shadow-2xl h-full border border-purple-400/30">
+              <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-amber-300 text-amber-950 text-[10px] sm:text-xs font-black uppercase tracking-wider px-4 py-1 rounded-full shadow-md flex items-center gap-1">
+                <span>⭐</span>
+                <span>Most Popular • Best Value</span>
               </div>
 
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Access to all 200+ premium kits',
-                  'Full commercial licensing rights',
-                  'Figma tokens + React 19 source code',
-                  'AI prompt studio & webhooks',
-                  'Lifetime updates & priority sync'
-                ].map((f, i) => (
-                  <li key={i} className="flex items-center text-xs font-medium text-white">
-                    <div className="w-4 h-4 rounded-full bg-white text-[#8B5CF6] flex items-center justify-center mr-2.5 shrink-0">
-                      <FiCheck className="text-[10px]" />
-                    </div>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <div>
+                <div className="flex justify-between items-center mb-4 mt-2">
+                  <h3 className="text-2xl font-black">Pro Creator</h3>
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/20 text-white">
+                    Unlimited
+                  </span>
+                </div>
+                <p className="text-xs text-purple-100 mb-6">
+                  Best for freelancers and frontend developers shipping client apps.
+                </p>
 
-            <button
-              onClick={() => handleSelectPlan('Pro Creator')}
-              className="w-full py-4 rounded-xl bg-white text-[#8B5CF6] hover:bg-gray-50 font-black text-xs sm:text-sm shadow-lg shadow-purple-900/30 transition-all cursor-pointer"
-            >
-              Start 14-Day Free Pro Trial
-            </button>
+                <div className="mb-6 flex items-baseline">
+                  <span className="text-5xl font-black">
+                    {formatPrice(proPrice)}
+                  </span>
+                  <span className="text-xs text-purple-200 font-bold ml-1.5">/month {isAnnual ? '(billed annually)' : ''}</span>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  {[
+                    'Access to all 200+ premium kits',
+                    'Full commercial licensing rights',
+                    'Figma tokens + React 19 source code',
+                    'AI prompt studio & webhooks',
+                    'Lifetime updates & priority sync'
+                  ].map((f, i) => (
+                    <li key={i} className="flex items-center text-xs font-medium text-white">
+                      <div className="w-4 h-4 rounded-full bg-white text-[#8B5CF6] flex items-center justify-center mr-2.5 shrink-0">
+                        <FiCheck className="text-[10px]" />
+                      </div>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                onClick={() => handleSelectPlan('Pro Creator')}
+                className="btn-glow w-full py-4 rounded-2xl bg-white text-[#8B5CF6] hover:bg-gray-50 font-black text-xs sm:text-sm shadow-xl shadow-purple-950/40 transition-all cursor-pointer"
+              >
+                Start 14-Day Free Pro Trial
+              </button>
+            </div>
           </div>
 
           {/* Card 3: Enterprise */}

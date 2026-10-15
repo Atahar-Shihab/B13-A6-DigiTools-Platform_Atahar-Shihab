@@ -4,8 +4,7 @@ import {
   FiHeart, 
   FiEye, 
   FiShoppingCart, 
-  FiStar, 
-  FiZap 
+  FiStar
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 
@@ -26,9 +25,12 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
   // List View Layout
   if (viewMode === 'list') {
     return (
-      <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-6 group">
+      <div className="glass-card-pro glow-card bg-white/90 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-center gap-6 group relative overflow-hidden backdrop-blur-md">
+        {/* Top Hover Gradient Light Line */}
+        <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
         {/* Left: Icon & Tag */}
-        <div className="relative shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-purple-50 dark:bg-purple-950/40 p-4 border border-purple-100 dark:border-purple-900/50">
+        <div className="relative shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 p-4 border border-purple-100 dark:border-purple-900/50 group-hover:scale-105 transition-transform duration-300">
           <img
             src={product.icon}
             alt={product.name}
@@ -39,11 +41,11 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
         {/* Center: Details */}
         <div className="flex-1 text-left w-full">
           <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+            <span className="text-[11px] font-black uppercase tracking-wider text-purple-600 dark:text-purple-400">
               {product.category}
             </span>
             {product.tag && (
-              <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold ${product.tagType}`}>
+              <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wide uppercase ${product.tagType}`}>
                 {product.tag}
               </span>
             )}
@@ -66,7 +68,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
             {product.compatibility?.map((item) => (
               <span
                 key={item}
-                className="px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-[10px] font-semibold text-gray-600 dark:text-gray-300"
+                className="px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-[10px] font-semibold text-gray-600 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50"
               >
                 {item}
               </span>
@@ -80,7 +82,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
             <span className="text-2xl font-black text-gray-900 dark:text-white tracking-tight">
               {formatPrice(product.price)}
             </span>
-            <span className="text-xs text-gray-400 font-medium ml-1">/{product.period}</span>
+            <span className="text-xs text-gray-400 font-semibold ml-1">/{product.period}</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -104,10 +106,10 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
             <button
               onClick={() => addToCart(product)}
-              className={`px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white transition-all shadow-sm flex items-center gap-2 ${
+              className={`btn-glow px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white transition-all shadow-md flex items-center gap-2 cursor-pointer ${
                 cartQuantity > 0
                   ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-500/25'
-                  : 'bg-[#8B5CF6] hover:bg-purple-700 shadow-purple-500/25'
+                  : 'bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-500/25'
               }`}
             >
               <FiShoppingCart className="text-sm" />
@@ -119,15 +121,18 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
     );
   }
 
-  // Grid View Layout (Standard)
+  // Grid View Layout (Masterpiece Card)
   return (
-    <div className="card bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800/80 rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-2xl hover:border-purple-200 dark:hover:border-purple-900/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+    <div className="glass-card-pro glow-card bg-white/95 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:border-purple-300 dark:hover:border-purple-600/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden backdrop-blur-md">
       
+      {/* Top Hover Gradient Light Line */}
+      <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
       {/* Top Bar: Icon, Tag & Wishlist Button */}
       <div>
         <div className="flex justify-between items-start mb-5">
           <div className="relative">
-            <div className="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/50 p-2.5 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 group-hover:scale-105 transition-transform duration-300">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 p-2.5 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 group-hover:scale-110 transition-transform duration-300 shadow-xs">
               <img
                 src={product.icon}
                 alt={product.name}
@@ -135,7 +140,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               />
             </div>
             {cartQuantity > 0 && (
-              <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-900">
+              <span className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-900 shadow-md">
                 {cartQuantity}
               </span>
             )}
@@ -143,13 +148,13 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
           <div className="flex items-center gap-1.5">
             {product.tag && (
-              <span className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wide uppercase ${product.tagType}`}>
+              <span className={`px-2.5 py-1 rounded-full text-[10px] font-black tracking-wide uppercase shadow-xs ${product.tagType}`}>
                 {product.tag}
               </span>
             )}
             <button
               onClick={() => toggleWishlist(product)}
-              className={`p-2 rounded-xl transition-all ${
+              className={`p-2 rounded-xl transition-all cursor-pointer ${
                 inWishlist 
                   ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/40' 
                   : 'text-gray-400 hover:text-rose-500 hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -163,7 +168,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
         {/* Category & Rating */}
         <div className="flex items-center justify-between text-xs mb-2">
-          <span className="font-bold text-[#8B5CF6] dark:text-purple-400 tracking-wide uppercase text-[11px]">
+          <span className="font-black text-[#8B5CF6] dark:text-purple-400 tracking-wide uppercase text-[11px]">
             {product.category}
           </span>
           <div className="flex items-center gap-1 text-amber-400">
@@ -182,7 +187,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
         </p>
 
         {/* Feature Checkpoints */}
-        <ul className="mb-6 space-y-2 border-t border-gray-50 dark:border-gray-800/60 pt-4">
+        <ul className="mb-6 space-y-2 border-t border-gray-100 dark:border-gray-800/60 pt-4">
           {product.features.slice(0, 3).map((feature, index) => (
             <li key={index} className="flex items-center text-xs text-gray-600 dark:text-gray-300">
               <span className="w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mr-2 shrink-0">
@@ -213,10 +218,10 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
         <button
           onClick={() => addToCart(product)}
-          className={`w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm ${
+          className={`btn-glow w-full py-3.5 rounded-xl font-black text-sm text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-md ${
             cartQuantity > 0
-              ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20'
-              : 'bg-[#8B5CF6] hover:bg-purple-700 shadow-purple-600/20 hover:shadow-purple-600/30'
+              ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/25'
+              : 'bg-gradient-to-r from-[#8B5CF6] via-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-600/25 hover:shadow-purple-600/40'
           }`}
         >
           {cartQuantity > 0 ? (
