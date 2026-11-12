@@ -51,6 +51,22 @@ class SoundFX {
     this.playBeep(800, 'sine', 0.03, 0.02);
   }
 
+  toggle() {
+    this.playBeep(640, 'sine', 0.05, 0.03);
+    setTimeout(() => this.playBeep(840, 'sine', 0.06, 0.03), 35);
+  }
+
+  compare() {
+    this.playBeep(480, 'sine', 0.06, 0.04);
+    setTimeout(() => this.playBeep(600, 'sine', 0.06, 0.04), 50);
+    setTimeout(() => this.playBeep(720, 'sine', 0.08, 0.04), 100);
+  }
+
+  chime() {
+    this.playBeep(587.33, 'sine', 0.15, 0.04); // D5
+    setTimeout(() => this.playBeep(880, 'sine', 0.2, 0.04), 60); // A5
+  }
+
   success() {
     if (!this.enabled) return;
     try {

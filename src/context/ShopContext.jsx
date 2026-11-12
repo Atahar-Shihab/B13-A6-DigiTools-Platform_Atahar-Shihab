@@ -40,6 +40,16 @@ export const ShopProvider = ({ children }) => {
     }
   });
 
+  // Compare List state (up to 3 products)
+  const [compareList, setCompareList] = useState(() => {
+    try {
+      const saved = localStorage.getItem('digitools_compare');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
   // Theme state persisted
   const [theme, setTheme] = useState(() => {
     try {
@@ -82,10 +92,13 @@ export const ShopProvider = ({ children }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isCompareOpen, setIsCompareOpen] = useState(false);
+  const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
 
   // Search & Filtering
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedTechStack, setSelectedTechStack] = useState('All');
   const [sortBy, setSortBy] = useState('featured');
   const [viewMode, setViewMode] = useState('grid');
   const [billingPeriod, setBillingPeriod] = useState('all');
@@ -111,6 +124,11 @@ export const ShopProvider = ({ children }) => {
     localStorage.setItem('digitools_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
+  // Persist compare list
+  useEffect(() => {
+    localStorage.setItem('digitools_compare', JSON.stringify(compareList));
+  }, [compareList]);
+
   // Persist currency
   useEffect(() => {
     localStorage.setItem('digitools_currency', currency);
@@ -122,13 +140,35 @@ export const ShopProvider = ({ children }) => {
     localStorage.setItem('digitools_sound', JSON.stringify(soundEnabled));
   }, [soundEnabled]);
 
-  // Keyboard shortcut for Command Palette (Ctrl+K or Cmd+K)
+  // Toggle Functions
+  const toggleTheme = () => {
+    sound.click();
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  const toggleSound = () => {
+    setSoundEnabled((prev) => {
+      const next = !prev;
+      if (next) sound.click();
+      return next;
+    });
+  };
+
+  // Global Keyboard Shortcuts handler
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Check if user is actively focused on an input, textarea, or select
+      const activeTag = document.activeElement ? document.activeElement.tagName.toUpperCase() : '';
+      const isInputFocused = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || activeTag === 'SELECT';
+
+      // ⌘K or Ctrl+K for Command Palette (works even in input)
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
         setIsCommandPaletteOpen((prev) => !prev);
+        return;
       }
+
+      // Escape closes everything
       if (e.key === 'Escape') {
         setIsCartOpen(false);
         setIsWishlistOpen(false);
@@ -136,21 +176,47 @@ export const ShopProvider = ({ children }) => {
         setIsCheckoutOpen(false);
         setIsCommandPaletteOpen(false);
         setIsDemoModalOpen(false);
+        setIsCompareOpen(false);
+        setIsShortcutsOpen(false);
+        return;
+      }
+
+      // If user is typing in a form field, don't trigger single-key hotkeys
+      if (isInputFocused) return;
+
+      // Single-key global shortcuts
+      if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+        e.preventDefault();
+        sound.click();
+        setIsShortcutsOpen((prev) => !prev);
+      } else if (e.key === 'c' || e.key === 'C') {
+        e.preventDefault();
+        sound.click();
+        setIsCartOpen((prev) => !prev);
+      } else if (e.key === 'w' || e.key === 'W') {
+        e.preventDefault();
+        sound.click();
+        setIsWishlistOpen((prev) => !prev);
+      } else if (e.key === 'x' || e.key === 'X') {
+        e.preventDefault();
+        sound.click();
+        setIsCompareOpen((prev) => !prev);
+      } else if (e.key === 'd' || e.key === 'D') {
+        e.preventDefault();
+        toggleTheme();
+      } else if (e.key === 'm' || e.key === 'M') {
+        e.preventDefault();
+        toggleSound();
+      } else if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        sound.click();
+        setIsDemoModalOpen(true);
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
-
-  const toggleTheme = () => {
-    sound.click();
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
-
-  const toggleSound = () => {
-    setSoundEnabled((prev) => !prev);
-    if (!soundEnabled) sound.click();
-  };
 
   const formatPrice = (amountInUSD) => {
     const current = CURRENCY_RATES[currency] || CURRENCY_RATES.USD;
@@ -217,6 +283,37 @@ export const ShopProvider = ({ children }) => {
   const isInWishlist = (id) => wishlist.some((item) => item.id === id);
   const isInCart = (id) => cart.some((item) => item.id === id);
 
+  // Compare Functions
+  const toggleCompare = (product) => {
+    sound.compare();
+    setCompareList((prev) => {
+      const exists = prev.some((item) => item.id === product.id);
+      if (exists) {
+        toast.info(`Removed ${product.name} from comparison`, { icon: '⚖️' });
+        return prev.filter((item) => item.id !== product.id);
+      } else {
+        if (prev.length >= 3) {
+          toast.warn('You can compare a maximum of 3 products at a time.', { icon: '⚠️' });
+          return prev;
+        }
+        toast.success(`Added ${product.name} to comparison!`, { icon: '⚖️' });
+        return [...prev, product];
+      }
+    });
+  };
+
+  const removeFromCompare = (id) => {
+    sound.remove();
+    setCompareList((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const clearCompare = () => {
+    sound.click();
+    setCompareList([]);
+  };
+
+  const isInCompare = (id) => compareList.some((item) => item.id === id);
+
   const applyPromo = (code) => {
     sound.click();
     const cleaned = code.trim().toUpperCase();
@@ -268,6 +365,7 @@ export const ShopProvider = ({ children }) => {
       value={{
         cart,
         wishlist,
+        compareList,
         theme,
         currency,
         currencies: CURRENCY_RATES,
@@ -281,8 +379,11 @@ export const ShopProvider = ({ children }) => {
         selectedProduct,
         isCommandPaletteOpen,
         isDemoModalOpen,
+        isCompareOpen,
+        isShortcutsOpen,
         searchQuery,
         selectedCategory,
+        selectedTechStack,
         sortBy,
         viewMode,
         billingPeriod,
@@ -303,6 +404,10 @@ export const ShopProvider = ({ children }) => {
         toggleWishlist,
         isInWishlist,
         isInCart,
+        toggleCompare,
+        removeFromCompare,
+        clearCompare,
+        isInCompare,
         setPromoCode,
         applyPromo,
         removePromo,
@@ -313,9 +418,12 @@ export const ShopProvider = ({ children }) => {
         setSelectedProduct,
         setIsCommandPaletteOpen,
         setIsDemoModalOpen,
+        setIsCompareOpen,
+        setIsShortcutsOpen,
         openQuickView,
         setSearchQuery,
         setSelectedCategory,
+        setSelectedTechStack,
         setSortBy,
         setViewMode,
         setBillingPeriod,

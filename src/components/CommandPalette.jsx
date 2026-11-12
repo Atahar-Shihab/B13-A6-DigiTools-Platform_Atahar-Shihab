@@ -8,7 +8,11 @@ import {
   FiMoon, 
   FiDollarSign, 
   FiZap,
-  FiHelpCircle
+  FiHelpCircle,
+  FiLayers,
+  FiVolume2,
+  FiVolumeX,
+  FiTrendingUp
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
@@ -21,7 +25,11 @@ export const CommandPalette = () => {
     openQuickView,
     setIsCartOpen,
     setIsWishlistOpen,
+    setIsCompareOpen,
+    setIsShortcutsOpen,
     toggleTheme,
+    toggleSound,
+    soundEnabled,
     theme,
     formatPrice
   } = useShop();
@@ -71,7 +79,7 @@ export const CommandPalette = () => {
               sound.click();
               setIsCommandPaletteOpen(false);
             }}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+            className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 cursor-pointer"
           >
             <FiX size={18} />
           </button>
@@ -122,6 +130,13 @@ export const CommandPalette = () => {
                 <span className="text-gray-400 text-[10px]">#products</span>
               </button>
               <button
+                onClick={() => handleScrollTo('roi-calculator')}
+                className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
+              >
+                <span className="flex items-center gap-2"><FiTrendingUp className="text-indigo-500" /> ROI & Time Savings Calculator</span>
+                <span className="text-gray-400 text-[10px]">#roi-calculator</span>
+              </button>
+              <button
                 onClick={() => handleScrollTo('demo-showcase')}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
               >
@@ -148,22 +163,36 @@ export const CommandPalette = () => {
           {/* Quick App Actions */}
           <div>
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block px-2 mb-2">
-              Application Actions
+              Application Actions & Drawers
             </span>
             <div className="space-y-1">
+              <button
+                onClick={() => handleAction(() => setIsCompareOpen(true))}
+                className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
+              >
+                <span className="flex items-center gap-2"><FiLayers className="text-[#8B5CF6]" /> Open Product Comparison Matrix</span>
+                <span className="text-gray-400 text-[10px]">Hotkey: X</span>
+              </button>
               <button
                 onClick={() => handleAction(() => setIsCartOpen(true))}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
               >
                 <span className="flex items-center gap-2"><FiShoppingCart className="text-purple-500" /> Open Shopping Cart</span>
-                <span className="text-gray-400 text-[10px]">Drawer</span>
+                <span className="text-gray-400 text-[10px]">Hotkey: C</span>
               </button>
               <button
                 onClick={() => handleAction(() => setIsWishlistOpen(true))}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
               >
                 <span className="flex items-center gap-2"><FiHeart className="text-rose-500" /> Open Saved Wishlist</span>
-                <span className="text-gray-400 text-[10px]">Drawer</span>
+                <span className="text-gray-400 text-[10px]">Hotkey: W</span>
+              </button>
+              <button
+                onClick={() => handleAction(() => setIsShortcutsOpen(true))}
+                className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
+              >
+                <span className="flex items-center gap-2"><FiHelpCircle className="text-blue-500" /> Keyboard Shortcuts Guide</span>
+                <span className="text-gray-400 text-[10px]">Hotkey: ?</span>
               </button>
               <button
                 onClick={() => handleAction(toggleTheme)}
@@ -173,7 +202,17 @@ export const CommandPalette = () => {
                   {theme === 'dark' ? <FiSun className="text-amber-400" /> : <FiMoon className="text-indigo-500" />}
                   <span>Toggle Dark / Light Theme</span>
                 </span>
-                <span className="text-gray-400 text-[10px]">Current: {theme}</span>
+                <span className="text-gray-400 text-[10px]">Hotkey: D</span>
+              </button>
+              <button
+                onClick={() => handleAction(toggleSound)}
+                className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
+              >
+                <span className="flex items-center gap-2">
+                  {soundEnabled ? <FiVolume2 className="text-[#8B5CF6]" /> : <FiVolumeX className="text-gray-400" />}
+                  <span>Toggle Audio Effects</span>
+                </span>
+                <span className="text-gray-400 text-[10px]">Hotkey: M</span>
               </button>
             </div>
           </div>
@@ -181,7 +220,7 @@ export const CommandPalette = () => {
 
         {/* Footer shortcuts helper */}
         <div className="p-3 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 flex items-center justify-between text-[11px] text-gray-400">
-          <span>Tip: Press <kbd className="px-1 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-mono">ESC</kbd> anytime to exit</span>
+          <span>Tip: Press <kbd className="px-1 py-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-mono">ESC</kbd> to exit</span>
           <span>⚡ DigiTools Command Engine</span>
         </div>
       </div>

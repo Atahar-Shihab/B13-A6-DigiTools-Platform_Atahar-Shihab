@@ -9,8 +9,9 @@ import {
   FiSearch, 
   FiMenu, 
   FiX, 
-  FiCommand,
-  FiZap
+  FiZap,
+  FiLayers,
+  FiHelpCircle
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
@@ -18,6 +19,7 @@ import { sound } from '../utils/sound';
 export const Navbar = () => {
   const {
     wishlist,
+    compareList,
     theme,
     toggleTheme,
     currency,
@@ -27,6 +29,8 @@ export const Navbar = () => {
     toggleSound,
     setIsCartOpen,
     setIsWishlistOpen,
+    setIsCompareOpen,
+    setIsShortcutsOpen,
     setIsCommandPaletteOpen,
     totalItemCount
   } = useShop();
@@ -44,6 +48,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: 'Products', href: '#products' },
+    { name: 'ROI Calculator', href: '#roi-calculator' },
     { name: 'Interactive Demo', href: '#demo-showcase' },
     { name: 'How It Works', href: '#how-it-works' },
     { name: 'Pricing', href: '#pricing' },
@@ -94,7 +99,7 @@ export const Navbar = () => {
         </a>
 
         {/* Desktop Nav Links */}
-        <div className="hidden lg:flex items-center space-x-7 text-[15px] font-semibold text-gray-600 dark:text-gray-300">
+        <div className="hidden lg:flex items-center space-x-6 text-[14px] xl:text-[15px] font-semibold text-gray-600 dark:text-gray-300">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -108,14 +113,14 @@ export const Navbar = () => {
         </div>
 
         {/* Actions & Utilities */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-2.5">
           {/* Command Palette Trigger */}
           <button
             onClick={() => {
               sound.click();
               setIsCommandPaletteOpen(true);
             }}
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700/80 transition-colors border border-gray-200 dark:border-gray-700"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700/80 transition-colors border border-gray-200 dark:border-gray-700 cursor-pointer"
             title="Open Command Palette (Ctrl+K)"
           >
             <FiSearch className="text-sm" />
@@ -150,8 +155,8 @@ export const Navbar = () => {
           {/* Sound FX Toggle */}
           <button
             onClick={toggleSound}
-            className="p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            title={soundEnabled ? 'Disable Sound Effects' : 'Enable Sound Effects'}
+            className="p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+            title={soundEnabled ? 'Disable Sound Effects (M)' : 'Enable Sound Effects (M)'}
             aria-label="Toggle Sound Effects"
           >
             {soundEnabled ? <FiVolume2 size={18} className="text-[#8B5CF6]" /> : <FiVolumeX size={18} />}
@@ -160,12 +165,30 @@ export const Navbar = () => {
           {/* Dark / Light Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            className="p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+            title={theme === 'dark' ? 'Switch to Light Mode (D)' : 'Switch to Dark Mode (D)'}
             aria-label="Toggle Theme"
           >
             {theme === 'dark' ? <FiSun size={18} className="text-amber-400" /> : <FiMoon size={18} className="text-indigo-600" />}
           </button>
+
+          {/* Compare Button (When items added) */}
+          {compareList.length > 0 && (
+            <button
+              onClick={() => {
+                sound.compare();
+                setIsCompareOpen(true);
+              }}
+              className="relative p-2 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-[#8B5CF6] dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/60 transition-all cursor-pointer"
+              title="Compare Products (X)"
+              aria-label="Compare Products"
+            >
+              <FiLayers size={18} />
+              <span className="absolute -top-1 -right-1 bg-[#8B5CF6] text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
+                {compareList.length}
+              </span>
+            </button>
+          )}
 
           {/* Wishlist Button */}
           <button
@@ -173,11 +196,11 @@ export const Navbar = () => {
               sound.click();
               setIsWishlistOpen(true);
             }}
-            className="relative p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            title="View Wishlist"
+            className="relative p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+            title="View Wishlist (W)"
             aria-label="Wishlist"
           >
-            <FiHeart size={20} className={wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : ''} />
+            <FiHeart size={19} className={wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : ''} />
             {wishlist.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
                 {wishlist.length}
@@ -191,16 +214,29 @@ export const Navbar = () => {
               sound.click();
               setIsCartOpen(true);
             }}
-            className="relative p-2 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-[#8B5CF6] dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/60 transition-all flex items-center"
-            title="View Cart"
+            className="relative p-2 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-[#8B5CF6] dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/60 transition-all flex items-center cursor-pointer"
+            title="View Cart (C)"
             aria-label="Shopping Cart"
           >
-            <FiShoppingCart size={20} />
+            <FiShoppingCart size={19} />
             {totalItemCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-[#8B5CF6] text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
                 {totalItemCount}
               </span>
             )}
+          </button>
+
+          {/* Keyboard Shortcuts Help Button */}
+          <button
+            onClick={() => {
+              sound.click();
+              setIsShortcutsOpen(true);
+            }}
+            className="hidden md:flex p-2 rounded-xl text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+            title="Keyboard Shortcuts (?)"
+            aria-label="Keyboard Shortcuts"
+          >
+            <FiHelpCircle size={18} />
           </button>
 
           {/* Mobile menu hamburger */}
@@ -209,7 +245,7 @@ export const Navbar = () => {
               sound.click();
               setMobileMenuOpen(!mobileMenuOpen);
             }}
-            className="lg:hidden p-2 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="lg:hidden p-2 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
@@ -230,7 +266,7 @@ export const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center">
+          <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
             <button
               onClick={() => {
                 sound.click();
@@ -240,6 +276,16 @@ export const Navbar = () => {
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-sm font-semibold text-gray-700 dark:text-gray-300"
             >
               <FiSearch /> Quick Search (⌘K)
+            </button>
+            <button
+              onClick={() => {
+                sound.click();
+                setIsShortcutsOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-xs font-bold text-[#8B5CF6] dark:text-purple-300"
+            >
+              <FiHelpCircle /> View Keyboard Shortcuts (?)
             </button>
           </div>
         </div>

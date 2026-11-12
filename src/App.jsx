@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FiShoppingBag, FiArrowRight, FiTrash2, FiPlus, FiMinus, FiRotateCcw, FiTag, FiGift } from 'react-icons/fi';
+import { FiShoppingBag, FiArrowRight, FiTrash2, FiPlus, FiMinus, FiRotateCcw, FiTag } from 'react-icons/fi';
 
 import productsData from './data.json';
 import { ShopProvider, useShop } from './context/ShopContext';
@@ -10,21 +10,27 @@ import { sound } from './utils/sound';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { StatsCounter } from './components/StatsCounter';
+import { TechStackFilter } from './components/TechStackFilter';
 import { FilterBar } from './components/FilterBar';
 import { ProductCard } from './components/ProductCard';
 import { ProductQuickViewModal } from './components/ProductQuickViewModal';
+import { ProductCompareModal } from './components/ProductCompareModal';
+import { CompareDock } from './components/CompareDock';
 import { CartDrawer } from './components/CartDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { InteractiveTourModal } from './components/InteractiveTourModal';
 import { CommandPalette } from './components/CommandPalette';
+import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal';
 import { FeatureShowcase } from './components/FeatureShowcase';
+import { RoiCalculator } from './components/RoiCalculator';
 import { PricingSection } from './components/PricingSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FAQSection } from './components/FAQSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
+import { ScrollToTop } from './components/ScrollToTop';
 import { LiveSalesTicker } from './components/LiveSalesTicker';
 
 function MainShopContent() {
@@ -33,6 +39,7 @@ function MainShopContent() {
     theme,
     searchQuery,
     selectedCategory,
+    selectedTechStack,
     sortBy,
     viewMode,
     billingPeriod,
@@ -51,6 +58,7 @@ function MainShopContent() {
     setIsCheckoutOpen,
     setSearchQuery,
     setSelectedCategory,
+    setSelectedTechStack,
     setSortBy,
     setBillingPeriod
   } = useShop();
@@ -77,6 +85,13 @@ function MainShopContent() {
         if (selectedCategory !== 'All' && product.category !== selectedCategory) {
           return false;
         }
+        // Tech stack filter
+        if (selectedTechStack !== 'All') {
+          const hasStack = product.compatibility?.some((c) =>
+            c.toLowerCase().includes(selectedTechStack.toLowerCase())
+          );
+          if (!hasStack) return false;
+        }
         // Billing period filter
         if (billingPeriod === 'monthly' && product.period.toLowerCase() !== 'mo') {
           return false;
@@ -91,7 +106,8 @@ function MainShopContent() {
           const matchDesc = product.description.toLowerCase().includes(q);
           const matchCategory = product.category?.toLowerCase().includes(q);
           const matchFeatures = product.features?.some((f) => f.toLowerCase().includes(q));
-          if (!matchName && !matchDesc && !matchCategory && !matchFeatures) {
+          const matchTech = product.compatibility?.some((c) => c.toLowerCase().includes(q));
+          if (!matchName && !matchDesc && !matchCategory && !matchFeatures && !matchTech) {
             return false;
           }
         }
@@ -104,7 +120,7 @@ function MainShopContent() {
         if (sortBy === 'popular') return (b.reviewsCount || 0) - (a.reviewsCount || 0);
         return a.id - b.id; // default featured
       });
-  }, [searchQuery, selectedCategory, sortBy, billingPeriod]);
+  }, [searchQuery, selectedCategory, selectedTechStack, sortBy, billingPeriod]);
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
@@ -112,6 +128,15 @@ function MainShopContent() {
     if (applyPromo(cartCouponInput)) {
       setCartCouponInput('');
     }
+  };
+
+  const resetAllCatalogFilters = () => {
+    sound.click();
+    setSearchQuery('');
+    setSelectedCategory('All');
+    setSelectedTechStack('All');
+    setSortBy('featured');
+    setBillingPeriod('all');
   };
 
   return (
@@ -136,7 +161,7 @@ function MainShopContent() {
       <section id="products" className="container mx-auto px-4 sm:px-8 py-20">
         
         {/* Section Heading & Products / Cart Tab Switcher */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
             Digital Asset Store
           </span>
@@ -147,7 +172,7 @@ function MainShopContent() {
             Choose from our curated collection of production-ready digital products designed to boost your productivity, code quality, and creative output.
           </p>
 
-          {/* Classic Dual Tab Switcher */}
+          {/* Dual Tab Switcher */}
           <div className="bg-gray-100 dark:bg-gray-850 p-1.5 rounded-full inline-flex border border-gray-200 dark:border-gray-800 shadow-xs">
             <button
               onClick={() => {
@@ -186,6 +211,9 @@ function MainShopContent() {
         {/* TAB 1: PRODUCTS BROWSER */}
         {activeCatalogTab === 'products' && (
           <div>
+            {/* Tech Stack Quick Filter */}
+            <TechStackFilter />
+
             {/* Filter, Search, and Sort Bar */}
             <FilterBar
               categories={categories}
@@ -202,16 +230,10 @@ function MainShopContent() {
                   No matching digital tools found
                 </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
-                  We couldn't find any tools matching your search criteria or category filter.
+                  We couldn't find any tools matching your active search criteria, technology stack, or category filter.
                 </p>
                 <button
-                  onClick={() => {
-                    sound.click();
-                    setSearchQuery('');
-                    setSelectedCategory('All');
-                    setSortBy('featured');
-                    setBillingPeriod('all');
-                  }}
+                  onClick={resetAllCatalogFilters}
                   className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
                 >
                   <FiRotateCcw /> Reset All Filters
@@ -301,7 +323,7 @@ function MainShopContent() {
                         <div className="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 p-0.5">
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold"
+                            className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold cursor-pointer"
                           >
                             <FiMinus size={12} />
                           </button>
@@ -310,7 +332,7 @@ function MainShopContent() {
                           </span>
                           <button
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold"
+                            className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold cursor-pointer"
                           >
                             <FiPlus size={12} />
                           </button>
@@ -323,7 +345,7 @@ function MainShopContent() {
 
                         <button
                           onClick={() => removeFromCart(item.id)}
-                          className="p-2 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors"
+                          className="p-2 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors cursor-pointer"
                           title="Remove from Cart"
                         >
                           <FiTrash2 size={16} />
@@ -357,7 +379,7 @@ function MainShopContent() {
                   {appliedPromo && (
                     <div className="flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400 font-bold">
                       <span>✓ {appliedPromo.label} ({appliedPromo.code})</span>
-                      <button onClick={removePromo} className="underline text-[11px] text-emerald-700">Remove</button>
+                      <button onClick={removePromo} className="underline text-[11px] text-emerald-700 cursor-pointer">Remove</button>
                     </div>
                   )}
                 </div>
@@ -405,10 +427,15 @@ function MainShopContent() {
       {/* 3 Steps Onboarding & Live Interactive Developer Sandbox */}
       <FeatureShowcase />
 
+      {/* Interactive Value & ROI Time Savings Calculator */}
+      <div id="roi-calculator">
+        <RoiCalculator />
+      </div>
+
       {/* Pricing Plans & Comparison Matrix */}
       <PricingSection />
 
-      {/* Verified Reviews & Testimonials Slider */}
+      {/* Verified Reviews & Testimonials */}
       <TestimonialsSection />
 
       {/* Interactive FAQ Section */}
@@ -420,14 +447,20 @@ function MainShopContent() {
       {/* Footer */}
       <Footer />
 
+      {/* Floating Compare Dock (Appears when >= 1 item in compare) */}
+      <CompareDock />
+
       {/* Global Modals & Drawers */}
       <CartDrawer />
       <WishlistDrawer />
       <ProductQuickViewModal />
+      <ProductCompareModal />
       <CheckoutModal />
       <InteractiveTourModal />
       <CommandPalette />
+      <KeyboardShortcutsModal />
       <LiveSalesTicker />
+      <ScrollToTop />
     </div>
   );
 }

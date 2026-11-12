@@ -22,7 +22,9 @@ export const FilterBar = ({ categories, totalResults }) => {
     viewMode,
     setViewMode,
     billingPeriod,
-    setBillingPeriod
+    setBillingPeriod,
+    selectedTechStack,
+    setSelectedTechStack
   } = useShop();
 
   const handleCategorySelect = (category) => {
@@ -34,11 +36,12 @@ export const FilterBar = ({ categories, totalResults }) => {
     sound.remove();
     setSearchQuery('');
     setSelectedCategory('All');
+    setSelectedTechStack('All');
     setSortBy('featured');
     setBillingPeriod('all');
   };
 
-  const hasActiveFilters = searchQuery !== '' || selectedCategory !== 'All' || billingPeriod !== 'all' || sortBy !== 'featured';
+  const hasActiveFilters = searchQuery !== '' || selectedCategory !== 'All' || selectedTechStack !== 'All' || billingPeriod !== 'all' || sortBy !== 'featured';
 
   return (
     <div className="mb-10 space-y-5">

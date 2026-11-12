@@ -4,9 +4,13 @@ import {
   FiHeart, 
   FiEye, 
   FiShoppingCart, 
-  FiStar
+  FiStar,
+  FiLayers,
+  FiShare2
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
+import { sound } from '../utils/sound';
+import { toast } from 'react-toastify';
 
 export const ProductCard = ({ product, viewMode = 'grid' }) => {
   const {
@@ -15,17 +19,33 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
     cart,
     toggleWishlist,
     isInWishlist,
-    openQuickView
+    openQuickView,
+    toggleCompare,
+    isInCompare
   } = useShop();
 
   const inWishlist = isInWishlist(product.id);
+  const inCompare = isInCompare(product.id);
   const cartItem = cart.find((item) => item.id === product.id);
   const cartQuantity = cartItem ? cartItem.quantity : 0;
+
+  const handleShare = (e) => {
+    e.stopPropagation();
+    sound.click();
+    const url = `${window.location.origin}${window.location.pathname}#product-${product.id}`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url);
+      toast.success(`Copied direct link for "${product.name}"!`, { icon: '🔗' });
+    }
+  };
 
   // List View Layout
   if (viewMode === 'list') {
     return (
-      <div className="glass-card-pro glow-card bg-white/90 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-center gap-6 group relative overflow-hidden backdrop-blur-md">
+      <div 
+        id={`product-${product.id}`}
+        className="glass-card-pro glow-card bg-white/90 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-center gap-6 group relative overflow-hidden backdrop-blur-md"
+      >
         {/* Top Hover Gradient Light Line */}
         <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -87,6 +107,18 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
           <div className="flex items-center gap-2">
             <button
+              onClick={() => toggleCompare(product)}
+              className={`p-2.5 rounded-xl border transition-colors ${
+                inCompare
+                  ? 'bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6] border-purple-300 dark:border-purple-700'
+                  : 'border-gray-200 dark:border-gray-700 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+              }`}
+              title={inCompare ? 'Remove from Compare' : 'Add to Compare'}
+            >
+              <FiLayers className="text-base" />
+            </button>
+
+            <button
               onClick={() => toggleWishlist(product)}
               className={`p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ${
                 inWishlist ? 'text-rose-500 bg-rose-50 dark:bg-rose-950/40 border-rose-200' : 'text-gray-400'
@@ -102,6 +134,14 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               title="Quick Preview"
             >
               <FiEye className="text-base" />
+            </button>
+
+            <button
+              onClick={handleShare}
+              className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              title="Share Link"
+            >
+              <FiShare2 className="text-base" />
             </button>
 
             <button
@@ -123,12 +163,14 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
   // Grid View Layout (Masterpiece Card)
   return (
-    <div className="glass-card-pro glow-card bg-white/95 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:border-purple-300 dark:hover:border-purple-600/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden backdrop-blur-md">
-      
+    <div 
+      id={`product-${product.id}`}
+      className="glass-card-pro glow-card bg-white/95 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:border-purple-300 dark:hover:border-purple-600/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden backdrop-blur-md"
+    >
       {/* Top Hover Gradient Light Line */}
       <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Top Bar: Icon, Tag & Wishlist Button */}
+      {/* Top Bar: Icon, Tag & Control Buttons */}
       <div>
         <div className="flex justify-between items-start mb-5">
           <div className="relative">
@@ -152,6 +194,21 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
                 {product.tag}
               </span>
             )}
+
+            {/* Compare Toggle Button */}
+            <button
+              onClick={() => toggleCompare(product)}
+              className={`p-2 rounded-xl transition-all cursor-pointer ${
+                inCompare
+                  ? 'bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6]'
+                  : 'text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800'
+              }`}
+              title={inCompare ? 'In Comparison' : 'Add to Compare'}
+            >
+              <FiLayers className="text-base" />
+            </button>
+
+            {/* Wishlist Button */}
             <button
               onClick={() => toggleWishlist(product)}
               className={`p-2 rounded-xl transition-all cursor-pointer ${
@@ -162,6 +219,15 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               title={inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
             >
               <FiHeart className={`text-base ${inWishlist ? 'fill-current' : ''}`} />
+            </button>
+
+            {/* Share Button */}
+            <button
+              onClick={handleShare}
+              className="p-2 rounded-xl text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
+              title="Share Link"
+            >
+              <FiShare2 className="text-base" />
             </button>
           </div>
         </div>
