@@ -6,7 +6,8 @@ import {
   FiShoppingCart, 
   FiStar,
   FiLayers,
-  FiShare2
+  FiShare2,
+  FiTerminal
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
@@ -21,7 +22,8 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
     isInWishlist,
     openQuickView,
     toggleCompare,
-    isInCompare
+    isInCompare,
+    openCliModal
   } = useShop();
 
   const inWishlist = isInWishlist(product.id);
@@ -145,6 +147,17 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
             </button>
 
             <button
+              onClick={(e) => {
+                e.stopPropagation();
+                openCliModal(product);
+              }}
+              className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer"
+              title="Scaffold via CLI Terminal"
+            >
+              <FiTerminal className="text-base" />
+            </button>
+
+            <button
               onClick={() => addToCart(product)}
               className={`btn-glow px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white transition-all shadow-md flex items-center gap-2 cursor-pointer ${
                 cartQuantity > 0
@@ -228,6 +241,18 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               title="Share Link"
             >
               <FiShare2 className="text-base" />
+            </button>
+
+            {/* CLI Command Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                openCliModal(product);
+              }}
+              className="p-2 rounded-xl text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
+              title="Scaffold via CLI Terminal"
+            >
+              <FiTerminal className="text-base" />
             </button>
           </div>
         </div>

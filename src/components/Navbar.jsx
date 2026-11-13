@@ -11,7 +11,8 @@ import {
   FiX, 
   FiZap,
   FiLayers,
-  FiHelpCircle
+  FiHelpCircle,
+  FiKey
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
@@ -20,6 +21,7 @@ export const Navbar = () => {
   const {
     wishlist,
     compareList,
+    purchasedLicenses,
     theme,
     toggleTheme,
     currency,
@@ -32,6 +34,7 @@ export const Navbar = () => {
     setIsCompareOpen,
     setIsShortcutsOpen,
     setIsCommandPaletteOpen,
+    setIsVaultOpen,
     totalItemCount
   } = useShop();
 
@@ -50,8 +53,8 @@ export const Navbar = () => {
     { name: 'Products', href: '#products' },
     { name: 'ROI Calculator', href: '#roi-calculator' },
     { name: 'Interactive Demo', href: '#demo-showcase' },
-    { name: 'How It Works', href: '#how-it-works' },
     { name: 'Pricing', href: '#pricing' },
+    { name: 'Changelog', href: '#changelog' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'FAQ', href: '#faq' }
   ];
@@ -208,6 +211,24 @@ export const Navbar = () => {
             )}
           </button>
 
+          {/* License Vault Button */}
+          <button
+            onClick={() => {
+              sound.click();
+              setIsVaultOpen(true);
+            }}
+            className="relative p-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-950/60 hover:text-[#8B5CF6] transition-colors cursor-pointer"
+            title="License Vault & Entitlements (V)"
+            aria-label="License Vault"
+          >
+            <FiKey size={18} />
+            {purchasedLicenses.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
+                {purchasedLicenses.length}
+              </span>
+            )}
+          </button>
+
           {/* Cart Button */}
           <button
             onClick={() => {
@@ -267,6 +288,16 @@ export const Navbar = () => {
             </a>
           ))}
           <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex flex-col gap-2">
+            <button
+              onClick={() => {
+                sound.click();
+                setIsVaultOpen(true);
+                setMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-sm font-bold text-[#8B5CF6] dark:text-purple-300 border border-purple-200 dark:border-purple-800/60"
+            >
+              <FiKey /> License Vault ({purchasedLicenses.length})
+            </button>
             <button
               onClick={() => {
                 sound.click();

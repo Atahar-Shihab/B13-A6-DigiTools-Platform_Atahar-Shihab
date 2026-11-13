@@ -10,7 +10,8 @@ import {
   FiLayers, 
   FiCode, 
   FiCpu,
-  FiSend
+  FiSend,
+  FiTerminal
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
@@ -23,7 +24,8 @@ export const ProductQuickViewModal = () => {
     formatPrice,
     addToCart,
     isInWishlist,
-    toggleWishlist
+    toggleWishlist,
+    openCliModal
   } = useShop();
 
   const [activeTab, setActiveTab] = useState('overview');
@@ -352,6 +354,17 @@ export const ProductQuickViewModal = () => {
               title="Save to Wishlist"
             >
               <FiHeart className={`text-lg ${inWishlist ? 'fill-current' : ''}`} />
+            </button>
+
+            <button
+              onClick={() => {
+                setIsQuickViewOpen(false);
+                openCliModal(selectedProduct);
+              }}
+              className="p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
+              title="Scaffold via CLI"
+            >
+              <FiTerminal className="text-lg" />
             </button>
 
             <button

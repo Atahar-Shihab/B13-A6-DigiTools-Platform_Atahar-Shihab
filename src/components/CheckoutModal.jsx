@@ -26,7 +26,9 @@ export const CheckoutModal = () => {
     taxAmount,
     appliedPromo,
     formatPrice,
-    triggerCheckoutSuccess
+    triggerCheckoutSuccess,
+    addPurchasedLicenses,
+    setIsVaultOpen
   } = useShop();
 
   const [step, setStep] = useState(1);
@@ -60,6 +62,22 @@ export const CheckoutModal = () => {
     setTimeout(() => {
       setIsProcessing(false);
       const generatedOrderId = `DIGI-${Math.floor(100000 + Math.random() * 900000)}`;
+      const newLicenses = cart.map((item) => ({
+        id: `lic-${Math.random().toString(36).substring(2, 9)}`,
+        orderId: generatedOrderId,
+        productName: item.name,
+        productId: item.id,
+        licenseKey: `PRO-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}-LIFETIME`,
+        tier: 'Commercial Extended',
+        tierBadge: 'Purchased Order',
+        purchaseDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        pricePaid: item.price,
+        status: 'Active',
+        downloadsRemaining: 'Unlimited',
+        version: 'v2.4.0',
+        techStack: item.compatibility || ['Universal']
+      }));
+
       const completedOrder = {
         orderId: generatedOrderId,
         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
@@ -70,12 +88,13 @@ export const CheckoutModal = () => {
         total: totalAmount,
         customer: { ...formData },
         promo: appliedPromo ? appliedPromo.code : null,
-        licenses: cart.map((item) => ({
-          name: item.name,
-          key: `PRO-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}-LIFETIME`
+        licenses: newLicenses.map((lic) => ({
+          name: lic.productName,
+          key: lic.licenseKey
         }))
       };
       setOrderSummary(completedOrder);
+      addPurchasedLicenses(newLicenses);
       triggerCheckoutSuccess();
       setStep(3);
     }, 1200);
@@ -353,18 +372,28 @@ export const CheckoutModal = () => {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center gap-2.5">
                 <button
                   onClick={() => window.print()}
-                  className="flex-1 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <FiPrinter /> Print Receipt
+                  <FiPrinter /> Print
+                </button>
+                <button
+                  onClick={() => {
+                    handleClose();
+                    sound.success();
+                    setIsVaultOpen(true);
+                  }}
+                  className="w-full sm:flex-1 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <FiDownload /> View in License Vault
                 </button>
                 <button
                   onClick={handleClose}
-                  className="flex-1 py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 transition-all cursor-pointer"
+                  className="w-full sm:w-auto px-4 py-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold text-xs transition-all cursor-pointer"
                 >
-                  Return to Dashboard
+                  Close
                 </button>
               </div>
             </div>

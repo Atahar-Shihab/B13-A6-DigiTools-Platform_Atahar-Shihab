@@ -25,6 +25,7 @@ import { KeyboardShortcutsModal } from './components/KeyboardShortcutsModal';
 import { FeatureShowcase } from './components/FeatureShowcase';
 import { RoiCalculator } from './components/RoiCalculator';
 import { PricingSection } from './components/PricingSection';
+import { ChangelogSection } from './components/ChangelogSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FAQSection } from './components/FAQSection';
 import { CTASection } from './components/CTASection';
@@ -32,6 +33,9 @@ import { Footer } from './components/Footer';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { LiveSalesTicker } from './components/LiveSalesTicker';
+import { SectionNav } from './components/SectionNav';
+import { LicenseVaultDrawer } from './components/LicenseVaultDrawer';
+import { CliTerminalModal } from './components/CliTerminalModal';
 
 function MainShopContent() {
   const {
@@ -150,6 +154,9 @@ function MainShopContent() {
 
       {/* Navigation */}
       <Navbar />
+
+      {/* Quick-Jump Section Navigation */}
+      <SectionNav />
 
       {/* Hero Section */}
       <Hero />
@@ -435,6 +442,9 @@ function MainShopContent() {
       {/* Pricing Plans & Comparison Matrix */}
       <PricingSection />
 
+      {/* Platform Release Changelog & Timeline */}
+      <ChangelogSection />
+
       {/* Verified Reviews & Testimonials */}
       <TestimonialsSection />
 
@@ -453,12 +463,14 @@ function MainShopContent() {
       {/* Global Modals & Drawers */}
       <CartDrawer />
       <WishlistDrawer />
+      <LicenseVaultDrawer />
       <ProductQuickViewModal />
       <ProductCompareModal />
       <CheckoutModal />
       <InteractiveTourModal />
       <CommandPalette />
       <KeyboardShortcutsModal />
+      <CliTerminalModal />
       <LiveSalesTicker />
       <ScrollToTop />
     </div>

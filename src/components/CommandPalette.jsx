@@ -12,7 +12,9 @@ import {
   FiLayers,
   FiVolume2,
   FiVolumeX,
-  FiTrendingUp
+  FiTrendingUp,
+  FiKey,
+  FiGitCommit
 } from 'react-icons/fi';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
@@ -27,6 +29,7 @@ export const CommandPalette = () => {
     setIsWishlistOpen,
     setIsCompareOpen,
     setIsShortcutsOpen,
+    setIsVaultOpen,
     toggleTheme,
     toggleSound,
     soundEnabled,
@@ -151,6 +154,13 @@ export const CommandPalette = () => {
                 <span className="text-gray-400 text-[10px]">#pricing</span>
               </button>
               <button
+                onClick={() => handleScrollTo('changelog')}
+                className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
+              >
+                <span className="flex items-center gap-2"><FiGitCommit className="text-[#8B5CF6]" /> Platform Changelog & Releases</span>
+                <span className="text-gray-400 text-[10px]">#changelog</span>
+              </button>
+              <button
                 onClick={() => handleScrollTo('faq')}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
               >
@@ -186,6 +196,13 @@ export const CommandPalette = () => {
               >
                 <span className="flex items-center gap-2"><FiHeart className="text-rose-500" /> Open Saved Wishlist</span>
                 <span className="text-gray-400 text-[10px]">Hotkey: W</span>
+              </button>
+              <button
+                onClick={() => handleAction(() => setIsVaultOpen(true))}
+                className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
+              >
+                <span className="flex items-center gap-2"><FiKey className="text-[#8B5CF6]" /> Open License Vault & Entitlements</span>
+                <span className="text-gray-400 text-[10px]">Hotkey: V</span>
               </button>
               <button
                 onClick={() => handleAction(() => setIsShortcutsOpen(true))}

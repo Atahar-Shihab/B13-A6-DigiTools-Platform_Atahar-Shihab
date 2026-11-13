@@ -34,25 +34,44 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 * **Slide-Over Sheet Cart:** Instant off-canvas drawer accessible across all sections with quantity controllers (`+`/`-`), trash actions, and live financial breakdown.
 * **Inline Catalog Cart:** Embedded dual-tab catalog switcher for toggling between browsing and cart management.
 * **Tiered Incentive Progress Bar:** Dynamic reward meter calculating remaining spend to unlock complimentary toolkits.
-* **Promotional Discount Engine:** Integrated coupon validator supporting promo codes (`DIGI20`, `CREATOR15`, `WELCOME10`) with automated tax and subtotal computation.
+* **Promotional Discount Engine:** Integrated coupon validator supporting promo codes (`DIGI20`, `CREATOR15`, `WELCOME10`, `MASTERCLASS`) with automated tax and subtotal computation.
 * **3-Step Checkout Simulation:** Interactive credit card visualization, billing verification, and order completion modal generating unique Order IDs and lifetime license keys with one-click receipt printing (`window.print()`).
+* **Instant Vault Sync:** Automatically registers completed order licenses into the persistent client-side License Vault upon checkout completion.
 
-### 3. Interactive ROI & Time Savings Calculator
+### 3. Digital License Vault & Entitlements
+* **Persistent License Storage:** Tracks purchased licenses, order reference numbers, acquisition dates, and validity tiers with `localStorage` persistence.
+* **License Key Inspector:** One-click copy utility for cryptographically styled production keys (`PRO-XXXX-XXXX-LIFETIME`).
+* **Offline Package Downloader:** Simulated archive packager (.zip bundle) with progress indicator, Web Audio completion chime, and toast feedback.
+* **Starter License Claimer:** Allows new developers to claim a complimentary community developer starter license with a single click.
+
+### 4. Developer CLI Terminal Scaffolder
+* **Multi-Package Manager Commands:** Generates tailored starter commands across **pnpm**, **npm**, **yarn**, **bun**, and **curl**.
+* **Simulated Terminal Sandbox:** Interactive shell window with realistic logging stream (`resolving checksums`, `scaffolding directory`, `verifying SHA-256 signatures`).
+* **One-Click Product Scaffolding:** Launch terminal commands directly from any product card or quick view modal.
+
+### 5. Platform Release Changelog & Timeline
+* **Interactive Release History:** Visual timeline displaying version milestones (`v2.0.0` through `v2.4.0`), release dates, and category tags.
+* **Filter by Tag:** Filter releases by Major Feature, Interactive Tools, Polish & UX, E-Commerce, or Core Architecture.
+* **Expandable Feature Diffs:** Collapsible release notes highlighting key architectural updates and security audits.
+* **RSS Feed Copy:** One-click copy for the platform's release atom feed.
+
+### 6. Interactive ROI & Time Savings Calculator
 * **Customizable Parameters:** Interactive sliders for annual project volume, developer/designer hourly rates, and architecture complexity tiers.
 * **Live Computed Metrics:** Real-time calculation of annual engineering hours saved, monetary savings, net return, and estimated ROI multipliers.
 * **Sprint Velocity Visualization:** Visual comparison comparing scratch development timelines (months) against accelerated workflows (days).
 
-### 4. Interactive Developer Sandbox
+### 7. Interactive Developer Sandbox
 * **AI Prompt Studio:** Test and preview generated copy variations with simulated response streams.
 * **Design System Token Inspector:** Live customization controls for primary theme colors, corner radii, and button style variants (solid, outline, glass).
 * **System Metrics Monitor:** Real-time telemetry simulation displaying edge latency and platform uptime metrics.
 
-### 5. Keyboard Navigation & Command Palette (`⌘K` / `Ctrl+K`)
+### 8. Keyboard Navigation, Quick-Jump Sub-Nav & Command Palette (`⌘K` / `Ctrl+K`)
+* **Sticky Quick-Jump Sub-Navigation:** Header pill bar with real-time scroll-spy dynamically highlighting the active section.
 * **Global Command Palette:** Instant fuzzy search across catalog items, site anchors, drawers, and modal views.
-* **Power User Hotkeys:** Dedicated single-key shortcuts (`C` for cart, `W` for wishlist, `X` for compare, `D` for theme, `M` for audio, `T` for tour, `?` for shortcuts).
+* **Power User Hotkeys:** Dedicated single-key shortcuts (`C` for cart, `W` for wishlist, `V` for vault, `X` for compare, `D` for theme, `M` for audio, `T` for tour, `?` for shortcuts).
 * **Shortcuts Reference Sheet:** Categorized dialog overview triggered anytime via `?` (Shift + /).
 
-### 6. Personalization & Accessibility
+### 9. Personalization & Accessibility
 * **Multi-Currency Engine:** Seamless conversion between **USD ($)**, **EUR (€)**, and **GBP (£)** with persistent client storage.
 * **Theme System:** Native dark and light mode support respecting system color scheme preferences with zero layout shifts.
 * **Web Audio Synthesis:** Gentle synthesized audio cues powered by the Web Audio API for interactive feedback, toggleable from the navigation bar.
@@ -82,7 +101,9 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 ├── src/
 │   ├── components/
 │   │   ├── CartDrawer.jsx       # Slide-over cart panel with promo validation
+│   │   ├── ChangelogSection.jsx # Visual platform release timeline and notes
 │   │   ├── CheckoutModal.jsx    # 3-step checkout simulation and receipt generator
+│   │   ├── CliTerminalModal.jsx # Multi-package manager terminal scaffolding modal
 │   │   ├── CommandPalette.jsx   # Global keyboard-driven command palette
 │   │   ├── CompareDock.jsx      # Floating bottom dock for compared assets
 │   │   ├── CTASection.jsx       # Newsletter subscription & coupon unlock
@@ -93,6 +114,7 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 │   │   ├── Hero.jsx             # Hero section with 3D floating feature cards
 │   │   ├── InteractiveTourModal.jsx # Multi-step platform walkthrough
 │   │   ├── KeyboardShortcutsModal.jsx # Global keyboard shortcuts cheat sheet
+│   │   ├── LicenseVaultDrawer.jsx# Digital license vault & package downloader drawer
 │   │   ├── LiveSalesTicker.jsx  # Floating social proof notification
 │   │   ├── Navbar.jsx           # Sticky glassmorphic navigation header
 │   │   ├── PricingSection.jsx   # Plan comparisons with annual/monthly toggle
@@ -102,16 +124,19 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 │   │   ├── RoiCalculator.jsx    # Interactive ROI & engineering time savings calculator
 │   │   ├── ScrollProgressBar.jsx# Viewport scroll depth indicator
 │   │   ├── ScrollToTop.jsx      # Floating back-to-top button with circular SVG meter
+│   │   ├── SectionNav.jsx       # Sticky sub-navigation quick-jump bar with scroll spy
 │   │   ├── StatsCounter.jsx     # Platform statistics
 │   │   ├── TechStackFilter.jsx  # Technology ecosystem filter bar
 │   │   ├── TestimonialsSection.jsx # User reviews with rating filters
 │   │   └── WishlistDrawer.jsx   # Saved items drawer
 │   ├── context/
 │   │   └── ShopContext.jsx      # Global context provider for application state
+│   ├── data/
+│   │   └── changelog.json       # Version release milestones & highlight notes
 │   ├── utils/
 │   │   └── sound.js             # Web Audio API sound synthesis module
 │   ├── App.jsx                  # Main application orchestrator
-│   ├── data.json                # Structured catalog dataset
+│   ├── data.json                # Structured catalog dataset (12 production assets)
 │   ├── index.css                # Global styles, Tailwind directives, and keyframes
 │   └── main.jsx                 # React root entry point
 ├── eslint.config.js             # ESLint configuration
@@ -166,6 +191,7 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 | `?` or `Shift + /` | Open Keyboard Shortcuts Reference |
 | `C` | Toggle Shopping Cart Drawer |
 | `W` | Toggle Saved Wishlist |
+| `V` | Open Digital License Vault & Entitlements |
 | `X` | Toggle Product Comparison Matrix |
 | `D` | Toggle Dark / Light Theme |
 | `M` | Mute / Unmute Interactive Audio |

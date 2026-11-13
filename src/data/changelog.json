@@ -1,0 +1,78 @@
+[
+  {
+    "version": "v2.4.0",
+    "date": "November 2026",
+    "badge": "Latest Release",
+    "title": "Interactive Comparison Matrix & ROI Engine",
+    "description": "Comprehensive upgrade introducing side-by-side product feature comparison, developer ROI financial calculator, and global keyboard shortcuts.",
+    "highlights": [
+      "Side-by-side product comparison matrix with live feature diffs",
+      "Interactive ROI & engineering time savings calculator with custom sliders",
+      "Technology ecosystem quick filters (React, Figma, Tailwind, Next.js, Stripe)",
+      "Global keyboard shortcuts navigation (⌘K, C, W, X, D, M, T, ?)",
+      "Floating compare dock and circular SVG scroll meter"
+    ],
+    "tag": "Major Feature",
+    "tagColor": "bg-purple-100 text-[#8B5CF6] dark:bg-purple-900/40 dark:text-purple-300"
+  },
+  {
+    "version": "v2.3.0",
+    "date": "October 2026",
+    "badge": "Feature Update",
+    "title": "Interactive Developer Sandbox & Simulated Checkout",
+    "description": "Added live interactive sandboxes allowing developers to test AI prompt pipelines and customize design tokens in real-time.",
+    "highlights": [
+      "AI Prompt Studio with live copywriting synthesis preview",
+      "Design System Token Inspector with accent color & radius controls",
+      "Simulated 3-step checkout with animated credit card and printable receipt",
+      "Automated lifetime license key generation with copy utility"
+    ],
+    "tag": "Interactive Tools",
+    "tagColor": "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300"
+  },
+  {
+    "version": "v2.2.0",
+    "date": "September 2026",
+    "badge": "Performance",
+    "title": "Multi-Currency Engine & Web Audio Feedback",
+    "description": "Global localization and haptic micro-interactions engineered for responsive desktop and mobile devices.",
+    "highlights": [
+      "Real-time currency converter across USD ($), EUR (€), and GBP (£)",
+      "Procedural Web Audio API sound synthesis for micro-interactions",
+      "Dual view mode switching (responsive 3-column grid vs horizontal list)",
+      "Top viewport reading progress bar"
+    ],
+    "tag": "Polish & UX",
+    "tagColor": "bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300"
+  },
+  {
+    "version": "v2.1.0",
+    "date": "August 2026",
+    "badge": "Commerce",
+    "title": "Slide-Over Cart Drawer & Promo Code Engine",
+    "description": "Expanded shopping capabilities with off-canvas slide-over drawer, quantity controllers, and promotional coupon engine.",
+    "highlights": [
+      "Off-canvas slide-over cart drawer with persistent localStorage state",
+      "Dynamic promotional coupon validation with canvas-confetti celebration",
+      "Tiered free bonus incentive unlock meter",
+      "Live floating verified buyer activity ticker"
+    ],
+    "tag": "E-Commerce",
+    "tagColor": "bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300"
+  },
+  {
+    "version": "v2.0.0",
+    "date": "July 2026",
+    "badge": "Foundation",
+    "title": "DigiTools Platform Core Launch",
+    "description": "Initial release of the modern digital asset store built from Figma design specifications with React 19 and Tailwind CSS v4.",
+    "highlights": [
+      "Curated digital product catalog with verified ratings and features",
+      "Responsive hero banner with custom typography (Outfit font)",
+      "Dark and light theme support with native CSS variables",
+      "Transparent pricing tiers with annual discount switcher"
+    ],
+    "tag": "Launch",
+    "tagColor": "bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300"
+  }
+]

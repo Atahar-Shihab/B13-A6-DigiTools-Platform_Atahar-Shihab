@@ -19,6 +19,39 @@ const PROMO_CODES = {
   MASTERCLASS: { discount: 0.25, label: '25% OFF Elite VIP Pass' }
 };
 
+const DEFAULT_INITIAL_LICENSES = [
+  {
+    id: 'lic-demo-1',
+    orderId: 'DIGI-940218',
+    productName: 'Full-Stack SaaS Boilerplate',
+    productId: 9,
+    licenseKey: 'PRO-SAAS-98AF-2026-LIFETIME',
+    tier: 'Commercial Extended',
+    tierBadge: 'Lifetime VIP',
+    purchaseDate: 'Nov 12, 2026',
+    pricePaid: 79,
+    status: 'Active',
+    downloadsRemaining: 'Unlimited',
+    version: 'v2.4.0',
+    techStack: ['Next.js', 'TypeScript', 'Tailwind', 'Stripe']
+  },
+  {
+    id: 'lic-demo-2',
+    orderId: 'DIGI-810543',
+    productName: 'Design System & UI Component Library',
+    productId: 1,
+    licenseKey: 'PRO-DS-4B21-2026-COMMERCIAL',
+    tier: 'Single Commercial',
+    tierBadge: 'Active License',
+    purchaseDate: 'Nov 08, 2026',
+    pricePaid: 29,
+    status: 'Active',
+    downloadsRemaining: 'Unlimited',
+    version: 'v2.4.0',
+    techStack: ['React', 'Tailwind CSS', 'Figma']
+  }
+];
+
 export const ShopProvider = ({ children }) => {
   // Cart state persisted to localStorage
   const [cart, setCart] = useState(() => {
@@ -47,6 +80,20 @@ export const ShopProvider = ({ children }) => {
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
+    }
+  });
+
+  // Purchased Licenses state persisted
+  const [purchasedLicenses, setPurchasedLicenses] = useState(() => {
+    try {
+      const saved = localStorage.getItem('digitools_licenses');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+      return DEFAULT_INITIAL_LICENSES;
+    } catch {
+      return DEFAULT_INITIAL_LICENSES;
     }
   });
 
@@ -94,6 +141,10 @@ export const ShopProvider = ({ children }) => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
+  const [isVaultOpen, setIsVaultOpen] = useState(false);
+  const [isCliModalOpen, setIsCliModalOpen] = useState(false);
+  const [cliProduct, setCliProduct] = useState(null);
+  const [isChangelogOpen, setIsChangelogOpen] = useState(false);
 
   // Search & Filtering
   const [searchQuery, setSearchQuery] = useState('');
@@ -133,6 +184,11 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('digitools_currency', currency);
   }, [currency]);
+
+  // Persist purchased licenses
+  useEffect(() => {
+    localStorage.setItem('digitools_licenses', JSON.stringify(purchasedLicenses));
+  }, [purchasedLicenses]);
 
   // Sync sound
   useEffect(() => {
@@ -178,6 +234,8 @@ export const ShopProvider = ({ children }) => {
         setIsDemoModalOpen(false);
         setIsCompareOpen(false);
         setIsShortcutsOpen(false);
+        setIsVaultOpen(false);
+        setIsCliModalOpen(false);
         return;
       }
 
@@ -197,6 +255,10 @@ export const ShopProvider = ({ children }) => {
         e.preventDefault();
         sound.click();
         setIsWishlistOpen((prev) => !prev);
+      } else if (e.key === 'v' || e.key === 'V') {
+        e.preventDefault();
+        sound.click();
+        setIsVaultOpen((prev) => !prev);
       } else if (e.key === 'x' || e.key === 'X') {
         e.preventDefault();
         sound.click();
@@ -341,6 +403,17 @@ export const ShopProvider = ({ children }) => {
     setIsQuickViewOpen(true);
   };
 
+  const openCliModal = (product) => {
+    sound.click();
+    setCliProduct(product);
+    setIsCliModalOpen(true);
+  };
+
+  const addPurchasedLicenses = (newLicenses) => {
+    if (!newLicenses || newLicenses.length === 0) return;
+    setPurchasedLicenses((prev) => [...newLicenses, ...prev]);
+  };
+
   // Calculations
   const rawSubtotal = cart.reduce((acc, item) => acc + item.price * (item.quantity || 1), 0);
   const discountAmount = appliedPromo ? rawSubtotal * appliedPromo.discount : 0;
@@ -366,6 +439,7 @@ export const ShopProvider = ({ children }) => {
         cart,
         wishlist,
         compareList,
+        purchasedLicenses,
         theme,
         currency,
         currencies: CURRENCY_RATES,
@@ -381,6 +455,10 @@ export const ShopProvider = ({ children }) => {
         isDemoModalOpen,
         isCompareOpen,
         isShortcutsOpen,
+        isVaultOpen,
+        isCliModalOpen,
+        cliProduct,
+        isChangelogOpen,
         searchQuery,
         selectedCategory,
         selectedTechStack,
@@ -420,7 +498,13 @@ export const ShopProvider = ({ children }) => {
         setIsDemoModalOpen,
         setIsCompareOpen,
         setIsShortcutsOpen,
+        setIsVaultOpen,
+        setIsCliModalOpen,
+        setCliProduct,
+        setIsChangelogOpen,
         openQuickView,
+        openCliModal,
+        addPurchasedLicenses,
         setSearchQuery,
         setSelectedCategory,
         setSelectedTechStack,

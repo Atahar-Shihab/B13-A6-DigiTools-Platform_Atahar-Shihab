@@ -23,6 +23,7 @@ export const KeyboardShortcutsModal = () => {
       items: [
         { keys: ['C'], label: 'Toggle Shopping Cart Drawer' },
         { keys: ['W'], label: 'Toggle Saved Wishlist' },
+        { keys: ['V'], label: 'Open Digital License Vault & Entitlements' },
         { keys: ['X'], label: 'Toggle Product Comparison Matrix' }
       ]
     },

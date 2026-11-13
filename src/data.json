@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Social Media Content Kit",
-    "category": "Marketing",
+    "category": "Business & Marketing",
     "description": "Complete toolkit for creating high-converting, viral social media posts, reels, and carousels.",
     "price": 39,
     "annualPrice": 29,
@@ -138,7 +138,7 @@
       "Custom Domain & Analytics Hook",
       "Contact Form with Spam Shield"
     ],
-    "compatibility": ["React", "HTML5", "Tailwind", "Framer Motion"],
+    "compatibility": ["React", "HTML5", "Tailwind CSS", "Framer Motion"],
     "icon": "/assets/products/portfolio.png",
     "gradient": "from-pink-500 to-rose-600",
     "popular": true
@@ -190,5 +190,101 @@
     "icon": "/assets/products/design-tool.png",
     "gradient": "from-rose-500 to-amber-600",
     "popular": true
+  },
+  {
+    "id": 9,
+    "name": "Full-Stack SaaS Boilerplate",
+    "category": "Development",
+    "description": "Production-ready enterprise Next.js starter kit with Auth.js, Prisma ORM, Stripe subscriptions, and shadcn UI.",
+    "price": 79,
+    "annualPrice": 59,
+    "period": "One-Time",
+    "tag": "New",
+    "tagType": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
+    "rating": 4.96,
+    "reviewsCount": 215,
+    "features": [
+      "Next.js App Router Architecture",
+      "Pre-configured Stripe Webhooks",
+      "Role-Based Access Control (RBAC)",
+      "Automated Database Migrations",
+      "Transactional Email with Resend"
+    ],
+    "compatibility": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Stripe"],
+    "icon": "/assets/products/operation.png",
+    "gradient": "from-emerald-500 to-cyan-600",
+    "popular": true
+  },
+  {
+    "id": 10,
+    "name": "3D Canvas & WebGL Motion Kit",
+    "category": "UI/UX Design",
+    "description": "Interactive Three.js and React Three Fiber animations, shaders, and particle systems built for interactive sites.",
+    "price": 35,
+    "annualPrice": 28,
+    "period": "Mo",
+    "tag": "Trending",
+    "tagType": "bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300",
+    "rating": 4.89,
+    "reviewsCount": 164,
+    "features": [
+      "25+ Ready-to-use Three.js Shaders",
+      "GLTF 3D Model Optimization Scripts",
+      "Mouse Tracking Magnetic Gravity",
+      "Post-Processing Bloom & Blur FX",
+      "Mobile 60fps Performance Profiler"
+    ],
+    "compatibility": ["React", "Three.js", "WebGL", "Framer Motion"],
+    "icon": "/assets/products/design-tool.png",
+    "gradient": "from-violet-500 to-fuchsia-600",
+    "popular": false
+  },
+  {
+    "id": 11,
+    "name": "Autonomous SEO Content Pipeline",
+    "category": "AI & Automation",
+    "description": "Programmatic SEO generator that researches keywords, creates schema-validated articles, and indexes via Google API.",
+    "price": 59,
+    "annualPrice": 45,
+    "period": "Mo",
+    "tag": "Best Seller",
+    "tagType": "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
+    "rating": 4.93,
+    "reviewsCount": 298,
+    "features": [
+      "SerpAPI & GSC Ranking Integration",
+      "Automated Internal Linking Engine",
+      "OpenGraph Dynamic Image Generator",
+      "Next.js SSG Markdown Publisher",
+      "Instant Indexing Google API Hook"
+    ],
+    "compatibility": ["Python", "OpenAI", "Next.js", "Node.js"],
+    "icon": "/assets/products/writing_2327400 1.png",
+    "gradient": "from-amber-500 to-rose-600",
+    "popular": true
+  },
+  {
+    "id": 12,
+    "name": "Mobile Flutter UI Toolkit Pro",
+    "category": "Development",
+    "description": "High-fidelity cross-platform Flutter application templates with adaptive Cupertino & Material 3 components.",
+    "price": 49,
+    "annualPrice": 39,
+    "period": "One-Time",
+    "tag": "Popular",
+    "tagType": "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
+    "rating": 4.87,
+    "reviewsCount": 172,
+    "features": [
+      "60+ Reusable Flutter Widgets",
+      "Clean Bloc / Riverpod State Patterns",
+      "Dark & Light Theming Out-of-the-Box",
+      "Firebase Auth & Cloud Firestore Hooks",
+      "Pixel-perfect iOS & Android Layouts"
+    ],
+    "compatibility": ["Flutter", "Dart", "Figma", "iOS", "Android"],
+    "icon": "/assets/products/portfolio.png",
+    "gradient": "from-cyan-500 to-blue-600",
+    "popular": false
   }
 ]
