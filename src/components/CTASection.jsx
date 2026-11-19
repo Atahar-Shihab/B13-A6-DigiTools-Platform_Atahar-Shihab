@@ -95,7 +95,7 @@ export const CTASection = () => {
             onClick={() => handleScrollTo('products')}
             className="bg-white text-[#8B5CF6] hover:bg-purple-50 font-bold text-xs sm:text-sm rounded-2xl px-8 py-3.5 transition-all shadow-md cursor-pointer"
           >
-            Explore All 200+ Products
+            Explore All Production Toolkits
           </button>
           <button
             onClick={() => handleScrollTo('pricing')}

@@ -1,8 +1,11 @@
 import React from 'react';
-import { FiArrowUp, FiZap, FiGithub, FiTwitter, FiLinkedin, FiHeart } from 'react-icons/fi';
+import { FiArrowUp, FiZap, FiGithub, FiTwitter, FiLinkedin, FiHeart, FiKey, FiTerminal } from 'react-icons/fi';
 import { sound } from '../utils/sound';
+import { useShop } from '../context/ShopContext';
 
 export const Footer = () => {
+  const { setIsVaultOpen, setIsCommandOpen } = useShop();
+
   const scrollToTop = () => {
     sound.click();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -37,12 +40,13 @@ export const Footer = () => {
 
           {/* Product Links */}
           <div>
-            <h4 className="font-bold mb-4 text-white text-sm">Products</h4>
+            <h4 className="font-bold mb-4 text-white text-sm">Toolkits</h4>
             <ul className="space-y-2.5 text-gray-400 text-xs sm:text-sm">
-              <li><a href="#products" className="hover:text-purple-400 transition-colors">UI Design System</a></li>
-              <li><a href="#products" className="hover:text-purple-400 transition-colors">AI Prompt Studio</a></li>
-              <li><a href="#products" className="hover:text-purple-400 transition-colors">E-Commerce Headless</a></li>
-              <li><a href="#products" className="hover:text-purple-400 transition-colors">Full Stack Boilerplates</a></li>
+              <li><a href="#products" className="hover:text-purple-400 transition-colors">UI Design Systems</a></li>
+              <li><a href="#products" className="hover:text-purple-400 transition-colors">AI & Prompt Suites</a></li>
+              <li><a href="#products" className="hover:text-purple-400 transition-colors">E-Commerce & SaaS</a></li>
+              <li><a href="#products" className="hover:text-purple-400 transition-colors">3D & WebGL Graphics</a></li>
+              <li><a href="#products" className="hover:text-purple-400 transition-colors">Mobile & Flutter Kit</a></li>
             </ul>
           </div>
 
@@ -50,21 +54,44 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold mb-4 text-white text-sm">Resources</h4>
             <ul className="space-y-2.5 text-gray-400 text-xs sm:text-sm">
-              <li><a href="#demo-showcase" className="hover:text-purple-400 transition-colors">Interactive Sandbox</a></li>
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">Licensing Guide</a></li>
-              <li><a href="#faq" className="hover:text-purple-400 transition-colors">Support FAQ</a></li>
-              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">Pricing Matrix</a></li>
+              <li><a href="#changelog" className="hover:text-purple-400 transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Changelog v2.4</a></li>
+              <li><a href="#roi-calculator" className="hover:text-purple-400 transition-colors">ROI Calculator</a></li>
+              <li><a href="#pricing" className="hover:text-purple-400 transition-colors">Commercial Licensing</a></li>
+              <li><a href="#faq" className="hover:text-purple-400 transition-colors">Developer FAQ</a></li>
+              <li><a href="#reviews" className="hover:text-purple-400 transition-colors">Verified Feedback</a></li>
             </ul>
           </div>
 
-          {/* Community & Company */}
+          {/* Developer Tools */}
           <div>
-            <h4 className="font-bold mb-4 text-white text-sm">Company</h4>
+            <h4 className="font-bold mb-4 text-white text-sm">Developer</h4>
             <ul className="space-y-2.5 text-gray-400 text-xs sm:text-sm">
-              <li><a href="#" className="hover:text-purple-400 transition-colors">About DigiTools</a></li>
-              <li><a href="#reviews" className="hover:text-purple-400 transition-colors">Verified Reviews</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Affiliate Program</a></li>
-              <li><a href="#" className="hover:text-purple-400 transition-colors">Careers (Hiring!)</a></li>
+              <li>
+                <button
+                  onClick={() => {
+                    sound.click();
+                    setIsVaultOpen(true);
+                  }}
+                  className="hover:text-purple-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left"
+                >
+                  <FiKey className="text-[#8B5CF6] text-xs" />
+                  <span>License Vault</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    sound.click();
+                    setIsCommandOpen(true);
+                  }}
+                  className="hover:text-purple-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left"
+                >
+                  <FiTerminal className="text-[#8B5CF6] text-xs" />
+                  <span>Command Palette</span>
+                </button>
+              </li>
+              <li><a href="#tech-stack" className="hover:text-purple-400 transition-colors">Tech Compatibility</a></li>
+              <li><a href="#demo-showcase" className="hover:text-purple-400 transition-colors">Interactive Sandbox</a></li>
             </ul>
           </div>
 

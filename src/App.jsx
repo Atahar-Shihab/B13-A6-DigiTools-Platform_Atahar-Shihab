@@ -36,6 +36,7 @@ import { LiveSalesTicker } from './components/LiveSalesTicker';
 import { SectionNav } from './components/SectionNav';
 import { LicenseVaultDrawer } from './components/LicenseVaultDrawer';
 import { CliTerminalModal } from './components/CliTerminalModal';
+import { TechMarquee } from './components/TechMarquee';
 
 function MainShopContent() {
   const {
@@ -163,6 +164,9 @@ function MainShopContent() {
 
       {/* Animated Metrics / Stats Counter */}
       <StatsCounter />
+
+      {/* Technology Partners Marquee */}
+      <TechMarquee />
 
       {/* Main Digital Tools Catalog Section */}
       <section id="products" className="container mx-auto px-4 sm:px-8 py-20">

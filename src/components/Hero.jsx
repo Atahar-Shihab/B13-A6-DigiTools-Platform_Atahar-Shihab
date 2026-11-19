@@ -4,7 +4,7 @@ import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 
 export const Hero = () => {
-  const { setIsDemoModalOpen } = useShop();
+  const { setIsDemoModalOpen, setIsCommandOpen, setIsVaultOpen } = useShop();
 
   const handleScrollToProducts = () => {
     sound.click();
@@ -75,6 +75,35 @@ export const Hero = () => {
                   <FiPlay className="text-sm ml-0.5 fill-current" />
                 </div>
                 <span>Watch Interactive Tour</span>
+              </button>
+            </div>
+
+            {/* Quick Access Keyboard Hints */}
+            <div className="flex flex-wrap items-center gap-3 mb-8 text-xs text-gray-500 dark:text-gray-400">
+              <button
+                onClick={() => {
+                  sound.click();
+                  setIsCommandOpen(true);
+                }}
+                className="inline-flex items-center gap-1.5 hover:text-[#8B5CF6] transition-colors cursor-pointer"
+              >
+                <kbd className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-[10px] font-mono font-bold text-gray-700 dark:text-gray-300 shadow-2xs">
+                  Ctrl+K
+                </kbd>
+                <span>Command Palette</span>
+              </button>
+              <span className="text-gray-300 dark:text-gray-700">•</span>
+              <button
+                onClick={() => {
+                  sound.click();
+                  setIsVaultOpen(true);
+                }}
+                className="inline-flex items-center gap-1.5 hover:text-[#8B5CF6] transition-colors cursor-pointer"
+              >
+                <kbd className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-[10px] font-mono font-bold text-gray-700 dark:text-gray-300 shadow-2xs">
+                  V
+                </kbd>
+                <span>License Vault</span>
               </button>
             </div>
 

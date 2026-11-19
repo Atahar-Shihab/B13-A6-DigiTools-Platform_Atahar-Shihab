@@ -60,10 +60,12 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 * **Live Computed Metrics:** Real-time calculation of annual engineering hours saved, monetary savings, net return, and estimated ROI multipliers.
 * **Sprint Velocity Visualization:** Visual comparison comparing scratch development timelines (months) against accelerated workflows (days).
 
-### 7. Interactive Developer Sandbox
+### 7. Interactive Developer Sandbox & Tech Marquee
 * **AI Prompt Studio:** Test and preview generated copy variations with simulated response streams.
 * **Design System Token Inspector:** Live customization controls for primary theme colors, corner radii, and button style variants (solid, outline, glass).
 * **System Metrics Monitor:** Real-time telemetry simulation displaying edge latency and platform uptime metrics.
+* **Technology Ecosystem Marquee:** Seamless, infinite-scroll technology ticker featuring modern production stacks (React, Tailwind CSS, Next.js, TypeScript, Figma, Vite, Stripe, Flutter, Supabase).
+* **Animated Platform Metrics:** Scroll-triggered `IntersectionObserver` counters with cubic ease-out progression displaying active creator counts, asset volume, and satisfaction rates.
 
 ### 8. Keyboard Navigation, Quick-Jump Sub-Nav & Command Palette (`⌘K` / `Ctrl+K`)
 * **Sticky Quick-Jump Sub-Navigation:** Header pill bar with real-time scroll-spy dynamically highlighting the active section.
@@ -125,7 +127,8 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 │   │   ├── ScrollProgressBar.jsx# Viewport scroll depth indicator
 │   │   ├── ScrollToTop.jsx      # Floating back-to-top button with circular SVG meter
 │   │   ├── SectionNav.jsx       # Sticky sub-navigation quick-jump bar with scroll spy
-│   │   ├── StatsCounter.jsx     # Platform statistics
+│   │   ├── StatsCounter.jsx     # Animated platform statistics with IntersectionObserver
+│   │   ├── TechMarquee.jsx      # Infinite scrolling tech stack logo marquee
 │   │   ├── TechStackFilter.jsx  # Technology ecosystem filter bar
 │   │   ├── TestimonialsSection.jsx # User reviews with rating filters
 │   │   └── WishlistDrawer.jsx   # Saved items drawer
@@ -133,6 +136,8 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 │   │   └── ShopContext.jsx      # Global context provider for application state
 │   ├── data/
 │   │   └── changelog.json       # Version release milestones & highlight notes
+│   ├── hooks/
+│   │   └── useScrollReveal.js   # Custom IntersectionObserver scroll-reveal hook
 │   ├── utils/
 │   │   └── sound.js             # Web Audio API sound synthesis module
 │   ├── App.jsx                  # Main application orchestrator

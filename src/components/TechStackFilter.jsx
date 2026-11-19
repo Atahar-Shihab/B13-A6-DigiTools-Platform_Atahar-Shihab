@@ -34,7 +34,7 @@ export const TechStackFilter = () => {
   };
 
   return (
-    <div className="py-6 border-b border-gray-100 dark:border-gray-800/80 mb-8">
+    <div id="tech-stack" className="py-6 border-b border-gray-100 dark:border-gray-800/80 mb-8 scroll-mt-24">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
         <div className="flex items-center gap-2 text-xs font-black text-gray-800 dark:text-gray-200">
           <FiCode className="text-[#8B5CF6] text-sm" />
