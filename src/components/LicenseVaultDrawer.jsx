@@ -1,16 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import {
-  FiX,
-  FiKey,
-  FiDownload,
-  FiCopy,
-  FiSearch,
-  FiCheckCircle,
-  FiTerminal,
-  FiShield,
-  FiPackage,
-  FiPlusCircle
-} from 'react-icons/fi';
+import { X, Key, Download, Copy, Search, CheckCircle2, Terminal, Shield, Package, PlusCircle } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
@@ -94,7 +83,7 @@ export const LicenseVaultDrawer = () => {
           <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between bg-gradient-to-r from-purple-50/50 via-white to-indigo-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#8B5CF6] to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 text-lg">
-                <FiKey />
+                <Key />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -118,14 +107,14 @@ export const LicenseVaultDrawer = () => {
               }}
               className="w-9 h-9 rounded-xl flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
             >
-              <FiX size={18} />
+              <X size={18} />
             </button>
           </div>
 
           {/* Search & Filter Toolbar */}
           <div className="p-4 bg-gray-50/80 dark:bg-gray-800/40 border-b border-gray-100 dark:border-gray-800 space-y-3">
             <div className="relative">
-              <FiSearch className="absolute inset-y-0 left-3.5 my-auto text-gray-400 text-xs" />
+              <Search className="absolute inset-y-0 left-3.5 my-auto text-gray-400 text-xs" />
               <input
                 type="text"
                 value={searchTerm}
@@ -160,7 +149,7 @@ export const LicenseVaultDrawer = () => {
                 className="text-[11px] font-bold text-[#8B5CF6] dark:text-purple-400 hover:underline flex items-center gap-1 shrink-0 cursor-pointer"
                 title="Claim a complimentary community license"
               >
-                <FiPlusCircle /> Claim Starter Pass
+                <PlusCircle /> Claim Starter Pass
               </button>
             </div>
           </div>
@@ -170,7 +159,7 @@ export const LicenseVaultDrawer = () => {
             {filteredLicenses.length === 0 ? (
               <div className="text-center py-16 space-y-4">
                 <div className="w-16 h-16 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-400 flex items-center justify-center mx-auto text-2xl">
-                  <FiPackage />
+                  <Package />
                 </div>
                 <div>
                   <h4 className="text-base font-bold text-gray-900 dark:text-white">
@@ -201,7 +190,7 @@ export const LicenseVaultDrawer = () => {
                           {lic.productName}
                         </h4>
                         <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 flex items-center gap-1">
-                          <FiCheckCircle size={10} /> {lic.status}
+                          <CheckCircle2 size={10} /> {lic.status}
                         </span>
                       </div>
                       <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
@@ -230,7 +219,7 @@ export const LicenseVaultDrawer = () => {
                       className="px-3 py-1.5 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-[#8B5CF6] text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors shrink-0 cursor-pointer"
                       title="Copy License Key"
                     >
-                      <FiCopy size={12} />
+                      <Copy size={12} />
                       <span className="hidden sm:inline">Copy</span>
                     </button>
                   </div>
@@ -259,7 +248,7 @@ export const LicenseVaultDrawer = () => {
                       disabled={downloadingId === lic.id}
                       className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm cursor-pointer disabled:opacity-50 transition-all"
                     >
-                      <FiDownload size={13} />
+                      <Download size={13} />
                       <span>{downloadingId === lic.id ? 'Packaging Archive...' : 'Download ZIP Bundle'}</span>
                     </button>
 
@@ -272,7 +261,7 @@ export const LicenseVaultDrawer = () => {
                       className="py-2 px-3 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                       title="View CLI Command"
                     >
-                      <FiTerminal size={13} />
+                      <Terminal size={13} />
                       <span className="hidden sm:inline">CLI Install</span>
                     </button>
                   </div>
@@ -284,7 +273,7 @@ export const LicenseVaultDrawer = () => {
           {/* Footer Info */}
           <div className="p-4 bg-gray-50 dark:bg-gray-800/80 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
             <span className="flex items-center gap-1.5">
-              <FiShield className="text-emerald-500" /> All assets verified SHA-256
+              <Shield className="text-emerald-500" /> All assets verified SHA-256
             </span>
             <span className="font-semibold text-gray-700 dark:text-gray-300">
               Total Entitlements: {purchasedLicenses.length}

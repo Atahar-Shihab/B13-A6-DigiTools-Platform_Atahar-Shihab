@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiCode, FiX, FiCheck } from 'react-icons/fi';
+import { Code, X, Check } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import productsData from '../data.json';
@@ -37,7 +37,7 @@ export const TechStackFilter = () => {
     <div id="tech-stack" className="py-6 border-b border-gray-100 dark:border-gray-800/80 mb-8 scroll-mt-24">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
         <div className="flex items-center gap-2 text-xs font-black text-gray-800 dark:text-gray-200">
-          <FiCode className="text-[#8B5CF6] text-sm" />
+          <Code className="text-[#8B5CF6] text-sm" />
           <span>Filter by Technology Compatibility:</span>
         </div>
 
@@ -46,7 +46,7 @@ export const TechStackFilter = () => {
             onClick={() => handleSelect('All')}
             className="text-xs font-semibold text-[#8B5CF6] dark:text-purple-400 hover:underline flex items-center gap-1 cursor-pointer self-start sm:self-auto"
           >
-            <FiX size={12} /> Clear tech filter
+            <X size={12} /> Clear tech filter
           </button>
         )}
       </div>
@@ -65,7 +65,7 @@ export const TechStackFilter = () => {
                   : 'bg-gray-100 dark:bg-gray-800/80 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/80'
               }`}
             >
-              {isSelected && <FiCheck size={12} />}
+              {isSelected && <Check size={12} />}
               <span>{stack.name}</span>
               <span className={`px-1.5 py-0.2 rounded-md text-[10px] font-mono ${
                 isSelected ? 'bg-white/25 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiArrowUp, FiZap, FiGithub, FiTwitter, FiLinkedin, FiHeart, FiKey, FiTerminal } from 'react-icons/fi';
+import { ArrowUp, Zap, GitBranch, Share2, Globe, Heart, Key, Terminal } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { useShop } from '../context/ShopContext';
 
@@ -21,7 +21,7 @@ export const Footer = () => {
           <div className="md:col-span-2 pr-0 md:pr-8">
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#8B5CF6] to-indigo-600 flex items-center justify-center text-white shadow-md">
-                <FiZap className="text-xl" />
+                <Zap className="text-xl" />
               </div>
               <span className="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
                 DigiTools
@@ -74,7 +74,7 @@ export const Footer = () => {
                   }}
                   className="hover:text-purple-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left"
                 >
-                  <FiKey className="text-[#8B5CF6] text-xs" />
+                  <Key className="text-[#8B5CF6] text-xs" />
                   <span>License Vault</span>
                 </button>
               </li>
@@ -86,7 +86,7 @@ export const Footer = () => {
                   }}
                   className="hover:text-purple-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left"
                 >
-                  <FiTerminal className="text-[#8B5CF6] text-xs" />
+                  <Terminal className="text-[#8B5CF6] text-xs" />
                   <span>Command Palette</span>
                 </button>
               </li>
@@ -106,21 +106,21 @@ export const Footer = () => {
                 className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
                 aria-label="GitHub Profile"
               >
-                <FiGithub size={16} />
+                <GitBranch size={16} />
               </a>
               <a
                 href="#"
                 className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
                 aria-label="Twitter Profile"
               >
-                <FiTwitter size={16} />
+                <Share2 size={16} />
               </a>
               <a
                 href="#"
                 className="w-9 h-9 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
                 aria-label="LinkedIn Profile"
               >
-                <FiLinkedin size={16} />
+                <Globe size={16} />
               </a>
             </div>
 
@@ -128,7 +128,7 @@ export const Footer = () => {
               onClick={scrollToTop}
               className="w-full py-2.5 px-3 rounded-xl bg-gray-900 border border-gray-800 hover:bg-purple-950/60 hover:border-purple-800 text-xs font-bold text-gray-300 hover:text-purple-300 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
-              <FiArrowUp />
+              <ArrowUp />
               <span>Back to Top</span>
             </button>
           </div>
@@ -138,7 +138,7 @@ export const Footer = () => {
         <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
           <p className="flex items-center gap-1.5">
             <span>© 2026 DigiTools Platform. Designed & Engineered with</span>
-            <FiHeart className="text-rose-500 fill-current" />
+            <Heart className="text-rose-500 fill-current" />
             <span className="font-bold text-gray-300">by Atahar Shihab</span>
           </p>
 

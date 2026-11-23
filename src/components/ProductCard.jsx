@@ -1,17 +1,9 @@
 import React from 'react';
-import { 
-  FiCheck, 
-  FiHeart, 
-  FiEye, 
-  FiShoppingCart, 
-  FiStar,
-  FiLayers,
-  FiShare2,
-  FiTerminal
-} from 'react-icons/fi';
+import { Check, Heart, Eye, ShoppingCart, Star, Layers, Share2, Terminal } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
+import { ProductIcon } from './ProductIcon';
 
 export const ProductCard = ({ product, viewMode = 'grid' }) => {
   const {
@@ -52,11 +44,13 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
         <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Left: Icon & Tag */}
-        <div className="relative shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 p-4 border border-purple-100 dark:border-purple-900/50 group-hover:scale-105 transition-transform duration-300">
-          <img
-            src={product.icon}
-            alt={product.name}
-            className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+        <div className="relative shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 p-4 border border-purple-100 dark:border-purple-900/50 group-hover:scale-105 transition-transform duration-300 text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+          <ProductIcon
+            icon={product.icon}
+            id={product.id}
+            name={product.name}
+            size={36}
+            className="group-hover:scale-110 transition-transform duration-300"
           />
         </div>
 
@@ -72,7 +66,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               </span>
             )}
             <div className="flex items-center gap-1 text-amber-400 text-xs ml-auto">
-              <FiStar className="fill-current text-xs" />
+              <Star className="fill-current text-xs" />
               <span className="font-bold text-gray-800 dark:text-gray-200">{product.rating}</span>
               <span className="text-gray-400 text-[11px]">({product.reviewsCount})</span>
             </div>
@@ -117,7 +111,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               }`}
               title={inCompare ? 'Remove from Compare' : 'Add to Compare'}
             >
-              <FiLayers className="text-base" />
+              <Layers className="text-base" />
             </button>
 
             <button
@@ -127,7 +121,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               }`}
               title="Save to Wishlist"
             >
-              <FiHeart className={`text-base ${inWishlist ? 'fill-current' : ''}`} />
+              <Heart className={`text-base ${inWishlist ? 'fill-current' : ''}`} />
             </button>
 
             <button
@@ -135,7 +129,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               title="Quick Preview"
             >
-              <FiEye className="text-base" />
+              <Eye className="text-base" />
             </button>
 
             <button
@@ -143,7 +137,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
               title="Share Link"
             >
-              <FiShare2 className="text-base" />
+              <Share2 className="text-base" />
             </button>
 
             <button
@@ -154,7 +148,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer"
               title="Scaffold via CLI Terminal"
             >
-              <FiTerminal className="text-base" />
+              <Terminal className="text-base" />
             </button>
 
             <button
@@ -165,7 +159,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
                   : 'bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-500/25'
               }`}
             >
-              <FiShoppingCart className="text-sm" />
+              <ShoppingCart className="text-sm" />
               <span>{cartQuantity > 0 ? `In Cart (${cartQuantity})` : 'Add to Cart'}</span>
             </button>
           </div>
@@ -187,11 +181,12 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
       <div>
         <div className="flex justify-between items-start mb-5">
           <div className="relative">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 p-2.5 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 group-hover:scale-110 transition-transform duration-300 shadow-xs">
-              <img
-                src={product.icon}
-                alt={product.name}
-                className="w-9 h-9 object-contain"
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 p-2.5 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 group-hover:scale-110 transition-transform duration-300 shadow-xs text-[#8B5CF6] dark:text-purple-300">
+              <ProductIcon
+                icon={product.icon}
+                id={product.id}
+                name={product.name}
+                size={28}
               />
             </div>
             {cartQuantity > 0 && (
@@ -218,7 +213,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               }`}
               title={inCompare ? 'In Comparison' : 'Add to Compare'}
             >
-              <FiLayers className="text-base" />
+              <Layers className="text-base" />
             </button>
 
             {/* Wishlist Button */}
@@ -231,7 +226,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               }`}
               title={inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
             >
-              <FiHeart className={`text-base ${inWishlist ? 'fill-current' : ''}`} />
+              <Heart className={`text-base ${inWishlist ? 'fill-current' : ''}`} />
             </button>
 
             {/* Share Button */}
@@ -240,7 +235,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               className="p-2 rounded-xl text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
               title="Share Link"
             >
-              <FiShare2 className="text-base" />
+              <Share2 className="text-base" />
             </button>
 
             {/* CLI Command Button */}
@@ -252,7 +247,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               className="p-2 rounded-xl text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
               title="Scaffold via CLI Terminal"
             >
-              <FiTerminal className="text-base" />
+              <Terminal className="text-base" />
             </button>
           </div>
         </div>
@@ -263,7 +258,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
             {product.category}
           </span>
           <div className="flex items-center gap-1 text-amber-400">
-            <FiStar className="fill-current text-xs" />
+            <Star className="fill-current text-xs" />
             <span className="font-bold text-gray-800 dark:text-gray-200">{product.rating}</span>
             <span className="text-gray-400 text-[11px]">({product.reviewsCount})</span>
           </div>
@@ -282,7 +277,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
           {product.features.slice(0, 3).map((feature, index) => (
             <li key={index} className="flex items-center text-xs text-gray-600 dark:text-gray-300">
               <span className="w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mr-2 shrink-0">
-                <FiCheck className="text-[10px]" />
+                <Check className="text-[10px]" />
               </span>
               <span className="truncate">{feature}</span>
             </li>
@@ -303,7 +298,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
             onClick={() => openQuickView(product)}
             className="text-xs font-bold text-[#8B5CF6] dark:text-purple-400 hover:underline flex items-center gap-1 cursor-pointer"
           >
-            <FiEye className="text-xs" /> Quick View
+            <Eye className="text-xs" /> Quick View
           </button>
         </div>
 
@@ -317,12 +312,12 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
         >
           {cartQuantity > 0 ? (
             <>
-              <FiCheck className="text-base" />
+              <Check className="text-base" />
               <span>Added ({cartQuantity} in Cart)</span>
             </>
           ) : (
             <>
-              <FiShoppingCart className="text-base" />
+              <ShoppingCart className="text-base" />
               <span>Add to Cart</span>
             </>
           )}

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FiShoppingBag, FiArrowRight, FiTrash2, FiPlus, FiMinus, FiRotateCcw, FiTag } from 'react-icons/fi';
+import { ShoppingBag, ArrowRight, Trash2, Plus, Minus, RotateCcw, Tag } from 'lucide-react';
 
 import productsData from './data.json';
 import { ShopProvider, useShop } from './context/ShopContext';
@@ -13,6 +13,7 @@ import { StatsCounter } from './components/StatsCounter';
 import { TechStackFilter } from './components/TechStackFilter';
 import { FilterBar } from './components/FilterBar';
 import { ProductCard } from './components/ProductCard';
+import { ProductIcon } from './components/ProductIcon';
 import { ProductQuickViewModal } from './components/ProductQuickViewModal';
 import { ProductCompareModal } from './components/ProductCompareModal';
 import { CompareDock } from './components/CompareDock';
@@ -247,7 +248,7 @@ function MainShopContent() {
                   onClick={resetAllCatalogFilters}
                   className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
                 >
-                  <FiRotateCcw /> Reset All Filters
+                  <RotateCcw /> Reset All Filters
                 </button>
               </div>
             ) : viewMode === 'grid' ? (
@@ -271,7 +272,7 @@ function MainShopContent() {
           <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl rounded-3xl p-6 sm:p-8">
             <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-5 mb-6">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <FiShoppingBag className="text-[#8B5CF6]" />
+                <ShoppingBag className="text-[#8B5CF6]" />
                 <span>Your Selected Products</span>
               </h3>
               {cart.length > 0 && (
@@ -316,8 +317,8 @@ function MainShopContent() {
                       className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 gap-4"
                     >
                       <div className="flex items-center gap-3.5">
-                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center shrink-0">
-                          <img src={item.icon} alt={item.name} className="w-8 h-8 object-contain" />
+                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center shrink-0 text-[#8B5CF6] dark:text-purple-300">
+                          <ProductIcon icon={item.icon} id={item.id} name={item.name} size={22} />
                         </div>
                         <div>
                           <h4 className="font-bold text-sm text-gray-900 dark:text-white leading-tight">
@@ -336,7 +337,7 @@ function MainShopContent() {
                             onClick={() => updateQuantity(item.id, -1)}
                             className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold cursor-pointer"
                           >
-                            <FiMinus size={12} />
+                            <Minus size={12} />
                           </button>
                           <span className="w-7 text-center text-xs font-bold text-gray-900 dark:text-white">
                             {item.quantity}
@@ -345,7 +346,7 @@ function MainShopContent() {
                             onClick={() => updateQuantity(item.id, 1)}
                             className="w-7 h-7 flex items-center justify-center text-gray-400 hover:text-gray-900 dark:hover:text-white font-bold cursor-pointer"
                           >
-                            <FiPlus size={12} />
+                            <Plus size={12} />
                           </button>
                         </div>
 
@@ -359,7 +360,7 @@ function MainShopContent() {
                           className="p-2 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-lg transition-colors cursor-pointer"
                           title="Remove from Cart"
                         >
-                          <FiTrash2 size={16} />
+                          <Trash2 size={16} />
                         </button>
                       </div>
                     </div>
@@ -370,7 +371,7 @@ function MainShopContent() {
                 <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800 space-y-2">
                   <form onSubmit={handleApplyCoupon} className="flex gap-2">
                     <div className="relative flex-1">
-                      <FiTag className="absolute inset-y-0 left-3 my-auto text-gray-400 text-xs" />
+                      <Tag className="absolute inset-y-0 left-3 my-auto text-gray-400 text-xs" />
                       <input
                         type="text"
                         value={cartCouponInput}
@@ -427,7 +428,7 @@ function MainShopContent() {
                   className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
                   <span>Proceed To Checkout Simulation</span>
-                  <FiArrowRight />
+                  <ArrowRight />
                 </button>
               </div>
             )}

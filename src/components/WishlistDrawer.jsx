@@ -1,8 +1,9 @@
 import React from 'react';
-import { FiX, FiHeart, FiShoppingCart, FiTrash2, FiArrowRight } from 'react-icons/fi';
+import { X, Heart, ShoppingCart, Trash2, ArrowRight } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
+import { ProductIcon } from './ProductIcon';
 
 export const WishlistDrawer = () => {
   const {
@@ -37,7 +38,7 @@ export const WishlistDrawer = () => {
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-500 flex items-center justify-center">
-              <FiHeart className="text-lg fill-current" />
+              <Heart className="text-lg fill-current" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -56,7 +57,7 @@ export const WishlistDrawer = () => {
             }}
             className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <FiX size={20} />
+            <X size={20} />
           </button>
         </div>
 
@@ -65,7 +66,7 @@ export const WishlistDrawer = () => {
           {wishlist.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
               <div className="w-20 h-20 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-300 flex items-center justify-center mb-4">
-                <FiHeart size={36} />
+                <Heart size={36} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                 Your wishlist is empty
@@ -92,8 +93,8 @@ export const WishlistDrawer = () => {
                 className="flex items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-3.5 rounded-2xl border border-gray-100 dark:border-gray-800"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0">
-                    <img src={item.icon} alt={item.name} className="w-8 h-8 object-contain" />
+                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0 text-[#8B5CF6] dark:text-purple-300">
+                    <ProductIcon icon={item.icon} id={item.id} name={item.name} size={22} />
                   </div>
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-gray-900 dark:text-white line-clamp-1">
@@ -114,14 +115,14 @@ export const WishlistDrawer = () => {
                     className="p-2 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition-all"
                     title="Move to Cart"
                   >
-                    <FiShoppingCart size={14} />
+                    <ShoppingCart size={14} />
                   </button>
                   <button
                     onClick={() => toggleWishlist(item)}
                     className="p-2 text-gray-400 hover:text-rose-500 transition-colors"
                     title="Remove"
                   >
-                    <FiTrash2 size={16} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               </div>
@@ -136,9 +137,9 @@ export const WishlistDrawer = () => {
               onClick={handleMoveAllToCart}
               className="w-full py-3.5 rounded-2xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
-              <FiShoppingCart />
+              <ShoppingCart />
               <span>Move All to Cart</span>
-              <FiArrowRight />
+              <ArrowRight />
             </button>
           </div>
         )}

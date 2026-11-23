@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FiGrid, 
-  FiCpu, 
-  FiPercent, 
-  FiDollarSign, 
-  FiGitCommit, 
-  FiStar, 
-  FiHelpCircle 
-} from 'react-icons/fi';
+import { Grid, Cpu, Percent, DollarSign, GitCommit, Star, HelpCircle } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 const NAV_ITEMS = [
-  { id: 'products', label: 'Toolkits', icon: FiGrid },
-  { id: 'tech-stack', label: 'Tech Stack', icon: FiCpu },
-  { id: 'roi-calculator', label: 'ROI Engine', icon: FiPercent },
-  { id: 'pricing', label: 'Pricing Plans', icon: FiDollarSign },
-  { id: 'changelog', label: 'Changelog', icon: FiGitCommit },
-  { id: 'reviews', label: 'Reviews', icon: FiStar },
-  { id: 'faq', label: 'FAQ', icon: FiHelpCircle }
+  { id: 'products', label: 'Toolkits', icon: Grid },
+  { id: 'tech-stack', label: 'Tech Stack', icon: Cpu },
+  { id: 'roi-calculator', label: 'ROI Engine', icon: Percent },
+  { id: 'pricing', label: 'Pricing Plans', icon: DollarSign },
+  { id: 'changelog', label: 'Changelog', icon: GitCommit },
+  { id: 'reviews', label: 'Reviews', icon: Star },
+  { id: 'faq', label: 'FAQ', icon: HelpCircle }
 ];
 
 export const SectionNav = () => {

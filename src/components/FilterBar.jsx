@@ -1,13 +1,5 @@
 import React from 'react';
-import { 
-  FiSearch, 
-  FiX, 
-  FiGrid, 
-  FiList, 
-  FiSliders, 
-  FiCheck,
-  FiRotateCcw
-} from 'react-icons/fi';
+import { Search, X, Grid, List, Sliders, Check, RotateCcw } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 
@@ -51,7 +43,7 @@ export const FilterBar = ({ categories, totalResults }) => {
         {/* Search Input */}
         <div className="relative flex-1 max-w-md">
           <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-            <FiSearch className="text-lg" />
+            <Search className="text-lg" />
           </div>
           <input
             type="text"
@@ -69,7 +61,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
               aria-label="Clear Search"
             >
-              <FiX className="text-base" />
+              <X className="text-base" />
             </button>
           )}
         </div>
@@ -157,7 +149,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               title="Grid View"
               aria-label="Grid View"
             >
-              <FiGrid size={16} />
+              <Grid size={16} />
             </button>
             <button
               onClick={() => {
@@ -172,7 +164,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               title="List View"
               aria-label="List View"
             >
-              <FiList size={16} />
+              <List size={16} />
             </button>
           </div>
 
@@ -208,7 +200,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               onClick={resetFilters}
               className="flex items-center gap-1 text-[#8B5CF6] dark:text-purple-400 hover:underline cursor-pointer"
             >
-              <FiRotateCcw className="text-xs" /> Reset
+              <RotateCcw className="text-xs" /> Reset
             </button>
           )}
         </div>

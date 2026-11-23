@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { FiUsers, FiLayers, FiSmile, FiTrendingUp } from 'react-icons/fi';
+import { Users, Layers, Smile, TrendingUp } from 'lucide-react';
 
 const STATS = [
   {
     id: 1,
-    icon: FiUsers,
+    icon: Users,
     target: 50000,
     suffix: '+',
     label: 'Active Creators',
@@ -12,7 +12,7 @@ const STATS = [
   },
   {
     id: 2,
-    icon: FiLayers,
+    icon: Layers,
     target: 200,
     suffix: '+',
     label: 'Premium Assets',
@@ -20,7 +20,7 @@ const STATS = [
   },
   {
     id: 3,
-    icon: FiSmile,
+    icon: Smile,
     target: 99.8,
     suffix: '%',
     label: 'Satisfaction Rate',
@@ -28,7 +28,7 @@ const STATS = [
   },
   {
     id: 4,
-    icon: FiTrendingUp,
+    icon: TrendingUp,
     target: 4.95,
     suffix: '',
     label: 'App Store Rating',

@@ -18,8 +18,13 @@
       "Canva & Figma Direct Sync",
       "Multi-brand Workspace"
     ],
-    "compatibility": ["Figma", "Canva", "Adobe CC", "Buffer"],
-    "icon": "/assets/products/social-media.png",
+    "compatibility": [
+      "Figma",
+      "Canva",
+      "Adobe CC",
+      "Buffer"
+    ],
+    "icon": "Share2",
     "gradient": "from-amber-500 to-orange-500",
     "popular": true
   },
@@ -42,8 +47,13 @@
       "Dark & Light Native Palettes",
       "React & Tailwind Code Export"
     ],
-    "compatibility": ["Figma", "React", "Tailwind CSS", "Sketch"],
-    "icon": "/assets/products/design-tool.png",
+    "compatibility": [
+      "Figma",
+      "React",
+      "Tailwind CSS",
+      "Sketch"
+    ],
+    "icon": "Layout",
     "gradient": "from-purple-500 to-indigo-600",
     "popular": true
   },
@@ -66,8 +76,13 @@
       "One-click Plagiarism Radar",
       "Multi-language Translation (45+)"
     ],
-    "compatibility": ["Chrome Extension", "Google Docs", "Notion", "VS Code"],
-    "icon": "/assets/products/writing_2327400 1.png",
+    "compatibility": [
+      "Chrome Extension",
+      "Google Docs",
+      "Notion",
+      "VS Code"
+    ],
+    "icon": "Bot",
     "gradient": "from-emerald-500 to-teal-600",
     "popular": false
   },
@@ -90,8 +105,13 @@
       "Client Approval Dashboards",
       "Stripe & PayPal Webhook Sync"
     ],
-    "compatibility": ["Notion", "Stripe", "Zapier", "QuickBooks"],
-    "icon": "/assets/products/operation.png",
+    "compatibility": [
+      "Notion",
+      "Stripe",
+      "Zapier",
+      "QuickBooks"
+    ],
+    "icon": "Briefcase",
     "gradient": "from-orange-500 to-red-500",
     "popular": true
   },
@@ -114,8 +134,14 @@
       "Cart Abandonment Recovery",
       "Zero-latency Edge API"
     ],
-    "compatibility": ["React", "Next.js", "Vue", "WordPress", "Shopify"],
-    "icon": "/assets/products/shopping-cart.png",
+    "compatibility": [
+      "React",
+      "Next.js",
+      "Vue",
+      "WordPress",
+      "Shopify"
+    ],
+    "icon": "ShoppingCart",
     "gradient": "from-blue-500 to-cyan-600",
     "popular": false
   },
@@ -138,8 +164,13 @@
       "Custom Domain & Analytics Hook",
       "Contact Form with Spam Shield"
     ],
-    "compatibility": ["React", "HTML5", "Tailwind CSS", "Framer Motion"],
-    "icon": "/assets/products/portfolio.png",
+    "compatibility": [
+      "React",
+      "HTML5",
+      "Tailwind CSS",
+      "Framer Motion"
+    ],
+    "icon": "Layers",
     "gradient": "from-pink-500 to-rose-600",
     "popular": true
   },
@@ -162,8 +193,13 @@
       "SOC2 Compliance Reports",
       "Slack & Discord Incident Alerts"
     ],
-    "compatibility": ["AWS", "Cloudflare", "Vercel", "Node.js"],
-    "icon": "/assets/products/operation.png",
+    "compatibility": [
+      "AWS",
+      "Cloudflare",
+      "Vercel",
+      "Node.js"
+    ],
+    "icon": "ShieldCheck",
     "gradient": "from-indigo-500 to-violet-600",
     "popular": false
   },
@@ -186,8 +222,13 @@
       "Export directly to Python & TypeScript",
       "Team Prompt Library"
     ],
-    "compatibility": ["OpenAI", "Anthropic", "Google AI", "LangChain"],
-    "icon": "/assets/products/design-tool.png",
+    "compatibility": [
+      "OpenAI",
+      "Anthropic",
+      "Google AI",
+      "LangChain"
+    ],
+    "icon": "Terminal",
     "gradient": "from-rose-500 to-amber-600",
     "popular": true
   },
@@ -210,8 +251,14 @@
       "Automated Database Migrations",
       "Transactional Email with Resend"
     ],
-    "compatibility": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Stripe"],
-    "icon": "/assets/products/operation.png",
+    "compatibility": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Stripe"
+    ],
+    "icon": "Code2",
     "gradient": "from-emerald-500 to-cyan-600",
     "popular": true
   },
@@ -234,8 +281,13 @@
       "Post-Processing Bloom & Blur FX",
       "Mobile 60fps Performance Profiler"
     ],
-    "compatibility": ["React", "Three.js", "WebGL", "Framer Motion"],
-    "icon": "/assets/products/design-tool.png",
+    "compatibility": [
+      "React",
+      "Three.js",
+      "WebGL",
+      "Framer Motion"
+    ],
+    "icon": "Box",
     "gradient": "from-violet-500 to-fuchsia-600",
     "popular": false
   },
@@ -258,8 +310,13 @@
       "Next.js SSG Markdown Publisher",
       "Instant Indexing Google API Hook"
     ],
-    "compatibility": ["Python", "OpenAI", "Next.js", "Node.js"],
-    "icon": "/assets/products/writing_2327400 1.png",
+    "compatibility": [
+      "Python",
+      "OpenAI",
+      "Next.js",
+      "Node.js"
+    ],
+    "icon": "TrendingUp",
     "gradient": "from-amber-500 to-rose-600",
     "popular": true
   },
@@ -282,8 +339,14 @@
       "Firebase Auth & Cloud Firestore Hooks",
       "Pixel-perfect iOS & Android Layouts"
     ],
-    "compatibility": ["Flutter", "Dart", "Figma", "iOS", "Android"],
-    "icon": "/assets/products/portfolio.png",
+    "compatibility": [
+      "Flutter",
+      "Dart",
+      "Figma",
+      "iOS",
+      "Android"
+    ],
+    "icon": "Smartphone",
     "gradient": "from-cyan-500 to-blue-600",
     "popular": false
   }

@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  FiX, 
-  FiTrash2, 
-  FiPlus, 
-  FiMinus, 
-  FiShoppingBag, 
-  FiTag, 
-  FiArrowRight, 
-  FiCheckCircle, 
-  FiGift 
-} from 'react-icons/fi';
+import { X, Trash2, Plus, Minus, ShoppingBag, Tag, ArrowRight, CheckCircle2, Gift } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
+import { ProductIcon } from './ProductIcon';
 
 export const CartDrawer = () => {
   const {
@@ -65,7 +56,7 @@ export const CartDrawer = () => {
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] flex items-center justify-center">
-              <FiShoppingBag className="text-lg" />
+              <ShoppingBag className="text-lg" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -98,7 +89,7 @@ export const CartDrawer = () => {
               className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Close Cart"
             >
-              <FiX size={20} />
+              <X size={20} />
             </button>
           </div>
         </div>
@@ -108,7 +99,7 @@ export const CartDrawer = () => {
           <div className="bg-purple-50/80 dark:bg-purple-950/40 px-6 py-3 border-b border-purple-100 dark:border-purple-900/50">
             <div className="flex items-center justify-between text-xs font-bold mb-1.5">
               <span className="flex items-center gap-1.5 text-purple-700 dark:text-purple-300">
-                <FiGift />
+                <Gift />
                 {remainingForVip === 0
                   ? '🎉 VIP Creator Toolkit Unlocked Free!'
                   : `Add ${formatPrice(remainingForVip)} more for Free VIP Toolkit`}
@@ -129,7 +120,7 @@ export const CartDrawer = () => {
           {cart.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
               <div className="w-20 h-20 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-400 flex items-center justify-center mb-4">
-                <FiShoppingBag size={36} />
+                <ShoppingBag size={36} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                 Your cart is empty
@@ -156,8 +147,8 @@ export const CartDrawer = () => {
                 className="flex items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-3.5 rounded-2xl border border-gray-100 dark:border-gray-800"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0">
-                    <img src={item.icon} alt={item.name} className="w-8 h-8 object-contain" />
+                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0 text-[#8B5CF6] dark:text-purple-300">
+                    <ProductIcon icon={item.icon} id={item.id} name={item.name} size={22} />
                   </div>
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-gray-900 dark:text-white line-clamp-1">
@@ -176,7 +167,7 @@ export const CartDrawer = () => {
                       onClick={() => updateQuantity(item.id, -1)}
                       className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-white text-xs font-bold"
                     >
-                      <FiMinus size={11} />
+                      <Minus size={11} />
                     </button>
                     <span className="w-6 text-center text-xs font-bold text-gray-900 dark:text-white">
                       {item.quantity}
@@ -185,7 +176,7 @@ export const CartDrawer = () => {
                       onClick={() => updateQuantity(item.id, 1)}
                       className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-white text-xs font-bold"
                     >
-                      <FiPlus size={11} />
+                      <Plus size={11} />
                     </button>
                   </div>
 
@@ -194,7 +185,7 @@ export const CartDrawer = () => {
                     className="p-1.5 text-gray-400 hover:text-rose-500 transition-colors"
                     title="Remove item"
                   >
-                    <FiTrash2 size={16} />
+                    <Trash2 size={16} />
                   </button>
                 </div>
               </div>
@@ -209,7 +200,7 @@ export const CartDrawer = () => {
             <div className="space-y-2">
               <form onSubmit={handleApply} className="flex gap-2">
                 <div className="relative flex-1">
-                  <FiTag className="absolute inset-y-0 left-3 my-auto text-gray-400 text-xs" />
+                  <Tag className="absolute inset-y-0 left-3 my-auto text-gray-400 text-xs" />
                   <input
                     type="text"
                     value={inputCode}
@@ -248,7 +239,7 @@ export const CartDrawer = () => {
               {appliedPromo && (
                 <div className="flex items-center justify-between p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-700 dark:text-emerald-300">
                   <div className="flex items-center gap-1.5 font-bold">
-                    <FiCheckCircle />
+                    <CheckCircle2 />
                     <span>{appliedPromo.label} ({appliedPromo.code})</span>
                   </div>
                   <button
@@ -293,7 +284,7 @@ export const CartDrawer = () => {
               className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <span>Proceed to Checkout</span>
-              <FiArrowRight />
+              <ArrowRight />
             </button>
           </div>
         )}

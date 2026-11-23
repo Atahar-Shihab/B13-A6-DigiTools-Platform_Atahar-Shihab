@@ -1,19 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FiShoppingCart, 
-  FiHeart, 
-  FiSun, 
-  FiMoon, 
-  FiVolume2, 
-  FiVolumeX, 
-  FiSearch, 
-  FiMenu, 
-  FiX, 
-  FiZap,
-  FiLayers,
-  FiHelpCircle,
-  FiKey
-} from 'react-icons/fi';
+import { ShoppingCart, Heart, Sun, Moon, Volume2, VolumeX, Search, Menu, X, Zap, Layers, HelpCircle, Key } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 
@@ -89,7 +75,7 @@ export const Navbar = () => {
           }}
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#8B5CF6] to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
-            <FiZap className="text-xl" />
+            <Zap className="text-xl" />
           </div>
           <div>
             <span className="text-2xl font-black bg-gradient-to-r from-[#8B5CF6] via-purple-600 to-indigo-600 bg-clip-text text-transparent tracking-tight">
@@ -126,7 +112,7 @@ export const Navbar = () => {
             className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700/80 transition-colors border border-gray-200 dark:border-gray-700 cursor-pointer"
             title="Open Command Palette (Ctrl+K)"
           >
-            <FiSearch className="text-sm" />
+            <Search className="text-sm" />
             <span className="hidden md:inline">Quick Search</span>
             <kbd className="px-1.5 py-0.5 text-[10px] bg-white dark:bg-gray-900 rounded border border-gray-300 dark:border-gray-600 font-mono shadow-xs">
               ⌘K
@@ -162,7 +148,7 @@ export const Navbar = () => {
             title={soundEnabled ? 'Disable Sound Effects (M)' : 'Enable Sound Effects (M)'}
             aria-label="Toggle Sound Effects"
           >
-            {soundEnabled ? <FiVolume2 size={18} className="text-[#8B5CF6]" /> : <FiVolumeX size={18} />}
+            {soundEnabled ? <Volume2 size={18} className="text-[#8B5CF6]" /> : <VolumeX size={18} />}
           </button>
 
           {/* Dark / Light Mode Toggle */}
@@ -172,7 +158,7 @@ export const Navbar = () => {
             title={theme === 'dark' ? 'Switch to Light Mode (D)' : 'Switch to Dark Mode (D)'}
             aria-label="Toggle Theme"
           >
-            {theme === 'dark' ? <FiSun size={18} className="text-amber-400" /> : <FiMoon size={18} className="text-indigo-600" />}
+            {theme === 'dark' ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-indigo-600" />}
           </button>
 
           {/* Compare Button (When items added) */}
@@ -186,7 +172,7 @@ export const Navbar = () => {
               title="Compare Products (X)"
               aria-label="Compare Products"
             >
-              <FiLayers size={18} />
+              <Layers size={18} />
               <span className="absolute -top-1 -right-1 bg-[#8B5CF6] text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
                 {compareList.length}
               </span>
@@ -203,7 +189,7 @@ export const Navbar = () => {
             title="View Wishlist (W)"
             aria-label="Wishlist"
           >
-            <FiHeart size={19} className={wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : ''} />
+            <Heart size={19} className={wishlist.length > 0 ? 'text-rose-500 fill-rose-500' : ''} />
             {wishlist.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
                 {wishlist.length}
@@ -221,7 +207,7 @@ export const Navbar = () => {
             title="License Vault & Entitlements (V)"
             aria-label="License Vault"
           >
-            <FiKey size={18} />
+            <Key size={18} />
             {purchasedLicenses.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
                 {purchasedLicenses.length}
@@ -239,7 +225,7 @@ export const Navbar = () => {
             title="View Cart (C)"
             aria-label="Shopping Cart"
           >
-            <FiShoppingCart size={19} />
+            <ShoppingCart size={19} />
             {totalItemCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-[#8B5CF6] text-white text-[10px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
                 {totalItemCount}
@@ -257,7 +243,7 @@ export const Navbar = () => {
             title="Keyboard Shortcuts (?)"
             aria-label="Keyboard Shortcuts"
           >
-            <FiHelpCircle size={18} />
+            <HelpCircle size={18} />
           </button>
 
           {/* Mobile menu hamburger */}
@@ -269,7 +255,7 @@ export const Navbar = () => {
             className="lg:hidden p-2 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
             aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -296,7 +282,7 @@ export const Navbar = () => {
               }}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-sm font-bold text-[#8B5CF6] dark:text-purple-300 border border-purple-200 dark:border-purple-800/60"
             >
-              <FiKey /> License Vault ({purchasedLicenses.length})
+              <Key /> License Vault ({purchasedLicenses.length})
             </button>
             <button
               onClick={() => {
@@ -306,7 +292,7 @@ export const Navbar = () => {
               }}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-sm font-semibold text-gray-700 dark:text-gray-300"
             >
-              <FiSearch /> Quick Search (⌘K)
+              <Search /> Quick Search (⌘K)
             </button>
             <button
               onClick={() => {
@@ -316,7 +302,7 @@ export const Navbar = () => {
               }}
               className="w-full flex items-center justify-center gap-2 py-2 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-xs font-bold text-[#8B5CF6] dark:text-purple-300"
             >
-              <FiHelpCircle /> View Keyboard Shortcuts (?)
+              <HelpCircle /> View Keyboard Shortcuts (?)
             </button>
           </div>
         </div>

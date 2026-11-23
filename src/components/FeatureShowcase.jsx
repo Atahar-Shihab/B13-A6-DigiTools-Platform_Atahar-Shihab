@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  FiCheck, 
-  FiZap, 
-  FiSliders, 
-  FiActivity, 
-  FiTerminal, 
-  FiCopy, 
-  FiArrowRight,
-  FiCode
-} from 'react-icons/fi';
+import { Check, Zap, Sliders, Activity, Terminal, Copy, ArrowRight, Code, UserPlus, PackageCheck, Rocket } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
 
@@ -67,8 +58,8 @@ export const FeatureShowcase = () => {
             <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
               01
             </div>
-            <div className="w-16 h-16 bg-purple-50 dark:bg-purple-950/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <img src="/assets/user.png" alt="User Account" className="w-8 h-8 object-contain" />
+            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+              <UserPlus className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
               Create Your Account
@@ -83,8 +74,8 @@ export const FeatureShowcase = () => {
             <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
               02
             </div>
-            <div className="w-16 h-16 bg-purple-50 dark:bg-purple-950/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <img src="/assets/package.png" alt="Select Package" className="w-8 h-8 object-contain" />
+            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+              <PackageCheck className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
               Choose Your Tools
@@ -99,8 +90,8 @@ export const FeatureShowcase = () => {
             <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
               03
             </div>
-            <div className="w-16 h-16 bg-purple-50 dark:bg-purple-950/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <img src="/assets/rocket.png" alt="Start Launching" className="w-8 h-8 object-contain" />
+            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+              <Rocket className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
               Start Shipping Fast
@@ -140,7 +131,7 @@ export const FeatureShowcase = () => {
                     : 'hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
-                <FiZap /> AI Prompt Studio
+                <Zap /> AI Prompt Studio
               </button>
               <button
                 onClick={() => {
@@ -153,7 +144,7 @@ export const FeatureShowcase = () => {
                     : 'hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
-                <FiSliders /> Design System
+                <Sliders /> Design System
               </button>
               <button
                 onClick={() => {
@@ -166,7 +157,7 @@ export const FeatureShowcase = () => {
                     : 'hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
-                <FiActivity /> Live Metrics
+                <Activity /> Live Metrics
               </button>
             </div>
           </div>
@@ -189,7 +180,7 @@ export const FeatureShowcase = () => {
                     disabled={isGenerating}
                     className="px-6 py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-purple-500/20 cursor-pointer disabled:opacity-50"
                   >
-                    <FiZap />
+                    <Zap />
                     <span>{isGenerating ? 'Synthesizing...' : 'Run Generation'}</span>
                   </button>
                 </div>
@@ -200,7 +191,7 @@ export const FeatureShowcase = () => {
                     className="absolute top-4 right-4 p-2 rounded-lg bg-white dark:bg-gray-900 text-gray-500 hover:text-purple-600 shadow-xs border border-gray-200 dark:border-gray-700 transition-colors"
                     title="Copy Result"
                   >
-                    <FiCopy />
+                    <Copy />
                   </button>
                   {promptOutput}
                 </div>
@@ -293,7 +284,7 @@ export const FeatureShowcase = () => {
                     }}
                     className="p-5 font-bold shadow-lg text-xs sm:text-sm transition-all duration-300 flex items-center gap-2 cursor-pointer hover:opacity-95 backdrop-blur-xs"
                   >
-                    <FiCheck />
+                    <Check />
                     <span>Dynamic Styled Component</span>
                   </div>
                   <span className="font-mono text-[11px] text-gray-400">

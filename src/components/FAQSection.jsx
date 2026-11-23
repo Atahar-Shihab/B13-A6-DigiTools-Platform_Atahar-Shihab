@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiChevronDown, FiHelpCircle, FiMessageCircle, FiCheck } from 'react-icons/fi';
+import { ChevronDown, HelpCircle, MessageCircle, Check } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
 
@@ -103,10 +103,10 @@ export const FAQSection = () => {
                   className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-gray-900 dark:text-white cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-850"
                 >
                   <span className="flex items-center gap-3">
-                    <FiHelpCircle className="text-[#8B5CF6] shrink-0" />
+                    <HelpCircle className="text-[#8B5CF6] shrink-0" />
                     <span>{faq.q}</span>
                   </span>
-                  <FiChevronDown
+                  <ChevronDown
                     className={`transform transition-transform duration-300 text-gray-400 shrink-0 ${
                       isOpen ? 'rotate-180 text-[#8B5CF6]' : ''
                     }`}
@@ -127,7 +127,7 @@ export const FAQSection = () => {
         <div className="mt-12 p-6 rounded-3xl bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30 border border-purple-100 dark:border-purple-900/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#8B5CF6] text-white flex items-center justify-center shrink-0">
-              <FiMessageCircle className="text-xl" />
+              <MessageCircle className="text-xl" />
             </div>
             <div>
               <h4 className="text-sm font-bold text-gray-900 dark:text-white">Have a specific technical question?</h4>

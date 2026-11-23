@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiArrowUp } from 'react-icons/fi';
+import { ArrowUp } from 'lucide-react';
 import { sound } from '../utils/sound';
 
 export const ScrollToTop = () => {
@@ -67,7 +67,7 @@ export const ScrollToTop = () => {
           />
         </svg>
 
-        <FiArrowUp className="text-base group-hover:-translate-y-0.5 transition-transform" />
+        <ArrowUp className="text-base group-hover:-translate-y-0.5 transition-transform" />
       </button>
     </div>
   );

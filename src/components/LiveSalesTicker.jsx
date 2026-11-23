@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiX, FiCheckCircle } from 'react-icons/fi';
+import { X, CheckCircle2 } from 'lucide-react';
 import productsData from '../data.json';
 
 const BUYER_PROFILES = [
@@ -57,7 +57,7 @@ export const LiveSalesTicker = () => {
             className="w-10 h-10 rounded-full object-cover border-2 border-purple-300 dark:border-purple-700"
           />
           <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white dark:border-gray-900 flex items-center justify-center">
-            <FiCheckCircle className="text-[8px] text-white" />
+            <CheckCircle2 className="text-[8px] text-white" />
           </span>
         </div>
 
@@ -79,7 +79,7 @@ export const LiveSalesTicker = () => {
           className="p-1 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shrink-0"
           title="Dismiss alerts"
         >
-          <FiX size={14} />
+          <X size={14} />
         </button>
       </div>
     </div>

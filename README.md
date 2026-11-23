@@ -86,9 +86,10 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 | Layer | Technologies |
 | :--- | :--- |
 | **UI Framework** | React 19, React DOM |
+| **Typography & Fonts** | Plus Jakarta Sans, JetBrains Mono |
 | **Styling & Design System** | Tailwind CSS v4, DaisyUI v5 |
 | **Bundler & Tooling** | Vite, PostCSS, Autoprefixer |
-| **Icons & Visuals** | Lucide React, React Icons |
+| **Icons & Visuals** | Lucide React |
 | **Notifications & FX** | React-Toastify, Canvas Confetti |
 | **Audio** | Native Web Audio API |
 | **Linting & Code Quality** | ESLint 9 (Flat Config), React Hooks & Refresh Plugins |
@@ -122,6 +123,7 @@ DigiTools provides digital creators, frontend engineers, and technology leaders 
 │   │   ├── PricingSection.jsx   # Plan comparisons with annual/monthly toggle
 │   │   ├── ProductCard.jsx      # Responsive card supporting grid and list modes
 │   │   ├── ProductCompareModal.jsx # Side-by-side spec comparison table
+│   │   ├── ProductIcon.jsx      # Dynamic Lucide React product badge and icon resolver
 │   │   ├── ProductQuickViewModal.jsx # Detailed multi-tab product modal
 │   │   ├── RoiCalculator.jsx    # Interactive ROI & engineering time savings calculator
 │   │   ├── ScrollProgressBar.jsx# Viewport scroll depth indicator

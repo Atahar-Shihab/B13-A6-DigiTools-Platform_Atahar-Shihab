@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiMail, FiArrowRight, FiCheckCircle, FiGift } from 'react-icons/fi';
+import { Mail, ArrowRight, CheckCircle2, Gift } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
@@ -52,7 +52,7 @@ export const CTASection = () => {
           {!isSubscribed ? (
             <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
-                <FiMail className="absolute inset-y-0 left-3.5 my-auto text-purple-200" />
+                <Mail className="absolute inset-y-0 left-3.5 my-auto text-purple-200" />
                 <input
                   type="email"
                   required
@@ -67,13 +67,13 @@ export const CTASection = () => {
                 className="px-6 py-3 rounded-2xl bg-white text-[#8B5CF6] hover:bg-purple-50 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
               >
                 <span>Unlock 10% Off</span>
-                <FiArrowRight />
+                <ArrowRight />
               </button>
             </form>
           ) : (
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-left animate-fadeIn">
               <div className="flex items-center gap-3">
-                <FiCheckCircle className="text-2xl text-emerald-300 shrink-0" />
+                <CheckCircle2 className="text-2xl text-emerald-300 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-white">Coupon Code: WELCOME10</p>
                   <p className="text-[11px] text-purple-200">10% discount has been unlocked for your order</p>

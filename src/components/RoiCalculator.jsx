@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  FiClock, 
-  FiDollarSign, 
-  FiTrendingUp, 
-  FiZap, 
-  FiArrowRight, 
-  FiCheckCircle 
-} from 'react-icons/fi';
+import { Clock, DollarSign, TrendingUp, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 
@@ -213,7 +206,7 @@ export const RoiCalculator = () => {
                 <div className="grid grid-cols-2 gap-3 mb-8">
                   <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/15">
                     <div className="flex items-center gap-1.5 text-purple-200 text-xs mb-1">
-                      <FiClock />
+                      <Clock />
                       <span>Hours Saved</span>
                     </div>
                     <span className="text-2xl font-black">{totalHoursSaved} hrs</span>
@@ -221,7 +214,7 @@ export const RoiCalculator = () => {
 
                   <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/15">
                     <div className="flex items-center gap-1.5 text-purple-200 text-xs mb-1">
-                      <FiTrendingUp />
+                      <TrendingUp />
                       <span>Net Gain</span>
                     </div>
                     <span className="text-2xl font-black">{formatPrice(netSavings)}</span>
@@ -230,15 +223,15 @@ export const RoiCalculator = () => {
 
                 <ul className="space-y-2 text-xs text-purple-100 mb-8">
                   <li className="flex items-center gap-2">
-                    <FiCheckCircle className="text-emerald-300 text-sm shrink-0" />
+                    <CheckCircle2 className="text-emerald-300 text-sm shrink-0" />
                     <span>Instant ROI in less than 4 project days</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <FiCheckCircle className="text-emerald-300 text-sm shrink-0" />
+                    <CheckCircle2 className="text-emerald-300 text-sm shrink-0" />
                     <span>Eliminates boilerplate repetition & tech debt</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <FiCheckCircle className="text-emerald-300 text-sm shrink-0" />
+                    <CheckCircle2 className="text-emerald-300 text-sm shrink-0" />
                     <span>Unlimited commercial client usage rights</span>
                   </li>
                 </ul>
@@ -249,7 +242,7 @@ export const RoiCalculator = () => {
                 className="btn-glow w-full py-4 rounded-2xl bg-white text-[#8B5CF6] hover:bg-gray-50 font-black text-xs sm:text-sm shadow-xl shadow-purple-950/40 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Unlock Productivity Tools</span>
-                <FiArrowRight />
+                <ArrowRight />
               </button>
             </div>
 

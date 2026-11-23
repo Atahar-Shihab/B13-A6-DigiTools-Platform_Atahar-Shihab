@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiX, FiCheck, FiPlay, FiZap, FiLayers, FiDownloadCloud, FiArrowRight } from 'react-icons/fi';
+import { X, Check, Play, Zap, Layers, CloudDownload, ArrowRight } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 
@@ -14,21 +14,21 @@ export const InteractiveTourModal = () => {
       title: '1. Curated Asset Intelligence',
       badge: 'Discovery Phase',
       desc: 'Browse hundreds of vetted developer boilerplates, UI libraries, and AI automations. Filter by framework, technology stack, and licensing terms with sub-second latency.',
-      icon: FiZap,
+      icon: Zap,
       highlight: '99.8% Code Quality Score'
     },
     {
       title: '2. Frictionless 1-Click Licensing',
       badge: 'Checkout Experience',
       desc: 'No confusing subscriptions or lock-ins. Every asset comes with instant commercial licensing rights, unlimited client deployment permissions, and automated tax invoicing.',
-      icon: FiLayers,
+      icon: Layers,
       highlight: 'Unlimited Client Deployments'
     },
     {
       title: '3. Real-Time Cloud Sync & Updates',
       badge: 'Post-Purchase Life',
       desc: 'Stay ahead of breaking changes. When Tailwind, React, or Figma releases a major version update, your purchased kits are updated automatically in your personal vault.',
-      icon: FiDownloadCloud,
+      icon: CloudDownload,
       highlight: 'Lifetime Zero-Cost Upgrades'
     }
   ];
@@ -43,7 +43,7 @@ export const InteractiveTourModal = () => {
         <div className="flex items-center justify-between pb-6 border-b border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center">
-              <FiPlay className="text-lg fill-current ml-0.5" />
+              <Play className="text-lg fill-current ml-0.5" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -60,7 +60,7 @@ export const InteractiveTourModal = () => {
             }}
             className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <FiX size={20} />
+            <X size={20} />
           </button>
         </div>
 
@@ -91,7 +91,7 @@ export const InteractiveTourModal = () => {
               {steps[activeStep].badge}
             </span>
             <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-              <FiCheck /> {steps[activeStep].highlight}
+              <Check /> {steps[activeStep].highlight}
             </span>
           </div>
 
@@ -130,7 +130,7 @@ export const InteractiveTourModal = () => {
             className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-2 cursor-pointer transition-all"
           >
             <span>{activeStep === steps.length - 1 ? 'Start Using DigiTools' : 'Next Step'}</span>
-            <FiArrowRight />
+            <ArrowRight />
           </button>
         </div>
       </div>

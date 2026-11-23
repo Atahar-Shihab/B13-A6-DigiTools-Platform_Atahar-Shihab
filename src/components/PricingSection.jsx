@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiCheck, FiX, FiHelpCircle, FiChevronDown, FiChevronUp, FiZap } from 'react-icons/fi';
+import { Check, X, HelpCircle, ChevronDown, ChevronUp, Zap } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
@@ -106,7 +106,7 @@ export const PricingSection = () => {
               <ul className="space-y-3 mb-8">
                 {['Access to 10 free UI toolkits', 'Basic Figma components', 'Community Discord support', 'Personal non-commercial use'].map((f, i) => (
                   <li key={i} className="flex items-center text-xs text-gray-600 dark:text-gray-300">
-                    <FiCheck className="text-emerald-500 mr-2.5 text-base shrink-0" />
+                    <Check className="text-emerald-500 mr-2.5 text-base shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -158,7 +158,7 @@ export const PricingSection = () => {
                   ].map((f, i) => (
                     <li key={i} className="flex items-center text-xs font-medium text-white">
                       <div className="w-4 h-4 rounded-full bg-white text-[#8B5CF6] flex items-center justify-center mr-2.5 shrink-0">
-                        <FiCheck className="text-[10px]" />
+                        <Check className="text-[10px]" />
                       </div>
                       <span>{f}</span>
                     </li>
@@ -204,7 +204,7 @@ export const PricingSection = () => {
                   '99.99% SLA uptime guarantee'
                 ].map((f, i) => (
                   <li key={i} className="flex items-center text-xs text-gray-600 dark:text-gray-300">
-                    <FiCheck className="text-emerald-500 mr-2.5 text-base shrink-0" />
+                    <Check className="text-emerald-500 mr-2.5 text-base shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -231,7 +231,7 @@ export const PricingSection = () => {
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-gray-200 dark:border-gray-800 text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors cursor-pointer"
           >
             <span>{showMatrix ? 'Hide Full Feature Matrix' : 'Compare All Features in Detail'}</span>
-            {showMatrix ? <FiChevronUp /> : <FiChevronDown />}
+            {showMatrix ? <ChevronUp /> : <ChevronDown />}
           </button>
 
           {showMatrix && (
@@ -250,13 +250,13 @@ export const PricingSection = () => {
                     <tr key={idx} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/30">
                       <td className="p-4 font-semibold text-gray-700 dark:text-gray-300">{item.name}</td>
                       <td className="p-4 text-center">
-                        {item.starter ? <FiCheck className="mx-auto text-emerald-500 text-base" /> : <FiX className="mx-auto text-gray-300 dark:text-gray-600 text-base" />}
+                        {item.starter ? <Check className="mx-auto text-emerald-500 text-base" /> : <X className="mx-auto text-gray-300 dark:text-gray-600 text-base" />}
                       </td>
                       <td className="p-4 text-center bg-purple-50/30 dark:bg-purple-950/10">
-                        {item.pro ? <FiCheck className="mx-auto text-[#8B5CF6] text-base font-bold" /> : <FiX className="mx-auto text-gray-300 text-base" />}
+                        {item.pro ? <Check className="mx-auto text-[#8B5CF6] text-base font-bold" /> : <X className="mx-auto text-gray-300 text-base" />}
                       </td>
                       <td className="p-4 text-center">
-                        {item.enterprise ? <FiCheck className="mx-auto text-emerald-500 text-base" /> : <FiX className="mx-auto text-gray-300 text-base" />}
+                        {item.enterprise ? <Check className="mx-auto text-emerald-500 text-base" /> : <X className="mx-auto text-gray-300 text-base" />}
                       </td>
                     </tr>
                   ))}

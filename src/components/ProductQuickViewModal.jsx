@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
-import { 
-  FiX, 
-  FiCheck, 
-  FiStar, 
-  FiHeart, 
-  FiShoppingCart, 
-  FiShield, 
-  FiDownload, 
-  FiLayers, 
-  FiCode, 
-  FiCpu,
-  FiSend,
-  FiTerminal
-} from 'react-icons/fi';
+import { X, Check, Star, Heart, ShoppingCart, Shield, Download, Layers, Code, Cpu, Send, Terminal } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
+import { ProductIcon } from './ProductIcon';
 
 export const ProductQuickViewModal = () => {
   const {
@@ -64,8 +52,8 @@ export const ProductQuickViewModal = () => {
         {/* Modal Header */}
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 p-2 flex items-center justify-center border border-purple-100 dark:border-purple-900/40">
-              <img src={selectedProduct.icon} alt={selectedProduct.name} className="w-6 h-6 object-contain" />
+            <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 p-2 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 text-[#8B5CF6] dark:text-purple-300">
+              <ProductIcon icon={selectedProduct.icon} id={selectedProduct.id} name={selectedProduct.name} size={22} />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white leading-tight">
@@ -84,7 +72,7 @@ export const ProductQuickViewModal = () => {
             }}
             className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <FiX size={20} />
+            <X size={20} />
           </button>
         </div>
 
@@ -166,7 +154,7 @@ export const ProductQuickViewModal = () => {
                   {selectedProduct.features.map((feature, i) => (
                     <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-800/60 p-2.5 rounded-xl border border-gray-100 dark:border-gray-800">
                       <span className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
-                        <FiCheck className="text-xs" />
+                        <Check className="text-xs" />
                       </span>
                       <span>{feature}</span>
                     </div>
@@ -177,17 +165,17 @@ export const ProductQuickViewModal = () => {
               {/* Guarantees */}
               <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40 text-center">
                 <div>
-                  <FiDownload className="mx-auto text-[#8B5CF6] text-lg mb-1" />
+                  <Download className="mx-auto text-[#8B5CF6] text-lg mb-1" />
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Instant File Sync</p>
                   <p className="text-[10px] text-gray-500">Cloud delivered</p>
                 </div>
                 <div>
-                  <FiShield className="mx-auto text-[#8B5CF6] text-lg mb-1" />
+                  <Shield className="mx-auto text-[#8B5CF6] text-lg mb-1" />
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Commercial Rights</p>
                   <p className="text-[10px] text-gray-500">Unlimited clients</p>
                 </div>
                 <div>
-                  <FiCpu className="mx-auto text-[#8B5CF6] text-lg mb-1" />
+                  <Cpu className="mx-auto text-[#8B5CF6] text-lg mb-1" />
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Lifetime Updates</p>
                   <p className="text-[10px] text-gray-500">No hidden fees</p>
                 </div>
@@ -254,7 +242,7 @@ export const ProductQuickViewModal = () => {
                     disabled={isGenerating}
                     className="px-4 py-2 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
                   >
-                    <FiSend /> {isGenerating ? 'Processing...' : 'Run Test'}
+                    <Send /> {isGenerating ? 'Processing...' : 'Run Test'}
                   </button>
                 </div>
 
@@ -277,7 +265,7 @@ export const ProductQuickViewModal = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-gray-900 dark:text-white">Jordan Drake • Senior Product Designer</span>
                     <div className="flex text-amber-400 text-xs">
-                      {[...Array(5)].map((_, i) => <FiStar key={i} className="fill-current" />)}
+                      {[...Array(5)].map((_, i) => <Star key={i} className="fill-current" />)}
                     </div>
                   </div>
                   <p className="text-xs text-gray-500 mt-0.5">
@@ -294,7 +282,7 @@ export const ProductQuickViewModal = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-gray-900 dark:text-white">Maya Lin • Agency Founder</span>
                     <div className="flex text-amber-400 text-xs">
-                      {[...Array(5)].map((_, i) => <FiStar key={i} className="fill-current" />)}
+                      {[...Array(5)].map((_, i) => <Star key={i} className="fill-current" />)}
                     </div>
                   </div>
                   <p className="text-xs text-gray-500 mt-0.5">
@@ -353,7 +341,7 @@ export const ProductQuickViewModal = () => {
               }`}
               title="Save to Wishlist"
             >
-              <FiHeart className={`text-lg ${inWishlist ? 'fill-current' : ''}`} />
+              <Heart className={`text-lg ${inWishlist ? 'fill-current' : ''}`} />
             </button>
 
             <button
@@ -364,14 +352,14 @@ export const ProductQuickViewModal = () => {
               className="p-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
               title="Scaffold via CLI"
             >
-              <FiTerminal className="text-lg" />
+              <Terminal className="text-lg" />
             </button>
 
             <button
               onClick={handleAddWithQuantity}
               className="px-6 py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center gap-2 transition-all cursor-pointer"
             >
-              <FiShoppingCart /> Add to Cart
+              <ShoppingCart /> Add to Cart
             </button>
           </div>
         </div>

@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  FiX, 
-  FiCreditCard, 
-  FiShield, 
-  FiCheckCircle, 
-  FiDownload, 
-  FiPrinter, 
-  FiArrowRight, 
-  FiArrowLeft,
-  FiLock,
-  FiCopy
-} from 'react-icons/fi';
+import { X, CreditCard, Shield, CheckCircle2, Download, Printer, ArrowRight, ArrowLeft, Lock, Copy } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
@@ -123,7 +112,7 @@ export const CheckoutModal = () => {
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center font-bold">
-              <FiLock className="text-lg" />
+              <Lock className="text-lg" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -141,7 +130,7 @@ export const CheckoutModal = () => {
             onClick={handleClose}
             className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <FiX size={20} />
+            <X size={20} />
           </button>
         </div>
 
@@ -211,7 +200,7 @@ export const CheckoutModal = () => {
                 className="w-full py-3.5 rounded-2xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
               >
                 <span>Continue to Payment</span>
-                <FiArrowRight />
+                <ArrowRight />
               </button>
             </form>
           )}
@@ -230,7 +219,7 @@ export const CheckoutModal = () => {
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300'
                   }`}
                 >
-                  <FiCreditCard className="text-lg" />
+                  <CreditCard className="text-lg" />
                   <span>Credit Card</span>
                 </button>
 
@@ -298,7 +287,7 @@ export const CheckoutModal = () => {
                   onClick={() => setStep(1)}
                   className="px-5 py-3 rounded-2xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center gap-1.5"
                 >
-                  <FiArrowLeft /> Back
+                  <ArrowLeft /> Back
                 </button>
                 <button
                   type="button"
@@ -306,7 +295,7 @@ export const CheckoutModal = () => {
                   disabled={isProcessing}
                   className="flex-1 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer disabled:opacity-50"
                 >
-                  <FiShield />
+                  <Shield />
                   <span>{isProcessing ? 'Processing Securely...' : `Authorize & Pay ${formatPrice(totalAmount)}`}</span>
                 </button>
               </div>
@@ -317,7 +306,7 @@ export const CheckoutModal = () => {
           {step === 3 && orderSummary && (
             <div className="space-y-6 text-center animate-fadeIn">
               <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-3xl">
-                <FiCheckCircle />
+                <CheckCircle2 />
               </div>
 
               <div>
@@ -345,7 +334,7 @@ export const CheckoutModal = () => {
                       className="p-1.5 rounded-lg text-gray-400 hover:text-[#8B5CF6] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                       title="Copy Key"
                     >
-                      <FiCopy />
+                      <Copy />
                     </button>
                   </div>
                 ))}
@@ -377,7 +366,7 @@ export const CheckoutModal = () => {
                   onClick={() => window.print()}
                   className="w-full sm:w-auto px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-bold text-xs hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <FiPrinter /> Print
+                  <Printer /> Print
                 </button>
                 <button
                   onClick={() => {
@@ -387,7 +376,7 @@ export const CheckoutModal = () => {
                   }}
                   className="w-full sm:flex-1 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <FiDownload /> View in License Vault
+                  <Download /> View in License Vault
                 </button>
                 <button
                   onClick={handleClose}

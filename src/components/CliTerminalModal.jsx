@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  FiX, 
-  FiTerminal, 
-  FiCopy, 
-  FiPlay, 
-  FiCheck, 
-  FiCode, 
-  FiPackage,
-  FiExternalLink
-} from 'react-icons/fi';
+import { X, Terminal, Copy, Play, Check, Code, Package, ExternalLink } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
@@ -94,7 +85,7 @@ export const CliTerminalModal = () => {
               <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
             </div>
             <span className="text-xs font-mono font-bold text-gray-400 ml-2 flex items-center gap-1.5">
-              <FiTerminal className="text-[#8B5CF6]" />
+              <Terminal className="text-[#8B5CF6]" />
               <span>digitools-cli — {cliProduct?.name || 'Developer Toolkit'}</span>
             </span>
           </div>
@@ -106,7 +97,7 @@ export const CliTerminalModal = () => {
             }}
             className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors cursor-pointer"
           >
-            <FiX size={16} />
+            <X size={16} />
           </button>
         </div>
 
@@ -114,7 +105,7 @@ export const CliTerminalModal = () => {
         <div className="p-6 space-y-6">
           <div>
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <FiPackage className="text-[#8B5CF6]" />
+              <Package className="text-[#8B5CF6]" />
               <span>Scaffold via Command-Line</span>
             </h3>
             <p className="text-xs text-gray-400 mt-1">
@@ -155,7 +146,7 @@ export const CliTerminalModal = () => {
                 className="px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 hover:text-white font-mono text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border border-gray-700"
                 title="Copy Command"
               >
-                {copied ? <FiCheck className="text-emerald-400" /> : <FiCopy />}
+                {copied ? <Check className="text-emerald-400" /> : <Copy />}
                 <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
@@ -165,7 +156,7 @@ export const CliTerminalModal = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-extrabold tracking-wider text-gray-400 flex items-center gap-1.5">
-                <FiCode /> Sandbox Terminal Output:
+                <Code /> Sandbox Terminal Output:
               </span>
 
               <button
@@ -173,7 +164,7 @@ export const CliTerminalModal = () => {
                 disabled={isRunningSimulation}
                 className="px-3.5 py-1.5 rounded-xl bg-purple-600/20 hover:bg-purple-600/30 text-purple-300 border border-purple-500/30 text-xs font-bold flex items-center gap-1.5 cursor-pointer disabled:opacity-50 transition-colors"
               >
-                <FiPlay size={12} />
+                <Play size={12} />
                 <span>{isRunningSimulation ? 'Executing...' : 'Simulate Terminal Run'}</span>
               </button>
             </div>
@@ -214,7 +205,7 @@ export const CliTerminalModal = () => {
               className="hover:text-purple-400 flex items-center gap-1 transition-colors"
             >
               <span>CLI Documentation</span>
-              <FiExternalLink size={12} />
+              <ExternalLink size={12} />
             </a>
           </div>
         </div>

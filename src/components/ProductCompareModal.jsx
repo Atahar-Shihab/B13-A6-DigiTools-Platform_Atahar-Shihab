@@ -1,16 +1,8 @@
 import React from 'react';
-import { 
-  FiX, 
-  FiCheck, 
-  FiMinus, 
-  FiTrash2, 
-  FiShoppingCart, 
-  FiStar, 
-  FiLayers, 
-  FiCpu
-} from 'react-icons/fi';
+import { X, Check, Minus, Trash2, ShoppingCart, Star, Layers, Cpu } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
+import { ProductIcon } from './ProductIcon';
 
 export const ProductCompareModal = () => {
   const {
@@ -41,7 +33,7 @@ export const ProductCompareModal = () => {
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-20">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center font-bold">
-              <FiLayers className="text-xl" />
+              <Layers className="text-xl" />
             </div>
             <div>
               <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
@@ -73,7 +65,7 @@ export const ProductCompareModal = () => {
               className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Close comparison"
             >
-              <FiX size={20} />
+              <X size={20} />
             </button>
           </div>
         </div>
@@ -128,12 +120,12 @@ export const ProductCompareModal = () => {
                         className="absolute top-2.5 right-2.5 p-1 text-gray-400 hover:text-rose-500 rounded-lg transition-colors"
                         title="Remove from comparison"
                       >
-                        <FiTrash2 size={14} />
+                        <Trash2 size={14} />
                       </button>
 
                       <div>
-                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 mb-3">
-                          <img src={product.icon} alt={product.name} className="w-8 h-8 object-contain" />
+                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 mb-3 text-[#8B5CF6] dark:text-purple-300">
+                          <ProductIcon icon={product.icon} id={product.id} name={product.name} size={24} />
                         </div>
                         <h4 className="font-bold text-sm text-gray-900 dark:text-white line-clamp-1 mb-1">
                           {product.name}
@@ -157,7 +149,7 @@ export const ProductCompareModal = () => {
                             : 'bg-[#8B5CF6] hover:bg-purple-700'
                         }`}
                       >
-                        <FiShoppingCart size={13} />
+                        <ShoppingCart size={13} />
                         <span>{inCart ? 'In Cart' : 'Add to Cart'}</span>
                       </button>
                     </div>
@@ -170,7 +162,7 @@ export const ProductCompareModal = () => {
                     key={`empty-${idx}`}
                     className="border-2 border-dashed border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center text-gray-400"
                   >
-                    <FiCpu className="text-2xl mb-2 opacity-50" />
+                    <Cpu className="text-2xl mb-2 opacity-50" />
                     <p className="text-xs font-semibold">Select another product</p>
                     <span className="text-[10px] opacity-75 mt-0.5">Up to 3 items</span>
                   </div>
@@ -184,7 +176,7 @@ export const ProductCompareModal = () => {
                   <span className="font-bold text-gray-700 dark:text-gray-300">Rating & Reviews</span>
                   {compareList.map((product) => (
                     <div key={product.id} className="flex items-center gap-1 text-amber-400 font-bold">
-                      <FiStar className="fill-current text-xs" />
+                      <Star className="fill-current text-xs" />
                       <span className="text-gray-900 dark:text-white">{product.rating}</span>
                       <span className="text-gray-400 font-normal text-[11px]">({product.reviewsCount} reviews)</span>
                     </div>
@@ -240,7 +232,7 @@ export const ProductCompareModal = () => {
                   <span className="font-bold text-gray-700 dark:text-gray-300">Commercial License</span>
                   {compareList.map((product) => (
                     <div key={product.id} className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-bold">
-                      <FiCheck />
+                      <Check />
                       <span>Full Commercial Rights</span>
                     </div>
                   ))}
@@ -265,11 +257,11 @@ export const ProductCompareModal = () => {
                           <div key={product.id} className="flex items-center">
                             {hasFeature ? (
                               <span className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                                <FiCheck size={12} />
+                                <Check size={12} />
                               </span>
                             ) : (
                               <span className="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-400 flex items-center justify-center">
-                                <FiMinus size={12} />
+                                <Minus size={12} />
                               </span>
                             )}
                           </div>

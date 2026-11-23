@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiStar, FiCheckCircle, FiMessageSquare, FiX, FiSend } from 'react-icons/fi';
+import { Star, CheckCircle2, MessageSquare, X, Send } from 'lucide-react';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
 
@@ -135,7 +135,7 @@ export const TestimonialsSection = () => {
               }}
               className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-2 cursor-pointer transition-all"
             >
-              <FiMessageSquare /> Leave a Review
+              <MessageSquare /> Leave a Review
             </button>
           </div>
         </div>
@@ -152,12 +152,12 @@ export const TestimonialsSection = () => {
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex text-amber-400 text-xs gap-0.5">
                     {[...Array(rev.rating)].map((_, i) => (
-                      <FiStar key={i} className="fill-current" />
+                      <Star key={i} className="fill-current" />
                     ))}
                   </div>
                   {rev.verified && (
                     <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                      <FiCheckCircle className="text-xs" /> Verified Buyer
+                      <CheckCircle2 className="text-xs" /> Verified Buyer
                     </span>
                   )}
                 </div>
@@ -200,7 +200,7 @@ export const TestimonialsSection = () => {
                   onClick={() => setIsModalOpen(false)}
                   className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
                 >
-                  <FiX size={18} />
+                  <X size={18} />
                 </button>
               </div>
 
@@ -257,7 +257,7 @@ export const TestimonialsSection = () => {
                   type="submit"
                   className="w-full py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
-                  <FiSend /> Post Verified Review
+                  <Send /> Post Verified Review
                 </button>
               </form>
             </div>

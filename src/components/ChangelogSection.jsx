@@ -1,14 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  FiGitCommit, 
-  FiCheckCircle, 
-  FiClock, 
-  FiArrowUpRight, 
-  FiSliders,
-  FiChevronDown,
-  FiChevronUp,
-  FiCode
-} from 'react-icons/fi';
+import { GitCommit, CheckCircle2, Clock, ArrowUpRight, Sliders, ChevronDown, ChevronUp, Code } from 'lucide-react';
 import changelogData from '../data/changelog.json';
 import { sound } from '../utils/sound';
 import { toast } from 'react-toastify';
@@ -52,7 +43,7 @@ export const ChangelogSection = () => {
     <section id="changelog" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-950/60 text-[#8B5CF6] dark:text-purple-300 border border-purple-200 dark:border-purple-800/60 mb-4">
-          <FiGitCommit className="text-[#8B5CF6]" />
+          <GitCommit className="text-[#8B5CF6]" />
           <span>Continuous Engineering Delivery</span>
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tight">
@@ -77,7 +68,7 @@ export const ChangelogSection = () => {
                   : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300'
               }`}
             >
-              <FiSliders size={11} />
+              <Sliders size={11} />
               <span>{tag}</span>
             </button>
           ))}
@@ -88,7 +79,7 @@ export const ChangelogSection = () => {
             title="Subscribe via RSS / Atom Feed"
           >
             <span>RSS Feed</span>
-            <FiArrowUpRight size={13} />
+            <ArrowUpRight size={13} />
           </button>
         </div>
       </div>
@@ -128,7 +119,7 @@ export const ChangelogSection = () => {
 
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
-                        <FiClock size={13} />
+                        <Clock size={13} />
                         <span>{release.date}</span>
                       </div>
                       <button
@@ -136,7 +127,7 @@ export const ChangelogSection = () => {
                         className="p-1.5 rounded-lg text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
                         title={isExpanded ? 'Collapse notes' : 'Expand notes'}
                       >
-                        {isExpanded ? <FiChevronUp size={16} /> : <FiChevronDown size={16} />}
+                        {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                       </button>
                     </div>
                   </div>
@@ -155,7 +146,7 @@ export const ChangelogSection = () => {
                   {isExpanded && (
                     <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5 animate-fadeIn">
                       <h4 className="text-xs uppercase font-extrabold tracking-wider text-gray-400 flex items-center gap-1.5 mb-2">
-                        <FiCode /> Key Enhancements & Milestones:
+                        <Code /> Key Enhancements & Milestones:
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         {release.highlights.map((highlight, hIdx) => (
@@ -163,7 +154,7 @@ export const ChangelogSection = () => {
                             key={hIdx}
                             className="flex items-start gap-2.5 p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-700 dark:text-gray-300"
                           >
-                            <FiCheckCircle className="text-[#8B5CF6] shrink-0 mt-0.5" size={14} />
+                            <CheckCircle2 className="text-[#8B5CF6] shrink-0 mt-0.5" size={14} />
                             <span>{highlight}</span>
                           </div>
                         ))}

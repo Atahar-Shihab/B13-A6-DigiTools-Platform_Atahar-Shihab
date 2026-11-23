@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiX, FiCommand, FiShoppingBag, FiHeart, FiLayers, FiSun, FiVolume2, FiHelpCircle } from 'react-icons/fi';
+import { X, Command, ShoppingBag, Heart, Layers, Sun, Volume2, HelpCircle } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 
@@ -46,7 +46,7 @@ export const KeyboardShortcutsModal = () => {
         <div className="flex items-center justify-between pb-5 border-b border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center font-bold">
-              <FiHelpCircle className="text-xl" />
+              <HelpCircle className="text-xl" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -63,7 +63,7 @@ export const KeyboardShortcutsModal = () => {
             }}
             className="p-2 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
-            <FiX size={20} />
+            <X size={20} />
           </button>
         </div>
 
