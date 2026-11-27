@@ -50,7 +50,7 @@ export const FilterBar = ({ categories, totalResults }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search tools, templates, or features..."
-            className="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:bg-white dark:focus:bg-gray-950 transition-all shadow-xs"
+            className="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-white dark:focus:bg-gray-950 transition-all shadow-xs"
           />
           {searchQuery && (
             <button
@@ -78,7 +78,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               }}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 billingPeriod === 'all'
-                  ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                  ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                   : 'hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -91,7 +91,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               }}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 billingPeriod === 'monthly'
-                  ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                  ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                   : 'hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -104,7 +104,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               }}
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 billingPeriod === 'onetime'
-                  ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                  ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                   : 'hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -120,7 +120,7 @@ export const FilterBar = ({ categories, totalResults }) => {
                 sound.click();
                 setSortBy(e.target.value);
               }}
-              className="appearance-none bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold rounded-xl px-3 py-2 pr-7 cursor-pointer hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+              className="appearance-none bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold rounded-xl px-3 py-2 pr-7 cursor-pointer hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
               aria-label="Sort products by"
             >
               <option value="featured">Featured First</option>
@@ -143,7 +143,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               }}
               className={`p-1.5 rounded-lg transition-all ${
                 viewMode === 'grid'
-                  ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                  ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                   : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
               }`}
               title="Grid View"
@@ -158,7 +158,7 @@ export const FilterBar = ({ categories, totalResults }) => {
               }}
               className={`p-1.5 rounded-lg transition-all ${
                 viewMode === 'list'
-                  ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                  ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                   : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
               }`}
               title="List View"
@@ -182,7 +182,7 @@ export const FilterBar = ({ categories, totalResults }) => {
                 onClick={() => handleCategorySelect(cat)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
                   isSelected
-                    ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/25 scale-102'
+                    ? 'bg-purple-500 text-white shadow-md shadow-purple-500/25 scale-102'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
@@ -198,7 +198,7 @@ export const FilterBar = ({ categories, totalResults }) => {
           {hasActiveFilters && (
             <button
               onClick={resetFilters}
-              className="flex items-center gap-1 text-[#8B5CF6] dark:text-purple-400 hover:underline cursor-pointer"
+              className="flex items-center gap-1 text-purple-500 dark:text-purple-400 hover:underline cursor-pointer"
             >
               <RotateCcw className="text-xs" /> Reset
             </button>

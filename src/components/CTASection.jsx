@@ -29,7 +29,7 @@ export const CTASection = () => {
   };
 
   return (
-    <section className="bg-gradient-to-tr from-[#7C3AED] via-[#8B5CF6] to-indigo-600 py-20 text-white relative overflow-hidden">
+    <section className="bg-gradient-to-tr from-purple-600 via-purple-500 to-indigo-600 py-20 text-white relative overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute -top-24 -left-24 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -64,7 +64,7 @@ export const CTASection = () => {
               </div>
               <button
                 type="submit"
-                className="px-6 py-3 rounded-2xl bg-white text-[#8B5CF6] hover:bg-purple-50 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
+                className="px-6 py-3 rounded-2xl bg-white text-purple-500 hover:bg-purple-50 font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
               >
                 <span>Unlock 10% Off</span>
                 <ArrowRight />
@@ -93,7 +93,7 @@ export const CTASection = () => {
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <button
             onClick={() => handleScrollTo('products')}
-            className="bg-white text-[#8B5CF6] hover:bg-purple-50 font-bold text-xs sm:text-sm rounded-2xl px-8 py-3.5 transition-all shadow-md cursor-pointer"
+            className="bg-white text-purple-500 hover:bg-purple-50 font-bold text-xs sm:text-sm rounded-2xl px-8 py-3.5 transition-all shadow-md cursor-pointer"
           >
             Explore All Production Toolkits
           </button>

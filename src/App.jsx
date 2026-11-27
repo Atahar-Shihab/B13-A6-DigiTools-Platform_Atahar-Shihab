@@ -174,7 +174,7 @@ function MainShopContent() {
         
         {/* Section Heading & Products / Cart Tab Switcher */}
         <div className="text-center mb-10">
-          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-500 dark:text-purple-300 inline-block mb-3">
             Digital Asset Store
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
@@ -193,7 +193,7 @@ function MainShopContent() {
               }}
               className={`px-8 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all cursor-pointer ${
                 activeCatalogTab === 'products'
-                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/20'
+                  ? 'bg-purple-500 text-white shadow-md shadow-purple-500/20'
                   : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -206,13 +206,13 @@ function MainShopContent() {
               }}
               className={`px-8 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeCatalogTab === 'cart'
-                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/20'
+                  ? 'bg-purple-500 text-white shadow-md shadow-purple-500/20'
                   : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
               <span>View Cart</span>
               <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
-                activeCatalogTab === 'cart' ? 'bg-white/25 text-white' : 'bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6] dark:text-purple-300'
+                activeCatalogTab === 'cart' ? 'bg-white/25 text-white' : 'bg-purple-100 dark:bg-purple-900/60 text-purple-500 dark:text-purple-300'
               }`}>
                 {totalItemCount}
               </span>
@@ -235,7 +235,7 @@ function MainShopContent() {
             {/* Product Cards Grid or List */}
             {filteredProducts.length === 0 ? (
               <div className="bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl p-12 text-center max-w-lg mx-auto">
-                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-950/60 text-[#8B5CF6] flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+                <div className="w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-950/60 text-purple-500 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                   🔍
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
@@ -246,7 +246,7 @@ function MainShopContent() {
                 </p>
                 <button
                   onClick={resetAllCatalogFilters}
-                  className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
+                  className="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
                 >
                   <RotateCcw /> Reset All Filters
                 </button>
@@ -272,7 +272,7 @@ function MainShopContent() {
           <div className="max-w-3xl mx-auto bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-xl rounded-3xl p-6 sm:p-8">
             <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-5 mb-6">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                <ShoppingBag className="text-[#8B5CF6]" />
+                <ShoppingBag className="text-purple-500" />
                 <span>Your Selected Products</span>
               </h3>
               {cart.length > 0 && (
@@ -302,7 +302,7 @@ function MainShopContent() {
                     sound.click();
                     setActiveCatalogTab('products');
                   }}
-                  className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
                 >
                   Explore Products Catalog
                 </button>
@@ -317,14 +317,14 @@ function MainShopContent() {
                       className="flex flex-col sm:flex-row sm:items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 gap-4"
                     >
                       <div className="flex items-center gap-3.5">
-                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center shrink-0 text-[#8B5CF6] dark:text-purple-300">
+                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center shrink-0 text-purple-500 dark:text-purple-300">
                           <ProductIcon icon={item.icon} id={item.id} name={item.name} size={22} />
                         </div>
                         <div>
                           <h4 className="font-bold text-sm text-gray-900 dark:text-white leading-tight">
                             {item.name}
                           </h4>
-                          <p className="text-xs text-[#8B5CF6] dark:text-purple-400 font-semibold mt-0.5">
+                          <p className="text-xs text-purple-500 dark:text-purple-400 font-semibold mt-0.5">
                             {formatPrice(item.price)} <span className="text-[11px] text-gray-400">/{item.period}</span>
                           </p>
                         </div>
@@ -414,7 +414,7 @@ function MainShopContent() {
                   </div>
                   <div className="flex justify-between items-center text-lg sm:text-xl font-black text-gray-900 dark:text-white pt-2 border-t border-gray-100 dark:border-gray-800">
                     <span>Grand Total:</span>
-                    <span className="text-2xl text-[#8B5CF6] dark:text-purple-400">
+                    <span className="text-2xl text-purple-500 dark:text-purple-400">
                       {formatPrice(totalAmount)}
                     </span>
                   </div>
@@ -425,7 +425,7 @@ function MainShopContent() {
                     sound.click();
                     setIsCheckoutOpen(true);
                   }}
-                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
                   <span>Proceed To Checkout Simulation</span>
                   <ArrowRight />

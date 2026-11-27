@@ -109,7 +109,7 @@ export const ProductIcon = ({
     }[badgeSize] || size;
 
     return (
-      <div className={`${sizeClasses} bg-gradient-to-tr from-purple-100 to-indigo-100 dark:from-purple-950/60 dark:to-indigo-950/60 flex items-center justify-center text-[#8B5CF6] dark:text-purple-300 border border-purple-200/80 dark:border-purple-800/60 shadow-xs shrink-0 group-hover:scale-105 transition-transform duration-300`}>
+      <div className={`${sizeClasses} bg-gradient-to-tr from-purple-100 to-indigo-100 dark:from-purple-950/60 dark:to-indigo-950/60 flex items-center justify-center text-purple-500 dark:text-purple-300 border border-purple-200/80 dark:border-purple-800/60 shadow-xs shrink-0 group-hover:scale-105 transition-transform duration-300`}>
         <IconComponent size={iconSizes} className={className} />
       </div>
     );

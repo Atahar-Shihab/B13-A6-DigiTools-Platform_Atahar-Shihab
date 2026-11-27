@@ -57,7 +57,7 @@ export const FAQSection = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-500 dark:text-purple-300 inline-block mb-3">
             Got Questions?
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
@@ -79,7 +79,7 @@ export const FAQSection = () => {
                 }}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   activeCategory === cat
-                    ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/25'
+                    ? 'bg-purple-500 text-white shadow-md shadow-purple-500/25'
                     : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               >
@@ -103,12 +103,12 @@ export const FAQSection = () => {
                   className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-gray-900 dark:text-white cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-850"
                 >
                   <span className="flex items-center gap-3">
-                    <HelpCircle className="text-[#8B5CF6] shrink-0" />
+                    <HelpCircle className="text-purple-500 shrink-0" />
                     <span>{faq.q}</span>
                   </span>
                   <ChevronDown
                     className={`transform transition-transform duration-300 text-gray-400 shrink-0 ${
-                      isOpen ? 'rotate-180 text-[#8B5CF6]' : ''
+                      isOpen ? 'rotate-180 text-purple-500' : ''
                     }`}
                   />
                 </button>
@@ -126,7 +126,7 @@ export const FAQSection = () => {
         {/* Support Callout */}
         <div className="mt-12 p-6 rounded-3xl bg-gradient-to-r from-purple-50 to-indigo-50 dark:from-purple-950/30 dark:to-indigo-950/30 border border-purple-100 dark:border-purple-900/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#8B5CF6] text-white flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-purple-500 text-white flex items-center justify-center shrink-0">
               <MessageCircle className="text-xl" />
             </div>
             <div>

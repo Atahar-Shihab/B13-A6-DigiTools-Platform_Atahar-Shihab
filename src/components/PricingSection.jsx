@@ -42,7 +42,7 @@ export const PricingSection = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-500 dark:text-purple-300 inline-block mb-3">
             Transparent Pricing
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
@@ -58,7 +58,7 @@ export const PricingSection = () => {
               onClick={toggleBilling}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 !isAnnual
-                  ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-sm'
+                  ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-sm'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -68,7 +68,7 @@ export const PricingSection = () => {
               onClick={toggleBilling}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 isAnnual
-                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/25'
+                  ? 'bg-purple-500 text-white shadow-md shadow-purple-500/25'
                   : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
             >
@@ -123,8 +123,8 @@ export const PricingSection = () => {
 
           {/* Card 2: Pro (Highlighted with Glow & Ambient Halo) */}
           <div className="relative group transform lg:-translate-y-4">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 rounded-[32px] blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x" />
-            <div className="relative bg-gradient-to-b from-[#8B5CF6] via-purple-700 to-indigo-800 text-white rounded-3xl p-8 lg:p-10 flex flex-col justify-between shadow-2xl h-full border border-purple-400/30">
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-600 rounded-[32px] blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-x" />
+            <div className="relative bg-gradient-to-b from-purple-500 via-purple-700 to-indigo-800 text-white rounded-3xl p-8 lg:p-10 flex flex-col justify-between shadow-2xl h-full border border-purple-400/30">
               <div className="absolute -top-3.5 left-1/2 transform -translate-x-1/2 bg-amber-300 text-amber-950 text-[10px] sm:text-xs font-black uppercase tracking-wider px-4 py-1 rounded-full shadow-md flex items-center gap-1">
                 <span>⭐</span>
                 <span>Most Popular • Best Value</span>
@@ -157,7 +157,7 @@ export const PricingSection = () => {
                     'Lifetime updates & priority sync'
                   ].map((f, i) => (
                     <li key={i} className="flex items-center text-xs font-medium text-white">
-                      <div className="w-4 h-4 rounded-full bg-white text-[#8B5CF6] flex items-center justify-center mr-2.5 shrink-0">
+                      <div className="w-4 h-4 rounded-full bg-white text-purple-500 flex items-center justify-center mr-2.5 shrink-0">
                         <Check className="text-[10px]" />
                       </div>
                       <span>{f}</span>
@@ -168,7 +168,7 @@ export const PricingSection = () => {
 
               <button
                 onClick={() => handleSelectPlan('Pro Creator')}
-                className="btn-glow w-full py-4 rounded-2xl bg-white text-[#8B5CF6] hover:bg-gray-50 font-black text-xs sm:text-sm shadow-xl shadow-purple-950/40 transition-all cursor-pointer"
+                className="btn-glow w-full py-4 rounded-2xl bg-white text-purple-500 hover:bg-gray-50 font-black text-xs sm:text-sm shadow-xl shadow-purple-950/40 transition-all cursor-pointer"
               >
                 Start 14-Day Free Pro Trial
               </button>
@@ -180,7 +180,7 @@ export const PricingSection = () => {
             <div>
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">Agency Team</h3>
-                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] dark:text-purple-300">
+                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-100 dark:bg-purple-900/50 text-purple-500 dark:text-purple-300">
                   Full Scale
                 </span>
               </div>
@@ -241,7 +241,7 @@ export const PricingSection = () => {
                   <tr className="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
                     <th className="p-4 font-bold text-gray-900 dark:text-white">Feature / Deliverable</th>
                     <th className="p-4 font-bold text-center text-gray-900 dark:text-white">Starter</th>
-                    <th className="p-4 font-bold text-center text-[#8B5CF6] dark:text-purple-400">Pro</th>
+                    <th className="p-4 font-bold text-center text-purple-500 dark:text-purple-400">Pro</th>
                     <th className="p-4 font-bold text-center text-gray-900 dark:text-white">Agency</th>
                   </tr>
                 </thead>
@@ -253,7 +253,7 @@ export const PricingSection = () => {
                         {item.starter ? <Check className="mx-auto text-emerald-500 text-base" /> : <X className="mx-auto text-gray-300 dark:text-gray-600 text-base" />}
                       </td>
                       <td className="p-4 text-center bg-purple-50/30 dark:bg-purple-950/10">
-                        {item.pro ? <Check className="mx-auto text-[#8B5CF6] text-base font-bold" /> : <X className="mx-auto text-gray-300 text-base" />}
+                        {item.pro ? <Check className="mx-auto text-purple-500 text-base font-bold" /> : <X className="mx-auto text-gray-300 text-base" />}
                       </td>
                       <td className="p-4 text-center">
                         {item.enterprise ? <Check className="mx-auto text-emerald-500 text-base" /> : <X className="mx-auto text-gray-300 text-base" />}

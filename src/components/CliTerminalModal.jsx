@@ -85,7 +85,7 @@ export const CliTerminalModal = () => {
               <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
             </div>
             <span className="text-xs font-mono font-bold text-gray-400 ml-2 flex items-center gap-1.5">
-              <Terminal className="text-[#8B5CF6]" />
+              <Terminal className="text-purple-500" />
               <span>digitools-cli — {cliProduct?.name || 'Developer Toolkit'}</span>
             </span>
           </div>
@@ -105,7 +105,7 @@ export const CliTerminalModal = () => {
         <div className="p-6 space-y-6">
           <div>
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <Package className="text-[#8B5CF6]" />
+              <Package className="text-purple-500" />
               <span>Scaffold via Command-Line</span>
             </h3>
             <p className="text-xs text-gray-400 mt-1">
@@ -124,7 +124,7 @@ export const CliTerminalModal = () => {
                 }}
                 className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
                   activeManager === pm
-                    ? 'bg-[#8B5CF6] text-white shadow-xs'
+                    ? 'bg-purple-500 text-white shadow-xs'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                 }`}
               >

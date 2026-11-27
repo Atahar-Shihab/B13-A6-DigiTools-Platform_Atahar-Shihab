@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, X, ShoppingCart, Heart, Sun, Moon, DollarSign, Zap, HelpCircle, Layers, Volume2, VolumeX, TrendingUp, Key, GitCommit } from 'lucide-react';
+import { Search, X, ShoppingCart, Heart, Sun, Moon, DollarSign, Zap, HelpCircle, Layers, Volume2, VolumeX, TrendingUp, Key, GitCommit, Palette, Check } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { sound } from '../utils/sound';
 import productsData from '../data.json';
@@ -16,6 +16,9 @@ export const CommandPalette = () => {
     setIsShortcutsOpen,
     setIsVaultOpen,
     toggleTheme,
+    colorTheme,
+    setColorTheme,
+    colorThemes,
     toggleSound,
     soundEnabled,
     theme,
@@ -26,10 +29,18 @@ export const CommandPalette = () => {
 
   if (!isCommandPaletteOpen) return null;
 
+  const q = query.trim().toLowerCase();
   const filteredTools = productsData.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase()) ||
-    item.category.toLowerCase().includes(query.toLowerCase()) ||
-    item.description.toLowerCase().includes(query.toLowerCase())
+    item.name.toLowerCase().includes(q) ||
+    item.category.toLowerCase().includes(q) ||
+    item.description.toLowerCase().includes(q)
+  );
+
+  const filteredThemes = colorThemes.filter((t) =>
+    !q ||
+    t.name.toLowerCase().includes(q) ||
+    t.description.toLowerCase().includes(q) ||
+    'theme palette color'.includes(q)
   );
 
   const handleAction = (callback) => {
@@ -89,11 +100,11 @@ export const CommandPalette = () => {
                     className="w-full p-2.5 rounded-xl hover:bg-purple-50 dark:hover:bg-purple-950/40 text-left flex items-center justify-between transition-colors group cursor-pointer"
                   >
                     <div className="flex items-center gap-2.5">
-                      <div className="w-6 h-6 rounded-md bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-[#8B5CF6] dark:text-purple-300 shrink-0">
+                      <div className="w-6 h-6 rounded-md bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-500 dark:text-purple-300 shrink-0">
                         <ProductIcon icon={tool.icon} id={tool.id} name={tool.name} size={14} />
                       </div>
                       <div>
-                        <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-[#8B5CF6]">
+                        <span className="font-bold text-gray-800 dark:text-gray-200 group-hover:text-purple-500">
                           {tool.name}
                         </span>
                         <span className="text-[10px] text-gray-400 ml-2">({tool.category})</span>
@@ -102,6 +113,46 @@ export const CommandPalette = () => {
                     <span className="font-mono text-gray-500 font-bold">{formatPrice(tool.price)}</span>
                   </button>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* Themes & Appearance */}
+          {filteredThemes.length > 0 && (
+            <div>
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block px-2 mb-2">
+                Color Themes
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                {filteredThemes.map((preset) => {
+                  const isActive = colorTheme === preset.id;
+                  return (
+                    <button
+                      key={preset.id}
+                      onClick={() => handleAction(() => setColorTheme(preset.id))}
+                      className={`w-full p-2.5 rounded-xl text-left flex items-center justify-between transition-colors cursor-pointer ${
+                        isActive
+                          ? 'bg-purple-50 dark:bg-purple-950/50 border border-purple-200 dark:border-purple-800/70'
+                          : 'hover:bg-gray-100 dark:hover:bg-gray-800 border border-transparent'
+                      }`}
+                    >
+                      <span className="flex items-center gap-2.5 text-gray-800 dark:text-gray-200">
+                        <span
+                          className="w-4 h-4 rounded-full shrink-0 shadow-xs"
+                          style={{
+                            background: `linear-gradient(135deg, ${preset.primary}, ${preset.secondary})`
+                          }}
+                        />
+                        <span className="font-semibold">{preset.name}</span>
+                      </span>
+                      {isActive ? (
+                        <Check size={14} className="text-purple-500" />
+                      ) : (
+                        <Palette size={12} className="text-gray-400" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -116,7 +167,7 @@ export const CommandPalette = () => {
                 onClick={() => handleScrollTo('products')}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
               >
-                <span className="flex items-center gap-2"><Zap className="text-[#8B5CF6]" /> Browse Catalog</span>
+                <span className="flex items-center gap-2"><Zap className="text-purple-500" /> Browse Catalog</span>
                 <span className="text-gray-400 text-[10px]">#products</span>
               </button>
               <button
@@ -130,7 +181,7 @@ export const CommandPalette = () => {
                 onClick={() => handleScrollTo('demo-showcase')}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
               >
-                <span className="flex items-center gap-2"><Zap className="text-[#8B5CF6]" /> Live Interactive Sandbox</span>
+                <span className="flex items-center gap-2"><Zap className="text-purple-500" /> Live Interactive Sandbox</span>
                 <span className="text-gray-400 text-[10px]">#demo-showcase</span>
               </button>
               <button
@@ -144,7 +195,7 @@ export const CommandPalette = () => {
                 onClick={() => handleScrollTo('changelog')}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
               >
-                <span className="flex items-center gap-2"><GitCommit className="text-[#8B5CF6]" /> Platform Changelog & Releases</span>
+                <span className="flex items-center gap-2"><GitCommit className="text-purple-500" /> Platform Changelog & Releases</span>
                 <span className="text-gray-400 text-[10px]">#changelog</span>
               </button>
               <button
@@ -167,7 +218,7 @@ export const CommandPalette = () => {
                 onClick={() => handleAction(() => setIsCompareOpen(true))}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
               >
-                <span className="flex items-center gap-2"><Layers className="text-[#8B5CF6]" /> Open Product Comparison Matrix</span>
+                <span className="flex items-center gap-2"><Layers className="text-purple-500" /> Open Product Comparison Matrix</span>
                 <span className="text-gray-400 text-[10px]">Hotkey: X</span>
               </button>
               <button
@@ -188,7 +239,7 @@ export const CommandPalette = () => {
                 onClick={() => handleAction(() => setIsVaultOpen(true))}
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
               >
-                <span className="flex items-center gap-2"><Key className="text-[#8B5CF6]" /> Open License Vault & Entitlements</span>
+                <span className="flex items-center gap-2"><Key className="text-purple-500" /> Open License Vault & Entitlements</span>
                 <span className="text-gray-400 text-[10px]">Hotkey: V</span>
               </button>
               <button
@@ -213,7 +264,7 @@ export const CommandPalette = () => {
                 className="w-full p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-left flex items-center justify-between text-gray-700 dark:text-gray-300 cursor-pointer"
               >
                 <span className="flex items-center gap-2">
-                  {soundEnabled ? <Volume2 className="text-[#8B5CF6]" /> : <VolumeX className="text-gray-400" />}
+                  {soundEnabled ? <Volume2 className="text-purple-500" /> : <VolumeX className="text-gray-400" />}
                   <span>Toggle Audio Effects</span>
                 </span>
                 <span className="text-gray-400 text-[10px]">Hotkey: M</span>

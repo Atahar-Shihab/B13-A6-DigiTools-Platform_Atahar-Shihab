@@ -33,10 +33,10 @@ export const Hero = () => {
           {/* Left Column: Typography & Conversion Core */}
           <div className="w-full lg:w-1/2 text-left z-10">
             {/* Pill Tag with Pulsing Ping */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-[#8B5CF6] dark:text-purple-300 text-xs sm:text-sm font-bold mb-6 shadow-xs backdrop-blur-md">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-purple-500 dark:text-purple-300 text-xs sm:text-sm font-bold mb-6 shadow-xs backdrop-blur-md">
               <span className="flex h-2.5 w-2.5 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#8B5CF6]"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
               </span>
               <span>Next-Gen AI & Digital Assets Studio • Version 2.0</span>
             </div>
@@ -44,7 +44,7 @@ export const Hero = () => {
             {/* Shimmering Animated Headline */}
             <h1 className="text-4xl sm:text-6xl lg:text-[66px] font-black tracking-tight text-gray-900 dark:text-white leading-[1.08] mb-6">
               Supercharge Your <br />
-              <span className="bg-gradient-to-r from-[#8B5CF6] via-fuchsia-500 to-indigo-600 bg-clip-text text-transparent animate-gradient-x">
+              <span className="bg-gradient-to-r from-purple-500 via-fuchsia-500 to-indigo-600 bg-clip-text text-transparent animate-gradient-x">
                 Digital Workflow
               </span>
             </h1>
@@ -58,7 +58,7 @@ export const Hero = () => {
             <div className="flex flex-wrap items-center gap-4 mb-10">
               <button
                 onClick={handleScrollToProducts}
-                className="btn-glow px-8 py-4 rounded-2xl bg-gradient-to-r from-[#8B5CF6] via-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black text-base shadow-xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 cursor-pointer"
+                className="btn-glow px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black text-base shadow-xl shadow-purple-500/30 hover:shadow-purple-500/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 cursor-pointer"
               >
                 <span>Explore Products</span>
                 <ArrowRight className="text-lg group-hover:translate-x-1.5 transition-transform" />
@@ -71,7 +71,7 @@ export const Hero = () => {
                 }}
                 className="px-7 py-4 rounded-2xl bg-white/90 dark:bg-gray-900/90 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 font-bold text-base hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 shadow-md backdrop-blur-md cursor-pointer"
               >
-                <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/60 flex items-center justify-center text-[#8B5CF6]">
+                <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/60 flex items-center justify-center text-purple-500">
                   <Play className="text-sm ml-0.5 fill-current" />
                 </div>
                 <span>Watch Interactive Tour</span>
@@ -85,7 +85,7 @@ export const Hero = () => {
                   sound.click();
                   setIsCommandOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 hover:text-[#8B5CF6] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 hover:text-purple-500 transition-colors cursor-pointer"
               >
                 <kbd className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-[10px] font-mono font-bold text-gray-700 dark:text-gray-300 shadow-2xs">
                   Ctrl+K
@@ -98,7 +98,7 @@ export const Hero = () => {
                   sound.click();
                   setIsVaultOpen(true);
                 }}
-                className="inline-flex items-center gap-1.5 hover:text-[#8B5CF6] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 hover:text-purple-500 transition-colors cursor-pointer"
               >
                 <kbd className="px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-[10px] font-mono font-bold text-gray-700 dark:text-gray-300 shadow-2xs">
                   V
@@ -135,15 +135,15 @@ export const Hero = () => {
             {/* Trust Badges */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-gray-200/80 dark:border-gray-800/80 text-gray-500 dark:text-gray-400 text-xs font-semibold">
               <div className="flex items-center gap-2">
-                <Download className="text-[#8B5CF6] text-base shrink-0" />
+                <Download className="text-purple-500 text-base shrink-0" />
                 <span>Instant Download</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="text-[#8B5CF6] text-base shrink-0" />
+                <Shield className="text-purple-500 text-base shrink-0" />
                 <span>Commercial Rights</span>
               </div>
               <div className="flex items-center gap-2">
-                <RefreshCw className="text-[#8B5CF6] text-base shrink-0" />
+                <RefreshCw className="text-purple-500 text-base shrink-0" />
                 <span>Lifetime Updates</span>
               </div>
               <div className="flex items-center gap-2">
@@ -175,7 +175,7 @@ export const Hero = () => {
 
               {/* Floating Glassmorphic 3D Widget 1: Rating & Trust (Bottom Left) */}
               <div className="absolute -bottom-8 -left-4 sm:left-2 glass-card-pro bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl p-4 rounded-2xl shadow-2xl border border-purple-200/80 dark:border-purple-800/80 flex items-center gap-3.5 animate-float-slow">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-[#8B5CF6] to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-500/30">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-500/30">
                   <Zap className="text-2xl" />
                 </div>
                 <div>
@@ -191,7 +191,7 @@ export const Hero = () => {
 
               {/* Floating Glassmorphic 3D Widget 2: Production Components (Top Right) */}
               <div className="hidden sm:flex absolute -top-6 -right-4 glass-card-pro bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl px-4 py-3 rounded-2xl shadow-2xl border border-purple-200/80 dark:border-purple-800/80 items-center gap-3 animate-float">
-                <div className="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6] flex items-center justify-center">
+                <div className="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-900/60 text-purple-500 flex items-center justify-center">
                   <Layers className="text-lg" />
                 </div>
                 <div className="text-left">

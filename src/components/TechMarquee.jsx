@@ -39,7 +39,7 @@ export const TechMarquee = () => {
       <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none" />
 
       <div className="flex items-center justify-center gap-2 mb-4 text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
-        <Code2 size={14} className="text-[#8B5CF6]" />
+        <Code2 size={14} className="text-purple-500" />
         <span>Built With Industry-Leading Technologies</span>
       </div>
 

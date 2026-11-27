@@ -52,14 +52,14 @@ export const ProductQuickViewModal = () => {
         {/* Modal Header */}
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 p-2 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 text-[#8B5CF6] dark:text-purple-300">
+            <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 p-2 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 text-purple-500 dark:text-purple-300">
               <ProductIcon icon={selectedProduct.icon} id={selectedProduct.id} name={selectedProduct.name} size={22} />
             </div>
             <div>
               <h2 className="text-lg font-bold text-gray-900 dark:text-white leading-tight">
                 {selectedProduct.name}
               </h2>
-              <span className="text-xs font-semibold text-[#8B5CF6] dark:text-purple-400">
+              <span className="text-xs font-semibold text-purple-500 dark:text-purple-400">
                 {selectedProduct.category}
               </span>
             </div>
@@ -85,7 +85,7 @@ export const ProductQuickViewModal = () => {
             }}
             className={`py-3.5 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'overview'
-                ? 'border-[#8B5CF6] text-[#8B5CF6] dark:text-purple-400 font-bold'
+                ? 'border-purple-500 text-purple-500 dark:text-purple-400 font-bold'
                 : 'border-transparent hover:text-gray-800 dark:hover:text-gray-200'
             }`}
           >
@@ -98,7 +98,7 @@ export const ProductQuickViewModal = () => {
             }}
             className={`py-3.5 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'specs'
-                ? 'border-[#8B5CF6] text-[#8B5CF6] dark:text-purple-400 font-bold'
+                ? 'border-purple-500 text-purple-500 dark:text-purple-400 font-bold'
                 : 'border-transparent hover:text-gray-800 dark:hover:text-gray-200'
             }`}
           >
@@ -111,7 +111,7 @@ export const ProductQuickViewModal = () => {
             }}
             className={`py-3.5 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'interactive'
-                ? 'border-[#8B5CF6] text-[#8B5CF6] dark:text-purple-400 font-bold'
+                ? 'border-purple-500 text-purple-500 dark:text-purple-400 font-bold'
                 : 'border-transparent hover:text-gray-800 dark:hover:text-gray-200'
             }`}
           >
@@ -124,7 +124,7 @@ export const ProductQuickViewModal = () => {
             }}
             className={`py-3.5 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
               activeTab === 'reviews'
-                ? 'border-[#8B5CF6] text-[#8B5CF6] dark:text-purple-400 font-bold'
+                ? 'border-purple-500 text-purple-500 dark:text-purple-400 font-bold'
                 : 'border-transparent hover:text-gray-800 dark:hover:text-gray-200'
             }`}
           >
@@ -165,17 +165,17 @@ export const ProductQuickViewModal = () => {
               {/* Guarantees */}
               <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40 text-center">
                 <div>
-                  <Download className="mx-auto text-[#8B5CF6] text-lg mb-1" />
+                  <Download className="mx-auto text-purple-500 text-lg mb-1" />
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Instant File Sync</p>
                   <p className="text-[10px] text-gray-500">Cloud delivered</p>
                 </div>
                 <div>
-                  <Shield className="mx-auto text-[#8B5CF6] text-lg mb-1" />
+                  <Shield className="mx-auto text-purple-500 text-lg mb-1" />
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Commercial Rights</p>
                   <p className="text-[10px] text-gray-500">Unlimited clients</p>
                 </div>
                 <div>
-                  <Cpu className="mx-auto text-[#8B5CF6] text-lg mb-1" />
+                  <Cpu className="mx-auto text-purple-500 text-lg mb-1" />
                   <p className="text-xs font-bold text-gray-900 dark:text-white">Lifetime Updates</p>
                   <p className="text-[10px] text-gray-500">No hidden fees</p>
                 </div>
@@ -235,12 +235,12 @@ export const ProductQuickViewModal = () => {
                     type="text"
                     value={demoPrompt}
                     onChange={(e) => setDemoPrompt(e.target.value)}
-                    className="flex-1 px-3 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                    className="flex-1 px-3 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
                   <button
                     onClick={handleSimulateAI}
                     disabled={isGenerating}
-                    className="px-4 py-2 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
+                    className="px-4 py-2 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
                   >
                     <Send /> {isGenerating ? 'Processing...' : 'Run Test'}
                   </button>
@@ -357,7 +357,7 @@ export const ProductQuickViewModal = () => {
 
             <button
               onClick={handleAddWithQuantity}
-              className="px-6 py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center gap-2 transition-all cursor-pointer"
+              className="px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center gap-2 transition-all cursor-pointer"
             >
               <ShoppingCart /> Add to Cart
             </button>

@@ -44,7 +44,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
         <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
         {/* Left: Icon & Tag */}
-        <div className="relative shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 p-4 border border-purple-100 dark:border-purple-900/50 group-hover:scale-105 transition-transform duration-300 text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+        <div className="relative shrink-0 flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/40 dark:to-indigo-950/40 p-4 border border-purple-100 dark:border-purple-900/50 group-hover:scale-105 transition-transform duration-300 text-purple-500 dark:text-purple-300 shadow-xs">
           <ProductIcon
             icon={product.icon}
             id={product.id}
@@ -72,7 +72,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
             </div>
           </div>
 
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-[#8B5CF6] transition-colors">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-purple-500 transition-colors">
             {product.name}
           </h3>
           <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm line-clamp-2 mb-3">
@@ -106,7 +106,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               onClick={() => toggleCompare(product)}
               className={`p-2.5 rounded-xl border transition-colors ${
                 inCompare
-                  ? 'bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6] border-purple-300 dark:border-purple-700'
+                  ? 'bg-purple-100 dark:bg-purple-900/60 text-purple-500 border-purple-300 dark:border-purple-700'
                   : 'border-gray-200 dark:border-gray-700 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
               }`}
               title={inCompare ? 'Remove from Compare' : 'Add to Compare'}
@@ -156,7 +156,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               className={`btn-glow px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white transition-all shadow-md flex items-center gap-2 cursor-pointer ${
                 cartQuantity > 0
                   ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-500/25'
-                  : 'bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-500/25'
+                  : 'bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-500/25'
               }`}
             >
               <ShoppingCart className="text-sm" />
@@ -175,13 +175,13 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
       className="glass-card-pro glow-card bg-white/95 dark:bg-gray-900/80 border border-gray-200/80 dark:border-gray-800/80 rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:border-purple-300 dark:hover:border-purple-600/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden backdrop-blur-md"
     >
       {/* Top Hover Gradient Light Line */}
-      <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Top Bar: Icon, Tag & Control Buttons */}
       <div>
         <div className="flex justify-between items-start mb-5">
           <div className="relative">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 p-2.5 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 group-hover:scale-110 transition-transform duration-300 shadow-xs text-[#8B5CF6] dark:text-purple-300">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 p-2.5 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 group-hover:scale-110 transition-transform duration-300 shadow-xs text-purple-500 dark:text-purple-300">
               <ProductIcon
                 icon={product.icon}
                 id={product.id}
@@ -208,7 +208,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
               onClick={() => toggleCompare(product)}
               className={`p-2 rounded-xl transition-all cursor-pointer ${
                 inCompare
-                  ? 'bg-purple-100 dark:bg-purple-900/60 text-[#8B5CF6]'
+                  ? 'bg-purple-100 dark:bg-purple-900/60 text-purple-500'
                   : 'text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
               title={inCompare ? 'In Comparison' : 'Add to Compare'}
@@ -254,7 +254,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
 
         {/* Category & Rating */}
         <div className="flex items-center justify-between text-xs mb-2">
-          <span className="font-black text-[#8B5CF6] dark:text-purple-400 tracking-wide uppercase text-[11px]">
+          <span className="font-black text-purple-500 dark:text-purple-400 tracking-wide uppercase text-[11px]">
             {product.category}
           </span>
           <div className="flex items-center gap-1 text-amber-400">
@@ -265,7 +265,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
         </div>
 
         {/* Title & Description */}
-        <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-[#8B5CF6] transition-colors leading-snug">
+        <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-purple-500 transition-colors leading-snug">
           {product.name}
         </h3>
         <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-[13px] leading-relaxed mb-5 min-h-[40px]">
@@ -296,7 +296,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
           </div>
           <button
             onClick={() => openQuickView(product)}
-            className="text-xs font-bold text-[#8B5CF6] dark:text-purple-400 hover:underline flex items-center gap-1 cursor-pointer"
+            className="text-xs font-bold text-purple-500 dark:text-purple-400 hover:underline flex items-center gap-1 cursor-pointer"
           >
             <Eye className="text-xs" /> Quick View
           </button>
@@ -307,7 +307,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }) => {
           className={`btn-glow w-full py-3.5 rounded-xl font-black text-sm text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-md ${
             cartQuantity > 0
               ? 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/25'
-              : 'bg-gradient-to-r from-[#8B5CF6] via-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-600/25 hover:shadow-purple-600/40'
+              : 'bg-gradient-to-r from-purple-500 via-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-purple-600/25 hover:shadow-purple-600/40'
           }`}
         >
           {cartQuantity > 0 ? (

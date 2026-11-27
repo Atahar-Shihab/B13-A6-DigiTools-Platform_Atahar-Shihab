@@ -18,7 +18,7 @@ export const CompareDock = () => {
     <div className="fixed bottom-6 right-6 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 z-40 animate-slideUp">
       <div className="glass-card-pro bg-white/95 dark:bg-gray-900/95 border border-purple-200/80 dark:border-purple-800/80 rounded-2xl p-2.5 sm:px-4 sm:py-3 shadow-2xl flex items-center gap-3.5 backdrop-blur-xl">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-[#8B5CF6] text-white flex items-center justify-center font-bold text-xs shadow-md shadow-purple-500/30">
+          <div className="w-8 h-8 rounded-xl bg-purple-500 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-purple-500/30">
             <Layers />
           </div>
           <div className="hidden sm:block text-left">
@@ -36,7 +36,7 @@ export const CompareDock = () => {
           {compareList.map((product) => (
             <div
               key={product.id}
-              className="relative group w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center p-1 text-[#8B5CF6] dark:text-purple-300"
+              className="relative group w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center p-1 text-purple-500 dark:text-purple-300"
             >
               <ProductIcon icon={product.icon} id={product.id} name={product.name} size={16} />
               <button
@@ -57,7 +57,7 @@ export const CompareDock = () => {
               sound.compare();
               setIsCompareOpen(true);
             }}
-            className="btn-glow px-4 py-2 rounded-xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5 cursor-pointer"
+            className="btn-glow px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs shadow-md flex items-center gap-1.5 cursor-pointer"
           >
             <span>Compare ({compareList.length})</span>
             <ArrowRight size={13} />

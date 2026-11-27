@@ -37,14 +37,14 @@ export const TechStackFilter = () => {
     <div id="tech-stack" className="py-6 border-b border-gray-100 dark:border-gray-800/80 mb-8 scroll-mt-24">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
         <div className="flex items-center gap-2 text-xs font-black text-gray-800 dark:text-gray-200">
-          <Code className="text-[#8B5CF6] text-sm" />
+          <Code className="text-purple-500 text-sm" />
           <span>Filter by Technology Compatibility:</span>
         </div>
 
         {selectedTechStack !== 'All' && (
           <button
             onClick={() => handleSelect('All')}
-            className="text-xs font-semibold text-[#8B5CF6] dark:text-purple-400 hover:underline flex items-center gap-1 cursor-pointer self-start sm:self-auto"
+            className="text-xs font-semibold text-purple-500 dark:text-purple-400 hover:underline flex items-center gap-1 cursor-pointer self-start sm:self-auto"
           >
             <X size={12} /> Clear tech filter
           </button>
@@ -61,7 +61,7 @@ export const TechStackFilter = () => {
               onClick={() => handleSelect(stack.id)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                 isSelected
-                  ? 'bg-gradient-to-r from-[#8B5CF6] to-indigo-600 text-white shadow-md shadow-purple-500/20 scale-102'
+                  ? 'bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-md shadow-purple-500/20 scale-102'
                   : 'bg-gray-100 dark:bg-gray-800/80 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/80'
               }`}
             >

@@ -55,7 +55,7 @@ export const CartDrawer = () => {
         {/* Drawer Header */}
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-purple-500 flex items-center justify-center">
               <ShoppingBag className="text-lg" />
             </div>
             <div>
@@ -108,7 +108,7 @@ export const CartDrawer = () => {
             </div>
             <div className="w-full bg-purple-200 dark:bg-purple-900 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-gradient-to-r from-[#8B5CF6] to-indigo-600 h-2 rounded-full transition-all duration-500"
+                className="bg-gradient-to-r from-purple-500 to-indigo-600 h-2 rounded-full transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -135,7 +135,7 @@ export const CartDrawer = () => {
                   const el = document.getElementById('products');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
+                className="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
               >
                 Browse Products
               </button>
@@ -147,14 +147,14 @@ export const CartDrawer = () => {
                 className="flex items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-3.5 rounded-2xl border border-gray-100 dark:border-gray-800"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0 text-[#8B5CF6] dark:text-purple-300">
+                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0 text-purple-500 dark:text-purple-300">
                     <ProductIcon icon={item.icon} id={item.id} name={item.name} size={22} />
                   </div>
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-gray-900 dark:text-white line-clamp-1">
                       {item.name}
                     </h4>
-                    <p className="text-xs font-semibold text-[#8B5CF6] dark:text-purple-400">
+                    <p className="text-xs font-semibold text-purple-500 dark:text-purple-400">
                       {formatPrice(item.price)} <span className="text-[10px] text-gray-400">/{item.period}</span>
                     </p>
                   </div>
@@ -206,7 +206,7 @@ export const CartDrawer = () => {
                     value={inputCode}
                     onChange={(e) => setInputCode(e.target.value)}
                     placeholder="Enter coupon (e.g. DIGI20)"
-                    className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] uppercase font-mono font-semibold"
+                    className="w-full pl-8 pr-3 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 uppercase font-mono font-semibold"
                   />
                 </div>
                 <button
@@ -223,13 +223,13 @@ export const CartDrawer = () => {
                   <span className="text-gray-400">Try:</span>
                   <button
                     onClick={() => applyPromo('DIGI20')}
-                    className="px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] dark:text-purple-300 font-bold hover:bg-purple-200 cursor-pointer"
+                    className="px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-900/50 text-purple-500 dark:text-purple-300 font-bold hover:bg-purple-200 cursor-pointer"
                   >
                     DIGI20 (20% OFF)
                   </button>
                   <button
                     onClick={() => applyPromo('WELCOME10')}
-                    className="px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] dark:text-purple-300 font-bold hover:bg-purple-200 cursor-pointer"
+                    className="px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-900/50 text-purple-500 dark:text-purple-300 font-bold hover:bg-purple-200 cursor-pointer"
                   >
                     WELCOME10 (10% OFF)
                   </button>
@@ -272,7 +272,7 @@ export const CartDrawer = () => {
               </div>
               <div className="flex justify-between text-base font-black text-gray-900 dark:text-white border-t border-gray-200 dark:border-gray-800 pt-2">
                 <span>Total Amount:</span>
-                <span className="text-[#8B5CF6] dark:text-purple-400">
+                <span className="text-purple-500 dark:text-purple-400">
                   {formatPrice(totalAmount)}
                 </span>
               </div>
@@ -281,7 +281,7 @@ export const CartDrawer = () => {
             {/* Proceed to Checkout CTA */}
             <button
               onClick={handleCheckoutClick}
-              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <span>Proceed to Checkout</span>
               <ArrowRight />

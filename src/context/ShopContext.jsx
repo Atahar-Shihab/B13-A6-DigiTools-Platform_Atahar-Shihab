@@ -19,6 +19,37 @@ const PROMO_CODES = {
   MASTERCLASS: { discount: 0.25, label: '25% OFF Elite VIP Pass' }
 };
 
+export const COLOR_THEMES = [
+  {
+    id: 'violet',
+    name: 'Royal Violet',
+    description: 'Signature violet & indigo',
+    primary: '#8B5CF6',
+    secondary: '#6366F1'
+  },
+  {
+    id: 'ocean',
+    name: 'Midnight Ocean',
+    description: 'Electric sky & cyan blue',
+    primary: '#0EA5E9',
+    secondary: '#2563EB'
+  },
+  {
+    id: 'emerald',
+    name: 'Cyber Emerald',
+    description: 'Precision emerald & teal',
+    primary: '#10B981',
+    secondary: '#0D9488'
+  },
+  {
+    id: 'rose',
+    name: 'Sunset Rose',
+    description: 'Vivid rose & warm coral',
+    primary: '#F43F5E',
+    secondary: '#EC4899'
+  }
+];
+
 const DEFAULT_INITIAL_LICENSES = [
   {
     id: 'lic-demo-1',
@@ -108,6 +139,17 @@ export const ShopProvider = ({ children }) => {
     }
   });
 
+  // Color palette theme persisted
+  const [colorTheme, setColorThemeState] = useState(() => {
+    try {
+      const saved = localStorage.getItem('digitools_color_theme');
+      if (saved && COLOR_THEMES.some((t) => t.id === saved)) return saved;
+      return 'violet';
+    } catch {
+      return 'violet';
+    }
+  });
+
   // Currency
   const [currency, setCurrency] = useState(() => {
     try {
@@ -154,16 +196,20 @@ export const ShopProvider = ({ children }) => {
   const [viewMode, setViewMode] = useState('grid');
   const [billingPeriod, setBillingPeriod] = useState('all');
 
-  // Sync theme to HTML class
+  // Sync theme and color palette to HTML attributes
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
     } else {
       root.classList.remove('dark');
+      root.setAttribute('data-theme', 'light');
     }
+    root.setAttribute('data-color-theme', colorTheme);
     localStorage.setItem('digitools_theme', theme);
-  }, [theme]);
+    localStorage.setItem('digitools_color_theme', colorTheme);
+  }, [theme, colorTheme]);
 
   // Persist cart
   useEffect(() => {
@@ -200,6 +246,14 @@ export const ShopProvider = ({ children }) => {
   const toggleTheme = () => {
     sound.click();
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  const setColorTheme = (id) => {
+    const found = COLOR_THEMES.find((t) => t.id === id);
+    if (!found) return;
+    sound.click();
+    setColorThemeState(id);
+    toast.info(`Theme switched to ${found.name}`, { icon: '🎨', autoClose: 1800 });
   };
 
   const toggleSound = () => {
@@ -441,6 +495,8 @@ export const ShopProvider = ({ children }) => {
         compareList,
         purchasedLicenses,
         theme,
+        colorTheme,
+        colorThemes: COLOR_THEMES,
         currency,
         currencies: CURRENCY_RATES,
         soundEnabled,
@@ -471,7 +527,9 @@ export const ShopProvider = ({ children }) => {
         taxAmount,
         totalAmount,
         totalItemCount,
+        setTheme,
         toggleTheme,
+        setColorTheme,
         toggleSound,
         setCurrency,
         formatPrice,

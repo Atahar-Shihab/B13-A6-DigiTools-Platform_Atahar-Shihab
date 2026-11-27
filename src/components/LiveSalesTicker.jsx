@@ -66,7 +66,7 @@ export const LiveSalesTicker = () => {
             {currentNotification.buyer.name} <span className="text-[10px] font-normal text-gray-400">({currentNotification.buyer.city})</span>
           </p>
           <p className="text-[11px] text-gray-600 dark:text-gray-300 truncate">
-            Licensed <span className="font-bold text-[#8B5CF6] dark:text-purple-400">{currentNotification.product.name}</span>
+            Licensed <span className="font-bold text-purple-500 dark:text-purple-400">{currentNotification.product.name}</span>
           </p>
           <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping inline-block"></span>

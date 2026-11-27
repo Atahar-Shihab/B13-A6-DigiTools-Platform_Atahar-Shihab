@@ -60,11 +60,11 @@ export const SectionNav = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                   isActive
-                    ? 'bg-[#8B5CF6] text-white shadow-sm shadow-purple-500/20'
+                    ? 'bg-purple-500 text-white shadow-sm shadow-purple-500/20'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
-                <Icon size={12} className={isActive ? 'text-white' : 'text-[#8B5CF6]'} />
+                <Icon size={12} className={isActive ? 'text-white' : 'text-purple-500'} />
                 <span>{item.label}</span>
               </button>
             );

@@ -42,8 +42,8 @@ export const ChangelogSection = () => {
   return (
     <section id="changelog" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-950/60 text-[#8B5CF6] dark:text-purple-300 border border-purple-200 dark:border-purple-800/60 mb-4">
-          <GitCommit className="text-[#8B5CF6]" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-purple-100 dark:bg-purple-950/60 text-purple-500 dark:text-purple-300 border border-purple-200 dark:border-purple-800/60 mb-4">
+          <GitCommit className="text-purple-500" />
           <span>Continuous Engineering Delivery</span>
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tight">
@@ -64,7 +64,7 @@ export const ChangelogSection = () => {
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 selectedTag === tag
-                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/20'
+                  ? 'bg-purple-500 text-white shadow-md shadow-purple-500/20'
                   : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-purple-300'
               }`}
             >
@@ -87,7 +87,7 @@ export const ChangelogSection = () => {
       {/* Timeline Container */}
       <div className="relative max-w-4xl mx-auto">
         {/* Vertical Center/Left Track Line */}
-        <div className="absolute top-4 bottom-4 left-4 sm:left-8 w-0.5 bg-gradient-to-b from-[#8B5CF6] via-indigo-500/50 to-purple-300/20 dark:to-gray-800 pointer-events-none" />
+        <div className="absolute top-4 bottom-4 left-4 sm:left-8 w-0.5 bg-gradient-to-b from-purple-500 via-indigo-500/50 to-purple-300/20 dark:to-gray-800 pointer-events-none" />
 
         <div className="space-y-8 sm:space-y-10">
           {filteredReleases.map((release) => {
@@ -96,8 +96,8 @@ export const ChangelogSection = () => {
             return (
               <div key={release.version} className="relative pl-12 sm:pl-20 group">
                 {/* Timeline Node Icon */}
-                <div className="absolute left-2.5 sm:left-6.5 top-1.5 -translate-x-1/2 w-6 h-6 rounded-full bg-white dark:bg-gray-900 border-2 border-[#8B5CF6] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                  <div className="w-2 h-2 rounded-full bg-[#8B5CF6]" />
+                <div className="absolute left-2.5 sm:left-6.5 top-1.5 -translate-x-1/2 w-6 h-6 rounded-full bg-white dark:bg-gray-900 border-2 border-purple-500 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                  <div className="w-2 h-2 rounded-full bg-purple-500" />
                 </div>
 
                 {/* Release Card */}
@@ -154,7 +154,7 @@ export const ChangelogSection = () => {
                             key={hIdx}
                             className="flex items-start gap-2.5 p-2.5 rounded-xl bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-700 dark:text-gray-300"
                           >
-                            <CheckCircle2 className="text-[#8B5CF6] shrink-0 mt-0.5" size={14} />
+                            <CheckCircle2 className="text-purple-500 shrink-0 mt-0.5" size={14} />
                             <span>{highlight}</span>
                           </div>
                         ))}

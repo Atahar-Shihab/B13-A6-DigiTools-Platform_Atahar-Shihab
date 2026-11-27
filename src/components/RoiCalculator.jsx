@@ -44,7 +44,7 @@ export const RoiCalculator = () => {
         
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-500 dark:text-purple-300 inline-block mb-3">
             Value & Efficiency Assessment
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
@@ -68,7 +68,7 @@ export const RoiCalculator = () => {
                   <label className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200">
                     Projects Built Annually:
                   </label>
-                  <span className="px-3 py-1 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] dark:text-purple-300 font-black text-sm font-mono">
+                  <span className="px-3 py-1 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-500 dark:text-purple-300 font-black text-sm font-mono">
                     {projectsCount} {projectsCount === 1 ? 'project' : 'projects'}
                   </span>
                 </div>
@@ -79,7 +79,7 @@ export const RoiCalculator = () => {
                   step="1"
                   value={projectsCount}
                   onChange={(e) => handleSliderChange(setProjectsCount, Number(e.target.value))}
-                  className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#8B5CF6]"
+                  className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
                 />
                 <div className="flex justify-between text-[11px] text-gray-400 font-semibold">
                   <span>1 Project (Solo)</span>
@@ -94,7 +94,7 @@ export const RoiCalculator = () => {
                   <label className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200">
                     Estimated Hourly Rate ($ / hr):
                   </label>
-                  <span className="px-3 py-1 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] dark:text-purple-300 font-black text-sm font-mono">
+                  <span className="px-3 py-1 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-500 dark:text-purple-300 font-black text-sm font-mono">
                     ${hourlyRate}/hr
                   </span>
                 </div>
@@ -105,7 +105,7 @@ export const RoiCalculator = () => {
                   step="5"
                   value={hourlyRate}
                   onChange={(e) => handleSliderChange(setHourlyRate, Number(e.target.value))}
-                  className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#8B5CF6]"
+                  className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
                 />
                 <div className="flex justify-between text-[11px] text-gray-400 font-semibold">
                   <span>$30/hr</span>
@@ -133,11 +133,11 @@ export const RoiCalculator = () => {
                       }}
                       className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                         complexityTier === tier.id
-                          ? 'border-[#8B5CF6] bg-purple-50 dark:bg-purple-950/40 shadow-xs'
+                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/40 shadow-xs'
                           : 'border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700'
                       }`}
                     >
-                      <span className={`text-xs font-bold block ${complexityTier === tier.id ? 'text-[#8B5CF6] dark:text-purple-300' : 'text-gray-800 dark:text-gray-200'}`}>
+                      <span className={`text-xs font-bold block ${complexityTier === tier.id ? 'text-purple-500 dark:text-purple-300' : 'text-gray-800 dark:text-gray-200'}`}>
                         {tier.label}
                       </span>
                       <span className="text-[11px] text-gray-400 block mt-0.5">
@@ -178,7 +178,7 @@ export const RoiCalculator = () => {
             </div>
 
             {/* Right 5 Columns: Computed Financial & Hourly Summary Cards */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-[#8B5CF6] via-purple-700 to-indigo-800 text-white rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between h-full border border-purple-400/30 relative overflow-hidden">
+            <div className="lg:col-span-5 bg-gradient-to-br from-purple-500 via-purple-700 to-indigo-800 text-white rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between h-full border border-purple-400/30 relative overflow-hidden">
               {/* Background Light Sweep */}
               <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/10 rounded-full blur-xl pointer-events-none" />
 
@@ -239,7 +239,7 @@ export const RoiCalculator = () => {
 
               <button
                 onClick={scrollToProducts}
-                className="btn-glow w-full py-4 rounded-2xl bg-white text-[#8B5CF6] hover:bg-gray-50 font-black text-xs sm:text-sm shadow-xl shadow-purple-950/40 transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="btn-glow w-full py-4 rounded-2xl bg-white text-purple-500 hover:bg-gray-50 font-black text-xs sm:text-sm shadow-xl shadow-purple-950/40 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Unlock Productivity Tools</span>
                 <ArrowRight />

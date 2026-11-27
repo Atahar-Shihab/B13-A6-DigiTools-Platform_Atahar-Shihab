@@ -32,7 +32,7 @@ export const ProductCompareModal = () => {
         {/* Header */}
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-500 flex items-center justify-center font-bold">
               <Layers className="text-xl" />
             </div>
             <div>
@@ -90,7 +90,7 @@ export const ProductCompareModal = () => {
                   const el = document.getElementById('products');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+                className="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
               >
                 Browse Products
               </button>
@@ -124,7 +124,7 @@ export const ProductCompareModal = () => {
                       </button>
 
                       <div>
-                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 mb-3 text-[#8B5CF6] dark:text-purple-300">
+                        <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 mb-3 text-purple-500 dark:text-purple-300">
                           <ProductIcon icon={product.icon} id={product.id} name={product.name} size={24} />
                         </div>
                         <h4 className="font-bold text-sm text-gray-900 dark:text-white line-clamp-1 mb-1">
@@ -146,7 +146,7 @@ export const ProductCompareModal = () => {
                         className={`w-full py-2 rounded-xl font-bold text-xs text-white transition-all flex items-center justify-center gap-1.5 shadow-sm ${
                           inCart
                             ? 'bg-emerald-600 hover:bg-emerald-700'
-                            : 'bg-[#8B5CF6] hover:bg-purple-700'
+                            : 'bg-purple-500 hover:bg-purple-700'
                         }`}
                       >
                         <ShoppingCart size={13} />

@@ -45,7 +45,7 @@ export const KeyboardShortcutsModal = () => {
         {/* Header */}
         <div className="flex items-center justify-between pb-5 border-b border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-500 flex items-center justify-center font-bold">
               <HelpCircle className="text-xl" />
             </div>
             <div>

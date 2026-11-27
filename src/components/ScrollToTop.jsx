@@ -40,7 +40,7 @@ export const ScrollToTop = () => {
     <div className="fixed bottom-6 right-6 z-40 animate-fadeIn">
       <button
         onClick={scrollToTop}
-        className="relative w-12 h-12 rounded-full glass-card-pro bg-white/95 dark:bg-gray-900/95 border border-purple-200/80 dark:border-purple-800/80 shadow-2xl flex items-center justify-center text-gray-700 dark:text-gray-200 hover:text-[#8B5CF6] dark:hover:text-purple-400 hover:scale-110 transition-all duration-300 group cursor-pointer"
+        className="relative w-12 h-12 rounded-full glass-card-pro bg-white/95 dark:bg-gray-900/95 border border-purple-200/80 dark:border-purple-800/80 shadow-2xl flex items-center justify-center text-gray-700 dark:text-gray-200 hover:text-purple-500 dark:hover:text-purple-400 hover:scale-110 transition-all duration-300 group cursor-pointer"
         title={`Back to top (${scrollProgress}%)`}
         aria-label="Scroll to top"
       >
@@ -58,7 +58,7 @@ export const ScrollToTop = () => {
             cx="22"
             cy="22"
             r={radius}
-            className="stroke-[#8B5CF6] transition-all duration-150"
+            className="stroke-purple-500 transition-all duration-150"
             strokeWidth="2.5"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}

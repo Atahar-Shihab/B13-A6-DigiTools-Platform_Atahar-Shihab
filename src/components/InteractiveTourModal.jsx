@@ -42,7 +42,7 @@ export const InteractiveTourModal = () => {
         {/* Header */}
         <div className="flex items-center justify-between pb-6 border-b border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-500 flex items-center justify-center">
               <Play className="text-lg fill-current ml-0.5" />
             </div>
             <div>
@@ -75,7 +75,7 @@ export const InteractiveTourModal = () => {
               }}
               className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
                 activeStep === i
-                  ? 'bg-[#8B5CF6] text-white shadow-md shadow-purple-500/25'
+                  ? 'bg-purple-500 text-white shadow-md shadow-purple-500/25'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
@@ -87,7 +87,7 @@ export const InteractiveTourModal = () => {
         {/* Step Body */}
         <div className="p-6 rounded-2xl bg-purple-50/50 dark:bg-purple-950/20 border border-purple-100 dark:border-purple-900/40 mb-6 space-y-4">
           <div className="flex items-center justify-between">
-            <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-[#8B5CF6] text-white">
+            <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-purple-500 text-white">
               {steps[activeStep].badge}
             </span>
             <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
@@ -127,7 +127,7 @@ export const InteractiveTourModal = () => {
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-2 cursor-pointer transition-all"
+            className="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-2 cursor-pointer transition-all"
           >
             <span>{activeStep === steps.length - 1 ? 'Start Using DigiTools' : 'Next Step'}</span>
             <ArrowRight />

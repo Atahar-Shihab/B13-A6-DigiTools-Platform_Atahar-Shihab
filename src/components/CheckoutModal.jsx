@@ -111,7 +111,7 @@ export const CheckoutModal = () => {
         {/* Modal Header */}
         <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-[#8B5CF6] flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-500 flex items-center justify-center font-bold">
               <Lock className="text-lg" />
             </div>
             <div>
@@ -147,7 +147,7 @@ export const CheckoutModal = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
@@ -159,7 +159,7 @@ export const CheckoutModal = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <p className="text-[11px] text-gray-400">License keys and files will be sent here immediately.</p>
               </div>
@@ -170,7 +170,7 @@ export const CheckoutModal = () => {
                   name="country"
                   value={formData.country}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
                   <option value="United States">United States</option>
                   <option value="United Kingdom">United Kingdom</option>
@@ -197,7 +197,7 @@ export const CheckoutModal = () => {
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-2xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
+                className="w-full py-3.5 rounded-2xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer transition-all"
               >
                 <span>Continue to Payment</span>
                 <ArrowRight />
@@ -215,7 +215,7 @@ export const CheckoutModal = () => {
                   onClick={() => setFormData({ ...formData, paymentMethod: 'card' })}
                   className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${
                     formData.paymentMethod === 'card'
-                      ? 'border-[#8B5CF6] bg-purple-50 dark:bg-purple-950/40 text-[#8B5CF6]'
+                      ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/40 text-purple-500'
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300'
                   }`}
                 >
@@ -228,7 +228,7 @@ export const CheckoutModal = () => {
                   onClick={() => setFormData({ ...formData, paymentMethod: 'apple' })}
                   className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${
                     formData.paymentMethod === 'apple'
-                      ? 'border-[#8B5CF6] bg-purple-50 dark:bg-purple-950/40 text-[#8B5CF6]'
+                      ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/40 text-purple-500'
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300'
                   }`}
                 >
@@ -241,7 +241,7 @@ export const CheckoutModal = () => {
                   onClick={() => setFormData({ ...formData, paymentMethod: 'paypal' })}
                   className={`p-3 rounded-2xl border text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${
                     formData.paymentMethod === 'paypal'
-                      ? 'border-[#8B5CF6] bg-purple-50 dark:bg-purple-950/40 text-[#8B5CF6]'
+                      ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/40 text-purple-500'
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300'
                   }`}
                 >
@@ -275,7 +275,7 @@ export const CheckoutModal = () => {
               {/* Total Summary */}
               <div className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
                 <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Grand Total Due:</span>
-                <span className="text-2xl font-black text-[#8B5CF6] dark:text-purple-400">
+                <span className="text-2xl font-black text-purple-500 dark:text-purple-400">
                   {formatPrice(totalAmount)}
                 </span>
               </div>
@@ -331,7 +331,7 @@ export const CheckoutModal = () => {
                     </div>
                     <button
                       onClick={() => handleCopyLicense(lic.key)}
-                      className="p-1.5 rounded-lg text-gray-400 hover:text-[#8B5CF6] hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                      className="p-1.5 rounded-lg text-gray-400 hover:text-purple-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                       title="Copy Key"
                     >
                       <Copy />
@@ -356,7 +356,7 @@ export const CheckoutModal = () => {
                 </div>
                 <div className="flex justify-between text-gray-900 dark:text-white font-bold border-t border-purple-200 dark:border-purple-800/60 pt-2 text-sm">
                   <span>Total Paid:</span>
-                  <span className="text-[#8B5CF6] dark:text-purple-400">{formatPrice(orderSummary.total)}</span>
+                  <span className="text-purple-500 dark:text-purple-400">{formatPrice(orderSummary.total)}</span>
                 </div>
               </div>
 

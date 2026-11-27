@@ -82,7 +82,7 @@ export const LicenseVaultDrawer = () => {
           {/* Header */}
           <div className="p-6 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between bg-gradient-to-r from-purple-50/50 via-white to-indigo-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#8B5CF6] to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 text-lg">
+              <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 text-lg">
                 <Key />
               </div>
               <div>
@@ -120,7 +120,7 @@ export const LicenseVaultDrawer = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search by toolkit name, order # or license key..."
-                className="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                className="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
 
@@ -135,7 +135,7 @@ export const LicenseVaultDrawer = () => {
                     }}
                     className={`px-3 py-1 rounded-lg font-bold text-[11px] transition-all cursor-pointer ${
                       filterTier === tier
-                        ? 'bg-[#8B5CF6] text-white shadow-sm'
+                        ? 'bg-purple-500 text-white shadow-sm'
                         : 'bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700 hover:border-purple-300'
                     }`}
                   >
@@ -146,7 +146,7 @@ export const LicenseVaultDrawer = () => {
 
               <button
                 onClick={handleClaimStarterLicense}
-                className="text-[11px] font-bold text-[#8B5CF6] dark:text-purple-400 hover:underline flex items-center gap-1 shrink-0 cursor-pointer"
+                className="text-[11px] font-bold text-purple-500 dark:text-purple-400 hover:underline flex items-center gap-1 shrink-0 cursor-pointer"
                 title="Claim a complimentary community license"
               >
                 <PlusCircle /> Claim Starter Pass
@@ -171,7 +171,7 @@ export const LicenseVaultDrawer = () => {
                 </div>
                 <button
                   onClick={handleClaimStarterLicense}
-                  className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
                 >
                   Claim Free Community License
                 </button>
@@ -198,7 +198,7 @@ export const LicenseVaultDrawer = () => {
                       </p>
                     </div>
 
-                    <span className="shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-bold bg-purple-50 dark:bg-purple-950/60 text-[#8B5CF6] dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                    <span className="shrink-0 px-2.5 py-1 rounded-lg text-[10px] font-bold bg-purple-50 dark:bg-purple-950/60 text-purple-500 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
                       {lic.tierBadge}
                     </span>
                   </div>
@@ -216,7 +216,7 @@ export const LicenseVaultDrawer = () => {
 
                     <button
                       onClick={() => handleCopyKey(lic.licenseKey)}
-                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-[#8B5CF6] text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors shrink-0 cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-purple-500 text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors shrink-0 cursor-pointer"
                       title="Copy License Key"
                     >
                       <Copy size={12} />
@@ -246,7 +246,7 @@ export const LicenseVaultDrawer = () => {
                     <button
                       onClick={() => handleDownloadPackage(lic)}
                       disabled={downloadingId === lic.id}
-                      className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-[#8B5CF6] to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm cursor-pointer disabled:opacity-50 transition-all"
+                      className="flex-1 py-2 px-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm cursor-pointer disabled:opacity-50 transition-all"
                     >
                       <Download size={13} />
                       <span>{downloadingId === lic.id ? 'Packaging Archive...' : 'Download ZIP Bundle'}</span>

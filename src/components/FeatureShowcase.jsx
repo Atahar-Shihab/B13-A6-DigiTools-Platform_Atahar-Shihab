@@ -41,7 +41,7 @@ export const FeatureShowcase = () => {
         
         {/* Onboarding: 3 Steps */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+          <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-500 dark:text-purple-300 inline-block mb-3">
             Frictionless Setup
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">
@@ -55,10 +55,10 @@ export const FeatureShowcase = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-24">
           {/* Step 1 */}
           <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center relative group transition-all duration-300">
-            <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
+            <div className="absolute top-6 right-6 bg-purple-500 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
               01
             </div>
-            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-purple-500 dark:text-purple-300 shadow-xs">
               <UserPlus className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
@@ -71,10 +71,10 @@ export const FeatureShowcase = () => {
 
           {/* Step 2 */}
           <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center relative group transition-all duration-300">
-            <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
+            <div className="absolute top-6 right-6 bg-purple-500 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
               02
             </div>
-            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-purple-500 dark:text-purple-300 shadow-xs">
               <PackageCheck className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
@@ -87,10 +87,10 @@ export const FeatureShowcase = () => {
 
           {/* Step 3 */}
           <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center relative group transition-all duration-300">
-            <div className="absolute top-6 right-6 bg-[#8B5CF6] text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
+            <div className="absolute top-6 right-6 bg-purple-500 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-black shadow-md shadow-purple-500/25">
               03
             </div>
-            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-[#8B5CF6] dark:text-purple-300 shadow-xs">
+            <div className="w-16 h-16 bg-gradient-to-tr from-purple-50 to-indigo-50 dark:from-purple-950/50 dark:to-indigo-950/50 border border-purple-100 dark:border-purple-900/50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform text-purple-500 dark:text-purple-300 shadow-xs">
               <Rocket className="w-8 h-8" />
             </div>
             <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
@@ -127,7 +127,7 @@ export const FeatureShowcase = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                   activeTab === 'prompt'
-                    ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                    ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                     : 'hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
@@ -140,7 +140,7 @@ export const FeatureShowcase = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                   activeTab === 'design'
-                    ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                    ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                     : 'hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
@@ -153,7 +153,7 @@ export const FeatureShowcase = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all ${
                   activeTab === 'analytics'
-                    ? 'bg-white dark:bg-gray-900 text-[#8B5CF6] dark:text-purple-400 shadow-xs'
+                    ? 'bg-white dark:bg-gray-900 text-purple-500 dark:text-purple-400 shadow-xs'
                     : 'hover:text-gray-900 dark:hover:text-white'
                 }`}
               >
@@ -172,13 +172,13 @@ export const FeatureShowcase = () => {
                     type="text"
                     value={promptInput}
                     onChange={(e) => setPromptInput(e.target.value)}
-                    className="flex-1 px-4 py-3 text-xs sm:text-sm rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                    className="flex-1 px-4 py-3 text-xs sm:text-sm rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="Enter custom prompt..."
                   />
                   <button
                     onClick={handleGenerate}
                     disabled={isGenerating}
-                    className="px-6 py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-purple-500/20 cursor-pointer disabled:opacity-50"
+                    className="px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md shadow-purple-500/20 cursor-pointer disabled:opacity-50"
                   >
                     <Zap />
                     <span>{isGenerating ? 'Synthesizing...' : 'Run Generation'}</span>
@@ -237,7 +237,7 @@ export const FeatureShowcase = () => {
                           }}
                           className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition-all ${
                             borderRadius === r
-                              ? 'border-[#8B5CF6] text-[#8B5CF6] bg-purple-50 dark:bg-purple-950/40'
+                              ? 'border-purple-500 text-purple-500 bg-purple-50 dark:bg-purple-950/40'
                               : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400'
                           }`}
                         >
@@ -261,7 +261,7 @@ export const FeatureShowcase = () => {
                           }}
                           className={`px-3 py-1.5 rounded-lg border text-xs font-bold capitalize transition-all ${
                             buttonVariant === v
-                              ? 'border-[#8B5CF6] text-[#8B5CF6] bg-purple-50 dark:bg-purple-950/40'
+                              ? 'border-purple-500 text-purple-500 bg-purple-50 dark:bg-purple-950/40'
                               : 'border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400'
                           }`}
                         >

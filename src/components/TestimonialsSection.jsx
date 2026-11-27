@@ -87,7 +87,7 @@ export const TestimonialsSection = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-14">
           <div>
-            <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-[#8B5CF6] dark:text-purple-300 inline-block mb-3">
+            <span className="px-3.5 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-purple-100 dark:bg-purple-900/40 text-purple-500 dark:text-purple-300 inline-block mb-3">
               Social Proof & Testimonials
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-2">
@@ -107,7 +107,7 @@ export const TestimonialsSection = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg transition-all ${
                   filterRating === 'all'
-                    ? 'bg-[#8B5CF6] text-white shadow-xs'
+                    ? 'bg-purple-500 text-white shadow-xs'
                     : 'text-gray-600 dark:text-gray-300 hover:text-gray-900'
                 }`}
               >
@@ -120,7 +120,7 @@ export const TestimonialsSection = () => {
                 }}
                 className={`px-3 py-1.5 rounded-lg transition-all ${
                   filterRating === '5'
-                    ? 'bg-[#8B5CF6] text-white shadow-xs'
+                    ? 'bg-purple-500 text-white shadow-xs'
                     : 'text-gray-600 dark:text-gray-300 hover:text-gray-900'
                 }`}
               >
@@ -133,7 +133,7 @@ export const TestimonialsSection = () => {
                 sound.click();
                 setIsModalOpen(true);
               }}
-              className="px-5 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-2 cursor-pointer transition-all"
+              className="px-5 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-2 cursor-pointer transition-all"
             >
               <MessageSquare /> Leave a Review
             </button>
@@ -212,7 +212,7 @@ export const TestimonialsSection = () => {
                     required
                     value={newReview.name}
                     onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="e.g. Liam Parker"
                   />
                 </div>
@@ -223,7 +223,7 @@ export const TestimonialsSection = () => {
                     type="text"
                     value={newReview.role}
                     onChange={(e) => setNewReview({ ...newReview, role: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="e.g. Lead Frontend Engineer at Nexa"
                   />
                 </div>
@@ -233,7 +233,7 @@ export const TestimonialsSection = () => {
                   <select
                     value={newReview.rating}
                     onChange={(e) => setNewReview({ ...newReview, rating: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   >
                     <option value="5">⭐⭐⭐⭐⭐ (5 Stars - Exceptional)</option>
                     <option value="4">⭐⭐⭐⭐ (4 Stars - Very Good)</option>
@@ -248,14 +248,14 @@ export const TestimonialsSection = () => {
                     required
                     value={newReview.comment}
                     onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
-                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#8B5CF6]"
+                    className="w-full px-3.5 py-2 text-xs rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                     placeholder="What did you love about DigiTools?"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  className="w-full py-3 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center justify-center gap-2 cursor-pointer transition-all"
                 >
                   <Send /> Post Verified Review
                 </button>

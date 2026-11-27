@@ -20,7 +20,7 @@ export const Footer = () => {
           {/* Brand Info */}
           <div className="md:col-span-2 pr-0 md:pr-8">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#8B5CF6] to-indigo-600 flex items-center justify-center text-white shadow-md">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-500 to-indigo-600 flex items-center justify-center text-white shadow-md">
                 <Zap className="text-xl" />
               </div>
               <span className="text-2xl font-black bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
@@ -74,7 +74,7 @@ export const Footer = () => {
                   }}
                   className="hover:text-purple-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left"
                 >
-                  <Key className="text-[#8B5CF6] text-xs" />
+                  <Key className="text-purple-500 text-xs" />
                   <span>License Vault</span>
                 </button>
               </li>
@@ -86,7 +86,7 @@ export const Footer = () => {
                   }}
                   className="hover:text-purple-400 transition-colors flex items-center gap-1.5 cursor-pointer text-left"
                 >
-                  <Terminal className="text-[#8B5CF6] text-xs" />
+                  <Terminal className="text-purple-500 text-xs" />
                   <span>Command Palette</span>
                 </button>
               </li>

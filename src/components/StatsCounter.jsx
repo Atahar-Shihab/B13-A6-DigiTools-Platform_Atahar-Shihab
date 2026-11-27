@@ -92,7 +92,7 @@ export const StatsCounter = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-r from-[#7C3AED] via-[#8B5CF6] to-indigo-600 py-14 relative overflow-hidden shadow-inner"
+      className="bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-600 py-14 relative overflow-hidden shadow-inner"
     >
       <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
       <div className="absolute -top-20 -left-20 w-72 h-72 bg-white/15 rounded-full blur-3xl pointer-events-none" />
@@ -110,7 +110,7 @@ export const StatsCounter = () => {
                 key={stat.id}
                 className="bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 rounded-3xl p-6 flex flex-col items-center group transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/20 hover:border-white/40 shadow-lg"
               >
-                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-white mb-3 group-hover:bg-white group-hover:text-[#8B5CF6] transition-all duration-300 shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-white mb-3 group-hover:bg-white group-hover:text-purple-500 transition-all duration-300 shadow-md">
                   <IconComponent className="text-2xl" />
                 </div>
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-1 text-white drop-shadow-sm tabular-nums">

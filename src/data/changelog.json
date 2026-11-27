@@ -13,7 +13,7 @@
       "Floating compare dock and circular SVG scroll meter"
     ],
     "tag": "Major Feature",
-    "tagColor": "bg-purple-100 text-[#8B5CF6] dark:bg-purple-900/40 dark:text-purple-300"
+    "tagColor": "bg-purple-100 text-purple-500 dark:bg-purple-900/40 dark:text-purple-300"
   },
   {
     "version": "v2.3.0",

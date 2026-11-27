@@ -81,7 +81,7 @@ export const WishlistDrawer = () => {
                   const el = document.getElementById('products');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-6 py-2.5 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
+                className="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-500/20 cursor-pointer"
               >
                 Discover Tools
               </button>
@@ -93,14 +93,14 @@ export const WishlistDrawer = () => {
                 className="flex items-center justify-between bg-gray-50 dark:bg-gray-800/60 p-3.5 rounded-2xl border border-gray-100 dark:border-gray-800"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0 text-[#8B5CF6] dark:text-purple-300">
+                  <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-900 p-2 flex items-center justify-center border border-gray-200 dark:border-gray-700 shrink-0 text-purple-500 dark:text-purple-300">
                     <ProductIcon icon={item.icon} id={item.id} name={item.name} size={22} />
                   </div>
                   <div>
                     <h4 className="font-bold text-xs sm:text-sm text-gray-900 dark:text-white line-clamp-1">
                       {item.name}
                     </h4>
-                    <p className="text-xs font-semibold text-[#8B5CF6] dark:text-purple-400">
+                    <p className="text-xs font-semibold text-purple-500 dark:text-purple-400">
                       {formatPrice(item.price)} <span className="text-[10px] text-gray-400">/{item.period}</span>
                     </p>
                   </div>
@@ -112,7 +112,7 @@ export const WishlistDrawer = () => {
                       addToCart(item);
                       toggleWishlist(item);
                     }}
-                    className="p-2 rounded-xl bg-[#8B5CF6] hover:bg-purple-700 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition-all"
+                    className="p-2 rounded-xl bg-purple-500 hover:bg-purple-700 text-white text-xs font-bold flex items-center gap-1 shadow-sm transition-all"
                     title="Move to Cart"
                   >
                     <ShoppingCart size={14} />
@@ -135,7 +135,7 @@ export const WishlistDrawer = () => {
           <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-950/80">
             <button
               onClick={handleMoveAllToCart}
-              className="w-full py-3.5 rounded-2xl bg-[#8B5CF6] hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-purple-500 hover:bg-purple-700 text-white font-bold text-sm shadow-md shadow-purple-500/25 flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <ShoppingCart />
               <span>Move All to Cart</span>
